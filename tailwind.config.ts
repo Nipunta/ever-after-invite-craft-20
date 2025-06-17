@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -204,7 +203,6 @@ export default {
 						width: '100%'
 					}
 				},
-				// New luxury animations
 				'shimmer-text': {
 					'0%': {
 						backgroundPosition: '-200% 0'
@@ -555,6 +553,35 @@ export default {
 						boxShadow: '0 0 40px rgba(244, 63, 94, 0.4)',
 						transform: 'scale(1.02)'
 					}
+				},
+				// New animations for floating circles
+				'float-down': {
+					'0%': {
+						transform: 'translateY(-100vh) scale(0)',
+						opacity: '0'
+					},
+					'10%': {
+						opacity: '1',
+						transform: 'translateY(-90vh) scale(1)'
+					},
+					'90%': {
+						opacity: '1',
+						transform: 'translateY(90vh) scale(1)'
+					},
+					'100%': {
+						transform: 'translateY(100vh) scale(0)',
+						opacity: '0'
+					}
+				},
+				'cursor-trail': {
+					'0%': {
+						transform: 'scale(1)',
+						opacity: '1'
+					},
+					'100%': {
+						transform: 'scale(2)',
+						opacity: '0'
+					}
 				}
 			},
 			animation: {
@@ -574,7 +601,6 @@ export default {
 				'zoom-in': 'zoom-in 0.4s ease-out',
 				'pulse-glow': 'pulse-glow 2s infinite',
 				'typewriter': 'typewriter 3s steps(40, end)',
-				// New luxury animations
 				'shimmer-text': 'shimmer-text 3s infinite linear',
 				'elegant-fade-in': 'elegant-fade-in 0.8s ease-out',
 				'luxury-float': 'luxury-float 1s ease-out',
@@ -609,7 +635,10 @@ export default {
 				'gentle-pulse': 'gentle-pulse 3s infinite ease-in-out',
 				'heartbeat': 'heartbeat 1.5s infinite ease-in-out',
 				'count-up': 'count-up 0.8s ease-out',
-				'pulse-luxury': 'pulse-luxury 2s infinite ease-in-out'
+				'pulse-luxury': 'pulse-luxury 2s infinite ease-in-out',
+				// New animations
+				'float-down': 'float-down linear infinite',
+				'cursor-trail': 'cursor-trail 0.6s ease-out'
 			}
 		}
 	},
