@@ -2,7 +2,11 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 
-const SaveTheDate = () => {
+interface SaveTheDateProps {
+  onNavigateToInvitation?: () => void;
+}
+
+const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
   return (
     <div className="min-h-screen flex items-center justify-center p-6 pt-24">
       <div className="max-w-2xl mx-auto text-center space-y-8 animate-fade-in">
@@ -55,9 +59,14 @@ const SaveTheDate = () => {
           <p className="text-lg text-gray-600 mb-6">
             Join us for an evening of celebration, love, and memories
           </p>
-          <div className="inline-block px-8 py-4 bg-gradient-to-r from-rose-500 to-pink-500 text-white rounded-full shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-110 animate-pulse-glow">
-            <span className="font-medium">Formal Invitation to Follow</span>
-          </div>
+          <button
+            onClick={onNavigateToInvitation}
+            className="inline-block px-8 py-4 bg-gradient-to-r from-rose-500 to-pink-500 text-white rounded-full shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-110 animate-pulse-glow cursor-pointer hover:from-rose-600 hover:to-pink-600 active:scale-95"
+          >
+            <span className="font-medium flex items-center space-x-2">
+              <span>✨ Open Our Love Story ✨</span>
+            </span>
+          </button>
         </div>
       </div>
     </div>

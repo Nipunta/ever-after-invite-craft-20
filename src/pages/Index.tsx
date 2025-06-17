@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import InvitationLayout from '@/components/InvitationLayout';
 import NavigationTabs from '@/components/NavigationTabs';
@@ -21,10 +20,14 @@ const Index = () => {
     { id: 'messages', label: 'Messages', icon: '💬' }
   ];
 
+  const handleNavigateToInvitation = () => {
+    setActiveTab('invitation');
+  };
+
   const renderActiveComponent = () => {
     switch (activeTab) {
       case 'save-the-date':
-        return <SaveTheDate />;
+        return <SaveTheDate onNavigateToInvitation={handleNavigateToInvitation} />;
       case 'invitation':
         return <MainInvitation />;
       case 'gallery':
@@ -36,7 +39,7 @@ const Index = () => {
       case 'messages':
         return <CongratulationsWall />;
       default:
-        return <SaveTheDate />;
+        return <SaveTheDate onNavigateToInvitation={handleNavigateToInvitation} />;
     }
   };
 
