@@ -48,14 +48,14 @@ const Index = () => {
         onTabChange={setActiveTab} 
       />
       
-      <div className="pt-20">
+      <div className="min-h-screen">
         {renderActiveComponent()}
       </div>
       
       {/* Footer */}
       <footer className="text-center py-8 px-6">
         <div className="max-w-2xl mx-auto">
-          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/30">
+          <div className="bg-white/70 backdrop-blur-md rounded-2xl p-6 shadow-2xl border border-white/40 animate-fade-in transform hover:scale-105 transition-all duration-500">
             <p className="text-gray-600 text-sm mb-2">
               Created with love for Sarah & Michael's 10th Anniversary
             </p>

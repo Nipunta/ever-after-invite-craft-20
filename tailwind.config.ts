@@ -127,6 +127,78 @@ export default {
 				'slide-out-right': {
 					'0%': { transform: 'translateX(0)' },
 					'100%': { transform: 'translateX(100%)' }
+				},
+				'slide-in-up': {
+					'0%': { 
+						transform: 'translateY(100%)',
+						opacity: '0'
+					},
+					'100%': { 
+						transform: 'translateY(0)',
+						opacity: '1'
+					}
+				},
+				'slide-in-top': {
+					'0%': { 
+						transform: 'translateY(-100%)',
+						opacity: '0'
+					},
+					'100%': { 
+						transform: 'translateY(0)',
+						opacity: '1'
+					}
+				},
+				'bounce-in': {
+					'0%': {
+						transform: 'scale(0.3)',
+						opacity: '0'
+					},
+					'50%': {
+						transform: 'scale(1.05)'
+					},
+					'70%': {
+						transform: 'scale(0.9)'
+					},
+					'100%': {
+						transform: 'scale(1)',
+						opacity: '1'
+					}
+				},
+				'float-in': {
+					'0%': {
+						transform: 'translateY(60px) scale(0.9)',
+						opacity: '0'
+					},
+					'100%': {
+						transform: 'translateY(0) scale(1)',
+						opacity: '1'
+					}
+				},
+				'zoom-in': {
+					'0%': {
+						transform: 'scale(0.5)',
+						opacity: '0'
+					},
+					'100%': {
+						transform: 'scale(1)',
+						opacity: '1'
+					}
+				},
+				'pulse-glow': {
+					'0%, 100%': {
+						boxShadow: '0 0 20px rgba(244, 63, 94, 0.4)'
+					},
+					'50%': {
+						boxShadow: '0 0 40px rgba(244, 63, 94, 0.8)'
+					}
+				},
+				'typewriter': {
+					'0%': {
+						width: '0'
+					},
+					'100%': {
+						width: '100%'
+					}
 				}
 			},
 			animation: {
@@ -137,7 +209,14 @@ export default {
 				'scale-in': 'scale-in 0.4s ease-out',
 				'scale-out': 'scale-out 0.2s ease-out',
 				'slide-in-right': 'slide-in-right 0.3s ease-out',
-				'slide-out-right': 'slide-out-right 0.3s ease-out'
+				'slide-out-right': 'slide-out-right 0.3s ease-out',
+				'slide-in-up': 'slide-in-up 0.6s ease-out',
+				'slide-in-top': 'slide-in-top 0.5s ease-out',
+				'bounce-in': 'bounce-in 0.8s ease-out',
+				'float-in': 'float-in 0.8s ease-out',
+				'zoom-in': 'zoom-in 0.4s ease-out',
+				'pulse-glow': 'pulse-glow 2s infinite',
+				'typewriter': 'typewriter 3s steps(40, end)'
 			}
 		}
 	},
