@@ -9,44 +9,23 @@ interface InvitationLayoutProps {
 }
 
 const InvitationLayout = ({ children, className, backgroundImage }: InvitationLayoutProps) => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
   return (
     <div className={cn(
-      "min-h-screen relative overflow-hidden cursor-none",
+      "min-h-screen relative overflow-hidden",
       "bg-gradient-to-br from-rose-50 via-pink-50 to-amber-50",
       className
     )}>
-      {/* Custom Cursor */}
-      <div 
-        className="fixed w-6 h-6 bg-gradient-to-r from-rose-400 to-pink-400 rounded-full pointer-events-none z-50 mix-blend-difference opacity-70 animate-pulse-luxury"
-        style={{
-          left: mousePosition.x - 12,
-          top: mousePosition.y - 12,
-          transition: 'all 0.1s ease-out'
-        }}
-      />
-      
       {/* Floating Circles Animation */}
       <div className="fixed inset-0 pointer-events-none z-10">
-        {[...Array(12)].map((_, i) => (
+        {[...Array(8)].map((_, i) => (
           <div
             key={i}
             className={cn(
               "absolute rounded-full opacity-20 animate-float-down",
-              i % 4 === 0 && "bg-gradient-to-r from-rose-300 to-pink-300 w-4 h-4",
-              i % 4 === 1 && "bg-gradient-to-r from-pink-300 to-purple-300 w-3 h-3",
-              i % 4 === 2 && "bg-gradient-to-r from-amber-300 to-yellow-300 w-5 h-5",
-              i % 4 === 3 && "bg-gradient-to-r from-purple-300 to-rose-300 w-2 h-2"
+              i % 4 === 0 && "bg-gradient-to-r from-rose-300 to-pink-300 w-3 h-3 md:w-4 md:h-4",
+              i % 4 === 1 && "bg-gradient-to-r from-pink-300 to-purple-300 w-2 h-2 md:w-3 md:h-3",
+              i % 4 === 2 && "bg-gradient-to-r from-amber-300 to-yellow-300 w-4 h-4 md:w-5 md:h-5",
+              i % 4 === 3 && "bg-gradient-to-r from-purple-300 to-rose-300 w-1.5 h-1.5 md:w-2 md:h-2"
             )}
             style={{
               left: `${Math.random() * 100}%`,
@@ -75,10 +54,10 @@ const InvitationLayout = ({ children, className, backgroundImage }: InvitationLa
         {children}
       </div>
       
-      {/* Static Floating Elements */}
-      <div className="absolute top-10 left-10 w-20 h-20 rounded-full bg-gradient-to-r from-rose-200 to-pink-200 opacity-30 animate-gentle-float"></div>
-      <div className="absolute bottom-20 right-20 w-16 h-16 rounded-full bg-gradient-to-r from-amber-200 to-yellow-200 opacity-40 animate-gentle-float delay-1000"></div>
-      <div className="absolute top-1/3 right-10 w-12 h-12 rounded-full bg-gradient-to-r from-purple-200 to-pink-200 opacity-25 animate-gentle-float delay-500"></div>
+      {/* Static Floating Elements - Responsive sizes */}
+      <div className="absolute top-5 left-5 md:top-10 md:left-10 w-12 h-12 md:w-20 md:h-20 rounded-full bg-gradient-to-r from-rose-200 to-pink-200 opacity-30 animate-gentle-float"></div>
+      <div className="absolute bottom-10 right-10 md:bottom-20 md:right-20 w-10 h-10 md:w-16 md:h-16 rounded-full bg-gradient-to-r from-amber-200 to-yellow-200 opacity-40 animate-gentle-float delay-1000"></div>
+      <div className="absolute top-1/3 right-5 md:right-10 w-8 h-8 md:w-12 md:h-12 rounded-full bg-gradient-to-r from-purple-200 to-pink-200 opacity-25 animate-gentle-float delay-500"></div>
     </div>
   );
 };

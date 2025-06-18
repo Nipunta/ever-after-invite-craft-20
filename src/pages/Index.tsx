@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import InvitationLayout from '@/components/InvitationLayout';
 import NavigationTabs from '@/components/NavigationTabs';
@@ -56,10 +57,10 @@ const Index = () => {
       </div>
       
       {/* Footer */}
-      <footer className="text-center py-8 px-6">
+      <footer className="text-center py-6 md:py-8 px-4 md:px-6">
         <div className="max-w-2xl mx-auto">
-          <div className="bg-white/70 backdrop-blur-md rounded-2xl p-6 shadow-2xl border border-white/40 animate-fade-in transform hover:scale-105 transition-all duration-500">
-            <p className="text-gray-600 text-sm mb-2">
+          <div className="bg-white/70 backdrop-blur-md rounded-2xl p-4 md:p-6 shadow-2xl border border-white/40 animate-fade-in transform hover:scale-105 transition-all duration-500">
+            <p className="text-gray-600 text-xs md:text-sm mb-2">
               Created with love for Sarah & Michael's 10th Anniversary
             </p>
             <p className="text-gray-500 text-xs">
