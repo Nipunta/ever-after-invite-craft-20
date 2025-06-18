@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -7,8 +6,8 @@ interface SaveTheDateProps {
 }
 
 const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
-  const [guestName, setGuestName] = useState('');
   const [showPersonalization, setShowPersonalization] = useState(false);
+  const defaultGuestName = "John & Emily";
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 md:p-6 pt-20 md:pt-24 relative overflow-hidden">
@@ -34,13 +33,9 @@ const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
               </button>
             ) : (
               <div className="space-y-3">
-                <input
-                  type="text"
-                  placeholder="Enter guest name"
-                  value={guestName}
-                  onChange={(e) => setGuestName(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-400 focus:border-transparent text-sm md:text-base"
-                />
+                <p className="text-gray-700 text-sm md:text-base">
+                  Personalized for: <span className="font-medium">{defaultGuestName}</span>
+                </p>
                 <button
                   onClick={() => setShowPersonalization(false)}
                   className="text-xs text-gray-500 hover:text-gray-700 transition-colors"
@@ -53,11 +48,11 @@ const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
         </div>
 
         {/* Guest Greeting */}
-        {guestName && (
+        {showPersonalization && (
           <div className="text-center mb-6 md:mb-8 animate-fade-in">
             <div className="bg-gradient-to-r from-rose-50/90 to-pink-50/90 backdrop-blur-xl rounded-2xl p-4 md:p-6 shadow-lg border border-white/50 max-w-lg mx-auto">
               <h3 className="text-xl md:text-2xl font-serif text-gray-700 mb-2">
-                Dear {guestName},
+                Dear {defaultGuestName},
               </h3>
               <p className="text-sm md:text-base text-gray-600">
                 You are cordially invited to celebrate with us
