@@ -6,7 +6,6 @@ interface SaveTheDateProps {
 }
 
 const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
-  const [showPersonalization, setShowPersonalization] = useState(false);
   const defaultGuestName = "John & Emily";
 
   return (
@@ -21,45 +20,17 @@ const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
       </div>
 
       <div className="max-w-6xl mx-auto w-full">
-        {/* Guest Personalization Section */}
+        {/* Guest Greeting */}
         <div className="text-center mb-6 md:mb-8 animate-fade-in">
-          <div className="bg-white/90 backdrop-blur-xl rounded-2xl p-4 md:p-6 shadow-lg border border-white/50 max-w-md mx-auto">
-            {!showPersonalization ? (
-              <button
-                onClick={() => setShowPersonalization(true)}
-                className="text-gray-600 hover:text-gray-800 transition-colors duration-300 text-sm md:text-base"
-              >
-                📝 Personalize for guest
-              </button>
-            ) : (
-              <div className="space-y-3">
-                <p className="text-gray-700 text-sm md:text-base">
-                  Personalized for: <span className="font-medium">{defaultGuestName}</span>
-                </p>
-                <button
-                  onClick={() => setShowPersonalization(false)}
-                  className="text-xs text-gray-500 hover:text-gray-700 transition-colors"
-                >
-                  ✕ Close
-                </button>
-              </div>
-            )}
+          <div className="bg-gradient-to-r from-rose-50/90 to-pink-50/90 backdrop-blur-xl rounded-2xl p-4 md:p-6 shadow-lg border border-white/50 max-w-lg mx-auto">
+            <h3 className="text-xl md:text-2xl font-serif text-gray-700 mb-2">
+              Dear {defaultGuestName},
+            </h3>
+            <p className="text-sm md:text-base text-gray-600">
+              You are cordially invited to celebrate with us
+            </p>
           </div>
         </div>
-
-        {/* Guest Greeting */}
-        {showPersonalization && (
-          <div className="text-center mb-6 md:mb-8 animate-fade-in">
-            <div className="bg-gradient-to-r from-rose-50/90 to-pink-50/90 backdrop-blur-xl rounded-2xl p-4 md:p-6 shadow-lg border border-white/50 max-w-lg mx-auto">
-              <h3 className="text-xl md:text-2xl font-serif text-gray-700 mb-2">
-                Dear {defaultGuestName},
-              </h3>
-              <p className="text-sm md:text-base text-gray-600">
-                You are cordially invited to celebrate with us
-              </p>
-            </div>
-          </div>
-        )}
 
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Left side - Text content */}
