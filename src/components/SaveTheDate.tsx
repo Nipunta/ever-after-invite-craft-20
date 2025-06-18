@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
 
 interface SaveTheDateProps {
@@ -7,6 +7,9 @@ interface SaveTheDateProps {
 }
 
 const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
+  const [guestName, setGuestName] = useState('');
+  const [showPersonalization, setShowPersonalization] = useState(false);
+
   return (
     <div className="min-h-screen flex items-center justify-center p-4 md:p-6 pt-20 md:pt-24 relative overflow-hidden">
       {/* Floating particles animation */}
@@ -19,6 +22,50 @@ const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
       </div>
 
       <div className="max-w-6xl mx-auto w-full">
+        {/* Guest Personalization Section */}
+        <div className="text-center mb-6 md:mb-8 animate-fade-in">
+          <div className="bg-white/90 backdrop-blur-xl rounded-2xl p-4 md:p-6 shadow-lg border border-white/50 max-w-md mx-auto">
+            {!showPersonalization ? (
+              <button
+                onClick={() => setShowPersonalization(true)}
+                className="text-gray-600 hover:text-gray-800 transition-colors duration-300 text-sm md:text-base"
+              >
+                📝 Personalize for guest
+              </button>
+            ) : (
+              <div className="space-y-3">
+                <input
+                  type="text"
+                  placeholder="Enter guest name"
+                  value={guestName}
+                  onChange={(e) => setGuestName(e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-400 focus:border-transparent text-sm md:text-base"
+                />
+                <button
+                  onClick={() => setShowPersonalization(false)}
+                  className="text-xs text-gray-500 hover:text-gray-700 transition-colors"
+                >
+                  ✕ Close
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Guest Greeting */}
+        {guestName && (
+          <div className="text-center mb-6 md:mb-8 animate-fade-in">
+            <div className="bg-gradient-to-r from-rose-50/90 to-pink-50/90 backdrop-blur-xl rounded-2xl p-4 md:p-6 shadow-lg border border-white/50 max-w-lg mx-auto">
+              <h3 className="text-xl md:text-2xl font-serif text-gray-700 mb-2">
+                Dear {guestName},
+              </h3>
+              <p className="text-sm md:text-base text-gray-600">
+                You are cordially invited to celebrate with us
+              </p>
+            </div>
+          </div>
+        )}
+
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Left side - Text content */}
           <div className="text-center lg:text-left space-y-6 md:space-y-8 animate-slide-in-left order-2 lg:order-1">
