@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { cn } from '@/lib/utils';
 import PhotoGallery from '@/components/PhotoGallery';
 import LocationMap from '@/components/LocationMap';
@@ -11,30 +11,6 @@ interface MainInvitationProps {
 }
 
 const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
-  const [activeSection, setActiveSection] = useState<'invitation' | 'memories' | 'location' | 'messages'>('invitation');
-
-  const sections = [
-    { id: 'invitation', label: 'Invitation', icon: '💕' },
-    { id: 'memories', label: 'Our Memories', icon: '📸' },
-    { id: 'location', label: 'Location', icon: '📍' },
-    { id: 'messages', label: 'Wishes', icon: '💬' }
-  ];
-
-  const renderActiveSection = () => {
-    switch (activeSection) {
-      case 'invitation':
-        return <InvitationContent />;
-      case 'memories':
-        return <PhotoGallery />;
-      case 'location':
-        return <LocationMap />;
-      case 'messages':
-        return <CongratulationsWall />;
-      default:
-        return <InvitationContent />;
-    }
-  };
-
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Back Button */}
@@ -47,31 +23,25 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
         </button>
       )}
 
-      {/* Section Navigation */}
-      <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-30 animate-slide-in-up">
-        <div className="bg-white/95 backdrop-blur-xl rounded-full p-2 shadow-2xl border border-white/60">
-          <div className="flex space-x-1 overflow-x-auto scrollbar-hide">
-            {sections.map((section) => (
-              <button
-                key={section.id}
-                onClick={() => setActiveSection(section.id as any)}
-                className={`flex items-center space-x-2 px-3 py-2 rounded-full text-xs font-medium transition-all duration-500 transform whitespace-nowrap ${
-                  activeSection === section.id
-                    ? 'bg-gradient-to-r from-rose-500 to-pink-500 text-white shadow-lg scale-105 animate-luxury-glow'
-                    : 'text-gray-600 hover:bg-gray-100 hover:scale-105'
-                }`}
-              >
-                <span className="text-sm animate-floating-icon">{section.icon}</span>
-                <span className="hidden sm:inline">{section.label}</span>
-              </button>
-            ))}
-          </div>
+      {/* All sections in one scrollable page */}
+      <div className="space-y-16 pb-24">
+        {/* Invitation Section */}
+        <InvitationContent />
+        
+        {/* Our Memories Section */}
+        <div className="px-4">
+          <PhotoGallery />
         </div>
-      </div>
-
-      {/* Content */}
-      <div className="pb-24">
-        {renderActiveSection()}
+        
+        {/* Location Section */}
+        <div className="px-4">
+          <LocationMap />
+        </div>
+        
+        {/* Wishes Section */}
+        <div className="px-4">
+          <CongratulationsWall />
+        </div>
       </div>
     </div>
   );

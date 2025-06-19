@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import InvitationLayout from '@/components/InvitationLayout';
 import SaveTheDate from '@/components/SaveTheDate';
 import MainInvitation from '@/components/MainInvitation';
@@ -8,6 +8,7 @@ import SwirlCursor from '@/components/SwirlCursor';
 
 const Index = () => {
   const [currentPage, setCurrentPage] = useState<'envelope' | 'save-the-date' | 'main-invitation'>('envelope');
+  const [showNavigation, setShowNavigation] = useState(true);
 
   const handleOpenEnvelope = () => {
     setCurrentPage('save-the-date');
@@ -20,6 +21,19 @@ const Index = () => {
   const handleBackToSaveTheDate = () => {
     setCurrentPage('save-the-date');
   };
+
+  // Handle scroll to hide/show navigation
+  useEffect(() => {
+    if (currentPage === 'envelope') return;
+
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setShowNavigation(scrollPosition < 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [currentPage]);
 
   if (currentPage === 'envelope') {
     return (
@@ -34,8 +48,10 @@ const Index = () => {
     <>
       <SwirlCursor />
       <InvitationLayout>
-        {/* Navigation Pills */}
-        <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-30 animate-slide-in-top">
+        {/* Navigation Pills - Hidden when scrolled */}
+        <div className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-30 transition-all duration-500 ${
+          showNavigation ? 'translate-y-0 opacity-100' : '-translate-y-16 opacity-0'
+        }`}>
           <div className="bg-white/90 backdrop-blur-xl rounded-full p-2 shadow-xl border border-white/50">
             <div className="flex space-x-2">
               <button
