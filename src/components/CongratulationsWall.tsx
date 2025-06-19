@@ -1,8 +1,9 @@
 
 import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
+import { Heart, Send, Phone, Mail, MessageCircle } from 'lucide-react';
 
-interface CongratulationMessage {
+interface Message {
   id: number;
   name: string;
   message: string;
@@ -10,134 +11,211 @@ interface CongratulationMessage {
 }
 
 const CongratulationsWall = () => {
-  // Sample messages - in a real app, these would come from a database
-  const [messages, setMessages] = useState<CongratulationMessage[]>([
+  const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
       name: "Emma & David",
-      message: "Congratulations on 10 beautiful years together! Your love story continues to inspire us all. Here's to many more decades of happiness, laughter, and love. ❤️",
+      message: "Congratulations on your 10th anniversary! Your love story continues to inspire us all. Wishing you many more years of happiness together! ❤️",
       timestamp: "2 hours ago"
     },
     {
       id: 2,
       name: "The Johnson Family",
-      message: "What an incredible milestone! Watching your love grow stronger each year has been a joy. Wishing you both endless happiness on your special day! 🥂",
+      message: "What a beautiful celebration of love! We're so honored to be part of your special day. Here's to another decade of adventures together! 🥂",
       timestamp: "5 hours ago"
     },
     {
       id: 3,
-      name: "Lisa & Robert",
-      message: "Ten years of marriage and still going strong! You two are proof that true love exists. Congratulations and here's to your next adventure together! 💕",
+      name: "Sarah's College Friends",
+      message: "From college sweethearts to this beautiful milestone - we've watched your love grow stronger every year. Cheers to Sarah & Michael! 💕",
       timestamp: "1 day ago"
-    },
-    {
-      id: 4,
-      name: "College Friends Group",
-      message: "From college sweethearts to this amazing milestone - we've loved watching your journey! Sarah & Michael, you're perfect for each other. Cheers to 10 more! 🎉",
-      timestamp: "2 days ago"
-    },
-    {
-      id: 5,
-      name: "Grandma Rose",
-      message: "My dear Sarah and Michael, seeing your love bloom over these 10 years has warmed my heart. May your marriage continue to be blessed with joy, understanding, and endless love. 🌹",
-      timestamp: "3 days ago"
-    },
-    {
-      id: 6,
-      name: "Work Team",
-      message: "Happy 10th Anniversary! Your partnership is goals - both in life and in how you support each other. We're so happy to celebrate this special day with you! 🎊",
-      timestamp: "1 week ago"
     }
   ]);
 
+  const [newMessage, setNewMessage] = useState({ name: '', message: '' });
+  const [showInfo, setShowInfo] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (newMessage.name.trim() && newMessage.message.trim()) {
+      const message: Message = {
+        id: Date.now(),
+        name: newMessage.name,
+        message: newMessage.message,
+        timestamp: "Just now"
+      };
+      setMessages([message, ...messages]);
+      setNewMessage({ name: '', message: '' });
+    }
+  };
+
   return (
-    <div className="min-h-screen p-6">
+    <div className="min-h-screen p-4 sm:p-6 pt-20 sm:pt-24 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(10)].map((_, i) => (
+          <div
+            key={i}
+            className={cn(
+              "absolute rounded-full animate-float-particle opacity-20",
+              i % 3 === 0 && "bg-rose-300 w-2 h-2",
+              i % 3 === 1 && "bg-pink-300 w-1.5 h-1.5",
+              i % 3 === 2 && "bg-amber-300 w-3 h-3"
+            )}
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${4 + Math.random() * 3}s`
+            }}
+          />
+        ))}
+      </div>
+
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12 animate-fade-in">
-          <h1 className="text-4xl md:text-5xl font-serif text-gray-800 mb-4">
-            Congratulations Wall
+        <div className="text-center mb-8 sm:mb-12 animate-elegant-entrance">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif text-gray-800 mb-4 animate-luxury-title">
+            Your Wishes
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Read the heartfelt messages from family and friends celebrating 
-            Sarah & Michael's 10th wedding anniversary
+          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto animate-typewriter-luxury delay-300 px-4">
+            Share your love, wishes, and memories with Sarah & Michael as they celebrate their 10th anniversary
           </p>
-          <div className="w-24 h-px bg-gradient-to-r from-rose-400 to-pink-400 mx-auto mt-6"></div>
+          <div className="w-24 h-px bg-gradient-to-r from-rose-400 to-pink-400 mx-auto mt-6 animate-expand-line delay-500"></div>
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 animate-fade-in delay-200">
-          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 text-center shadow-lg border border-white/30">
-            <div className="text-3xl font-bold text-rose-500 mb-2">{messages.length}</div>
-            <div className="text-gray-600">Messages</div>
-          </div>
-          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 text-center shadow-lg border border-white/30">
-            <div className="text-3xl font-bold text-pink-500 mb-2">10</div>
-            <div className="text-gray-600">Years Together</div>
-          </div>
-          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 text-center shadow-lg border border-white/30">
-            <div className="text-3xl font-bold text-purple-500 mb-2">∞</div>
-            <div className="text-gray-600">Love & Joy</div>
-          </div>
+        {/* Add Message Form */}
+        <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-6 sm:p-8 shadow-2xl border border-white/50 mb-8 sm:mb-12 animate-glass-morph">
+          <h2 className="text-xl sm:text-2xl font-serif text-gray-800 mb-6 text-center animate-elegant-reveal">
+            Share Your Wishes
+          </h2>
+          
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+            <div className="animate-slide-in-up delay-600">
+              <label htmlFor="name" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
+                Your Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                value={newMessage.name}
+                onChange={(e) => setNewMessage({ ...newMessage, name: e.target.value })}
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
+                placeholder="Enter your name..."
+                required
+              />
+            </div>
+            
+            <div className="animate-slide-in-up delay-700">
+              <label htmlFor="message" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
+                Your Message
+              </label>
+              <textarea
+                id="message"
+                value={newMessage.message}
+                onChange={(e) => setNewMessage({ ...newMessage, message: e.target.value })}
+                rows={4}
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all duration-300 resize-none text-sm sm:text-base"
+                placeholder="Share your wishes, memories, or congratulations..."
+                required
+              />
+            </div>
+            
+            <div className="text-center animate-slide-in-up delay-800">
+              <button
+                type="submit"
+                className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-rose-500 to-pink-500 text-white rounded-full shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 animate-luxury-glow text-sm sm:text-base"
+              >
+                <Send className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                Send Your Wishes
+              </button>
+            </div>
+          </form>
         </div>
 
-        {/* Messages Grid */}
-        <div className="space-y-6">
+        {/* Messages Display */}
+        <div className="space-y-4 sm:space-y-6 mb-12">
           {messages.map((message, index) => (
             <div
               key={message.id}
-              className={cn(
-                "bg-white/80 backdrop-blur-md rounded-2xl shadow-lg border border-white/30 p-6",
-                "transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl",
-                "animate-fade-in"
-              )}
-              style={{ animationDelay: `${(index + 3) * 100}ms` }}
+              className="bg-white/70 backdrop-blur-xl rounded-2xl p-4 sm:p-6 shadow-xl border border-white/40 transform hover:scale-102 transition-all duration-500 animate-card-slide-in"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="flex items-start space-x-4">
-                {/* Avatar */}
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-gradient-to-r from-rose-400 to-pink-400 rounded-full flex items-center justify-center text-white font-semibold">
-                    {message.name.charAt(0)}
-                  </div>
+              <div className="flex items-start space-x-3 sm:space-x-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-rose-400 to-pink-500 rounded-full flex items-center justify-center text-white font-semibold animate-gentle-pulse text-sm sm:text-base">
+                  {message.name.charAt(0)}
                 </div>
-                
-                {/* Content */}
                 <div className="flex-1">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-semibold text-gray-800">{message.name}</h3>
-                    <span className="text-sm text-gray-500">{message.timestamp}</span>
+                    <h3 className="font-semibold text-gray-800 text-sm sm:text-base">{message.name}</h3>
+                    <span className="text-xs sm:text-sm text-gray-500">{message.timestamp}</span>
                   </div>
-                  <p className="text-gray-700 leading-relaxed">{message.message}</p>
+                  <p className="text-gray-700 leading-relaxed text-sm sm:text-base">{message.message}</p>
+                  <div className="mt-3 flex items-center text-rose-500">
+                    <Heart className="w-4 h-4 mr-1 animate-heartbeat" />
+                    <span className="text-xs sm:text-sm">With love</span>
+                  </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Add Message Prompt */}
-        <div className="mt-12 text-center animate-fade-in delay-1000">
-          <div className="bg-gradient-to-r from-rose-50 to-pink-50 rounded-2xl p-8 border border-rose-100">
-            <h3 className="text-xl font-semibold text-gray-800 mb-4">
-              Want to add your congratulations?
-            </h3>
-            <p className="text-gray-600 mb-6">
-              Send your heartfelt message to Sarah & Michael through the RSVP form
+        {/* Need More Information Section */}
+        <div className="bg-gradient-to-r from-rose-50/90 to-pink-50/90 backdrop-blur-xl rounded-2xl p-6 sm:p-8 shadow-2xl border border-white/50 animate-glass-morph delay-1000">
+          <div className="text-center mb-6">
+            <h2 className="text-xl sm:text-2xl font-serif text-gray-800 mb-3 animate-elegant-reveal">
+              Need More Information?
+            </h2>
+            <p className="text-gray-600 text-sm sm:text-base animate-fade-in delay-1200">
+              Have questions about the celebration? We're here to help!
             </p>
-            <div className="inline-block px-6 py-3 bg-gradient-to-r from-rose-500 to-pink-500 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
-              <span>Go to RSVP Form</span>
-            </div>
           </div>
-        </div>
 
-        {/* Quote */}
-        <div className="text-center mt-16 animate-fade-in delay-1200">
-          <div className="max-w-2xl mx-auto">
-            <p className="text-xl text-gray-700 italic mb-4">
-              "The love and support from our family and friends means the world to us. 
-              Thank you for being part of our journey and celebrating this special milestone with us."
-            </p>
-            <p className="text-gray-600">- Sarah & Michael Johnson</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+            <button
+              onClick={() => setShowInfo(!showInfo)}
+              className="flex items-center justify-center space-x-3 bg-white/80 hover:bg-white backdrop-blur-sm rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 animate-card-slide-in delay-1300"
+            >
+              <Phone className="w-5 h-5 text-rose-500" />
+              <span className="text-gray-700 font-medium text-sm sm:text-base">Call Us</span>
+            </button>
+
+            <button
+              onClick={() => setShowInfo(!showInfo)}
+              className="flex items-center justify-center space-x-3 bg-white/80 hover:bg-white backdrop-blur-sm rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 animate-card-slide-in delay-1400"
+            >
+              <Mail className="w-5 h-5 text-rose-500" />
+              <span className="text-gray-700 font-medium text-sm sm:text-base">Email Us</span>
+            </button>
+
+            <button
+              onClick={() => setShowInfo(!showInfo)}
+              className="flex items-center justify-center space-x-3 bg-white/80 hover:bg-white backdrop-blur-sm rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 animate-card-slide-in delay-1500"
+            >
+              <MessageCircle className="w-5 h-5 text-rose-500" />
+              <span className="text-gray-700 font-medium text-sm sm:text-base">Text Us</span>
+            </button>
           </div>
+
+          {showInfo && (
+            <div className="mt-6 p-4 sm:p-6 bg-white/60 rounded-xl animate-slide-in-up">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                <div>
+                  <p className="font-medium text-gray-800 text-sm sm:text-base">Phone</p>
+                  <p className="text-rose-600 text-sm sm:text-base">(555) 123-4567</p>
+                </div>
+                <div>
+                  <p className="font-medium text-gray-800 text-sm sm:text-base">Email</p>
+                  <p className="text-rose-600 text-sm sm:text-base">sarah.michael@anniversary.com</p>
+                </div>
+                <div>
+                  <p className="font-medium text-gray-800 text-sm sm:text-base">Text</p>
+                  <p className="text-rose-600 text-sm sm:text-base">(555) 987-6543</p>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
