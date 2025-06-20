@@ -47,7 +47,7 @@ const Index = () => {
   return (
     <>
       <SwirlCursor />
-      <InvitationLayout>
+      <InvitationLayout page={currentPage === 'save-the-date' ? 'save-the-date' : 'full-invitation'}>
         {/* Navigation Pills - Hidden when scrolled */}
         <div className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-30 transition-all duration-500 ${
           showNavigation ? 'translate-y-0 opacity-100' : '-translate-y-16 opacity-0'

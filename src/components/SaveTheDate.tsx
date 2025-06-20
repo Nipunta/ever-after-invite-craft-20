@@ -10,7 +10,7 @@ const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
   const [guestName, setGuestName] = useState("John & Emily");
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 md:p-6 pt-20 md:pt-24 relative overflow-hidden bg-gradient-to-br from-rose-50/30 via-pink-50/20 to-amber-50/30">
+    <div className="min-h-screen flex items-center justify-center p-4 md:p-6 pt-20 md:pt-24 relative overflow-hidden">
       <div className="max-w-6xl mx-auto w-full">
         {/* Enhanced Guest Greeting with input functionality */}
         <div className="text-center mb-6 md:mb-8">
@@ -104,28 +104,27 @@ const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
             </div>
           </div>
 
-          {/* Right side - Couple Photo with Simplified Golden Frame */}
+          {/* Right side - Couple Photo with subtle golden sparkles */}
           <div className="flex justify-center lg:justify-end order-1 lg:order-2">
             <div className="relative group">
               <div className="relative w-64 h-80 sm:w-72 sm:h-90 md:w-80 md:h-96">
-                {/* Simplified golden frame - less overpowering */}
-                <div className="absolute -inset-2 bg-gradient-to-br from-yellow-300/40 via-amber-300/30 to-yellow-400/40 rounded-3xl shadow-lg"></div>
-                <div className="absolute -inset-1 bg-gradient-to-br from-amber-200/30 via-yellow-200/20 to-amber-300/30 rounded-3xl shadow-md"></div>
+                {/* Subtle golden frame */}
+                <div className="absolute -inset-1 bg-gradient-to-br from-yellow-300/30 via-amber-300/20 to-yellow-400/30 rounded-3xl shadow-md"></div>
                 
-                {/* Subtle sparkles - much reduced */}
-                <div className="absolute w-1 h-1 bg-yellow-400/60 rounded-full top-4 right-4 animate-pulse"></div>
-                <div className="absolute w-0.5 h-0.5 bg-amber-400/50 rounded-full bottom-6 left-6 animate-pulse" style={{animationDelay: '1s'}}></div>
-                <div className="absolute w-0.5 h-0.5 bg-yellow-300/40 rounded-full top-1/3 left-4 animate-pulse" style={{animationDelay: '2s'}}></div>
+                {/* Very subtle sparkles - much smaller and softer */}
+                <div className="absolute w-0.5 h-0.5 bg-yellow-400/40 rounded-full top-6 right-6 animate-gentle-pulse"></div>
+                <div className="absolute w-0.5 h-0.5 bg-amber-400/30 rounded-full bottom-8 left-8 animate-gentle-pulse" style={{animationDelay: '1s'}}></div>
+                <div className="absolute w-0.5 h-0.5 bg-yellow-300/30 rounded-full top-1/3 left-6 animate-gentle-pulse" style={{animationDelay: '2s'}}></div>
                 
-                <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-xl border-3 border-white">
+                <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-lg border-2 border-white">
                   <img
                     src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=600&h=800&fit=crop&crop=faces"
                     alt="Sarah & Michael - Happy Couple"
                     className="w-full h-full object-cover relative z-10"
                   />
                   
-                  {/* Very subtle shimmer overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 via-transparent to-amber-400/5 z-10 rounded-3xl"></div>
+                  {/* Very subtle overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/3 via-transparent to-amber-400/3 z-10 rounded-3xl"></div>
                   
                   {/* Simple floating hearts */}
                   <div className="absolute top-4 right-4 text-xl opacity-70 z-20">💕</div>
