@@ -1,29 +1,49 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
 import PhotoGallery from '@/components/PhotoGallery';
 import LocationMap from '@/components/LocationMap';
 import CongratulationsWall from '@/components/CongratulationsWall';
+import { Button } from '@/components/ui/button';
 
 interface MainInvitationProps {
   onBackToSaveTheDate?: () => void;
 }
 
 const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
+  const [showThankYou, setShowThankYou] = useState(false);
+
+  const handleAcceptInvitation = () => {
+    setShowThankYou(true);
+    setTimeout(() => setShowThankYou(false), 3000);
+  };
+
   return (
     <div className="min-h-screen relative overflow-hidden">
+      {/* Thank You Animation Overlay */}
+      {showThankYou && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm animate-fade-in">
+          <div className="bg-white/95 backdrop-blur-xl rounded-3xl p-8 md:p-12 shadow-2xl border border-white/50 text-center animate-scale-in">
+            <div className="text-6xl mb-4">💕</div>
+            <h3 className="text-2xl md:text-3xl font-serif text-gray-800 mb-2">Thank You!</h3>
+            <p className="text-gray-600">We can't wait to celebrate with you</p>
+          </div>
+        </div>
+      )}
+
       {/* All sections in one scrollable page */}
       <div className="space-y-8 pb-24">
-        {/* Invitation Section */}
-        <InvitationContent />
+        {/* Invitation Section - fade-in animation */}
+        <div className="animate-fade-in">
+          <InvitationContent />
+        </div>
         
-        {/* Our Memories Section */}
-        <div className="px-4">
+        {/* Our Memories Section - slide-up animation */}
+        <div className="px-4 animate-[slide-up_0.8s_ease-out_0.2s_both]">
           <PhotoGallery />
         </div>
         
-        {/* Location Section with enhanced styling */}
-        <div className="px-4">
+        {/* Location Section - zoom-in animation */}
+        <div className="px-4 animate-[zoom-in_0.8s_ease-out_0.4s_both]">
           <div className="bg-gradient-to-br from-white/90 to-amber-50/70 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-lg border border-white/50 relative overflow-hidden max-w-6xl mx-auto">
             {/* Subtle sparkle background */}
             <div className="absolute inset-0 opacity-20">
@@ -40,9 +60,26 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
           </div>
         </div>
         
-        {/* Wishes Section */}
-        <div className="px-4">
+        {/* Wishes Section - No background, fade-in animation */}
+        <div className="px-4 animate-[fade-in_0.8s_ease-out_0.6s_both]">
           <CongratulationsWall />
+        </div>
+
+        {/* Accept Invitation Button - slide-up animation */}
+        <div className="px-4 pb-12 animate-[slide-up_0.8s_ease-out_0.8s_both]">
+          <div className="max-w-2xl mx-auto text-center">
+            <Button
+              onClick={handleAcceptInvitation}
+              className="bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 hover:from-rose-600 hover:via-pink-600 hover:to-purple-600 text-white font-serif text-lg px-12 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95"
+            >
+              <span className="mr-2">💕</span>
+              Accept Invitation
+              <span className="ml-2">✨</span>
+            </Button>
+            <p className="text-gray-600 text-sm mt-4 opacity-80">
+              Let us know you'll be joining us for this special celebration
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -201,7 +238,7 @@ const InvitationContent = () => {
                 <div className="absolute bottom-8 left-12 w-0.5 h-0.5 bg-rose-300 rounded-full animate-gentle-pulse" style={{animationDelay: '2s'}}></div>
                 <div className="absolute bottom-16 right-6 w-1 h-1 bg-pink-400 rounded-full animate-gentle-pulse" style={{animationDelay: '3s'}}></div>
                 <div className="absolute top-1/2 left-1/3 w-0.5 h-0.5 bg-rose-400 rounded-full animate-gentle-pulse" style={{animationDelay: '0.5s'}}></div>
-                <div className="absolute top-1/3 right-1/4 w-0.5 h-0.5 bg-pink-300 rounded-full animate-gentle-pulse" style={{animationDelay: '1.5s'}}></div>
+                <div className="absolute top-1/3 right-1/4 w-0.5 h-0.5 bg-rose-300 rounded-full animate-gentle-pulse" style={{animationDelay: '1.5s'}}></div>
               </div>
               
               <div className="relative z-10">
