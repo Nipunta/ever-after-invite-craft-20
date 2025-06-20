@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -7,27 +6,27 @@ interface SaveTheDateProps {
 }
 
 const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
-  const defaultGuestName = "John & Emily";
+  const [guestName, setGuestName] = useState("John & Emily");
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 md:p-6 pt-20 md:pt-24 relative overflow-hidden">
-      {/* Enhanced floating particles animation with golden sparkles */}
+      {/* Subtle floating particles animation with reduced golden sparkles */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Golden sparkles */}
-        {[...Array(20)].map((_, i) => (
+        {/* Reduced golden sparkles - fewer and more subtle */}
+        {[...Array(8)].map((_, i) => (
           <div
             key={`sparkle-${i}`}
             className={cn(
-              "absolute animate-float-particle opacity-40",
-              i % 3 === 0 && "w-1 h-1 bg-gradient-to-r from-yellow-400 to-amber-400 rounded-full animate-twinkle",
-              i % 3 === 1 && "w-1.5 h-1.5 bg-gradient-to-r from-amber-400 to-yellow-300 transform rotate-45 animate-shimmer",
+              "absolute animate-float-particle opacity-20",
+              i % 3 === 0 && "w-0.5 h-0.5 bg-gradient-to-r from-yellow-400 to-amber-400 rounded-full animate-twinkle",
+              i % 3 === 1 && "w-1 h-1 bg-gradient-to-r from-amber-400 to-yellow-300 transform rotate-45 animate-shimmer",
               i % 3 === 2 && "w-0.5 h-0.5 bg-gradient-to-r from-yellow-300 to-amber-300 rounded-full animate-gentle-pulse"
             )}
             style={{
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
               animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${2 + Math.random() * 4}s`
+              animationDuration: `${3 + Math.random() * 4}s`
             }}
           />
         ))}
@@ -41,7 +40,7 @@ const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
       </div>
 
       <div className="max-w-6xl mx-auto w-full">
-        {/* Enhanced Guest Greeting with luxury background */}
+        {/* Enhanced Guest Greeting with input functionality */}
         <div className="text-center mb-6 md:mb-8 animate-fade-in">
           <div className="bg-gradient-to-br from-white/95 via-rose-50/90 to-pink-50/95 backdrop-blur-3xl rounded-3xl p-6 md:p-8 shadow-2xl border-2 border-white/60 max-w-lg mx-auto relative overflow-hidden transform hover:scale-105 transition-all duration-700 animate-glass-morph">
             {/* Decorative pattern */}
@@ -58,8 +57,16 @@ const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
             <div className="absolute bottom-3 right-3 w-6 h-6 border-r-2 border-b-2 border-pink-300/60 rounded-br-xl"></div>
             
             <div className="relative z-10">
-              <h3 className="text-xl md:text-2xl font-serif text-gray-700 mb-2">
-                Dear {defaultGuestName},
+              <h3 className="text-xl md:text-2xl font-serif text-gray-700 mb-4">
+                Dear 
+                <input
+                  type="text"
+                  value={guestName}
+                  onChange={(e) => setGuestName(e.target.value)}
+                  className="ml-2 bg-transparent border-b border-rose-300 focus:border-rose-500 outline-none font-serif text-xl md:text-2xl text-gray-700 placeholder-gray-400 transition-colors duration-300"
+                  placeholder="Your Name"
+                />
+                ,
               </h3>
               <p className="text-sm md:text-base text-gray-600 font-light">
                 You are cordially invited to celebrate with us
@@ -164,41 +171,39 @@ const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
             </div>
           </div>
 
-          {/* Enhanced Right side - Couple Photo with Golden Frame */}
+          {/* Enhanced Right side - Couple Photo with More Subtle Golden Frame */}
           <div className="flex justify-center lg:justify-end animate-slide-in-right delay-300 order-1 lg:order-2">
             <div className="relative group">
-              {/* Luxury Golden Frame with Sparkles */}
+              {/* More Subtle Golden Frame */}
               <div className="relative w-64 h-80 sm:w-72 sm:h-90 md:w-80 md:h-96 animate-photo-reveal">
-                {/* Outer golden frame */}
-                <div className="absolute -inset-4 bg-gradient-to-br from-yellow-400 via-amber-400 to-yellow-500 rounded-3xl shadow-2xl opacity-80 animate-gentle-pulse"></div>
-                <div className="absolute -inset-3 bg-gradient-to-br from-amber-300 via-yellow-300 to-amber-400 rounded-3xl shadow-xl opacity-60"></div>
-                <div className="absolute -inset-2 bg-gradient-to-br from-yellow-200 via-amber-200 to-yellow-300 rounded-3xl shadow-lg opacity-40"></div>
+                {/* Reduced golden frame layers */}
+                <div className="absolute -inset-3 bg-gradient-to-br from-yellow-400 via-amber-400 to-yellow-500 rounded-3xl shadow-xl opacity-40 animate-gentle-pulse"></div>
+                <div className="absolute -inset-2 bg-gradient-to-br from-amber-300 via-yellow-300 to-amber-400 rounded-3xl shadow-lg opacity-30"></div>
+                <div className="absolute -inset-1 bg-gradient-to-br from-yellow-200 via-amber-200 to-yellow-300 rounded-3xl shadow-md opacity-20"></div>
                 
-                {/* Moving golden sparkles around frame */}
-                {[...Array(8)].map((_, i) => (
+                {/* Reduced moving golden sparkles - fewer and smaller */}
+                {[...Array(4)].map((_, i) => (
                   <div
                     key={i}
-                    className="absolute w-1 h-1 bg-yellow-400 rounded-full animate-orbit opacity-80"
+                    className="absolute w-0.5 h-0.5 bg-yellow-400 rounded-full animate-orbit opacity-30"
                     style={{
                       top: '50%',
                       left: '50%',
-                      animationDelay: `${i * 0.5}s`,
-                      animationDuration: '4s'
+                      animationDelay: `${i * 1}s`,
+                      animationDuration: '6s'
                     }}
                   />
                 ))}
                 
-                {/* Main photo container */}
                 <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl transform group-hover:scale-105 transition-all duration-700 border-4 border-white">
-                  {/* Photo */}
                   <img
                     src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=600&h=800&fit=crop&crop=faces"
                     alt="Sarah & Michael - Happy Couple"
                     className="w-full h-full object-cover relative z-10 group-hover:brightness-110 transition-all duration-700"
                   />
                   
-                  {/* Golden shimmer overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/20 via-transparent to-amber-400/20 z-10 rounded-3xl animate-shimmer"></div>
+                  {/* Reduced shimmer overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/10 via-transparent to-amber-400/10 z-10 rounded-3xl animate-shimmer"></div>
                   
                   {/* Floating hearts and sparkles */}
                   <div className="absolute top-4 right-4 text-xl md:text-2xl animate-floating-heart opacity-80 z-20">💕</div>
