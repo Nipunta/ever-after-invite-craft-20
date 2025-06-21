@@ -1,10 +1,11 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import PhotoGallery from '@/components/PhotoGallery';
 import LocationMap from '@/components/LocationMap';
 import CongratulationsWall from '@/components/CongratulationsWall';
 import { Button } from '@/components/ui/button';
+import { ArrowUp, ArrowDown } from 'lucide-react';
 
 interface MainInvitationProps {
   onBackToSaveTheDate?: () => void;
@@ -12,11 +13,31 @@ interface MainInvitationProps {
 
 const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
   const [showThankYou, setShowThankYou] = useState(false);
+  const [invitationAccepted, setInvitationAccepted] = useState(false);
+  const [isAtTop, setIsAtTop] = useState(true);
 
   const handleAcceptInvitation = () => {
     setShowThankYou(true);
+    setInvitationAccepted(true);
     setTimeout(() => setShowThankYou(false), 3000);
   };
+
+  const handleScrollToggle = () => {
+    if (isAtTop) {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsAtTop(window.scrollY < 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -25,11 +46,23 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm animate-fade-in">
           <div className="bg-white/95 backdrop-blur-xl rounded-3xl p-8 md:p-12 shadow-2xl border border-white/50 text-center animate-scale-in">
             <div className="text-6xl mb-4">💕</div>
-            <h3 className="text-2xl md:text-3xl font-serif text-gray-800 mb-2">Thank You!</h3>
+            <h3 className="text-2xl md:text-3xl font-serif text-gray-800 mb-2">Thank you, dear guest!</h3>
             <p className="text-gray-600">We can't wait to celebrate with you</p>
           </div>
         </div>
       )}
+
+      {/* Scroll Toggle Button */}
+      <button
+        onClick={handleScrollToggle}
+        className="fixed bottom-6 right-6 z-40 bg-white/90 backdrop-blur-xl rounded-full p-3 shadow-lg border border-white/50 hover:scale-110 transition-all duration-300 hover:bg-white"
+      >
+        {isAtTop ? (
+          <ArrowDown className="w-5 h-5 text-gray-600" />
+        ) : (
+          <ArrowUp className="w-5 h-5 text-gray-600" />
+        )}
+      </button>
 
       {/* All sections in one scrollable page */}
       <div className="space-y-8 pb-24">
@@ -58,21 +91,34 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
         </div>
 
         {/* Accept Invitation Button - slide-up animation */}
-        <div className="px-4 pb-12 animate-[slide-up_0.8s_ease-out_0.8s_both]">
-          <div className="max-w-2xl mx-auto text-center">
-            <Button
-              onClick={handleAcceptInvitation}
-              className="bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 hover:from-rose-600 hover:via-pink-600 hover:to-purple-600 text-white font-serif text-lg px-12 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95"
-            >
-              <span className="mr-2">💕</span>
-              Accept Invitation
-              <span className="ml-2">✨</span>
-            </Button>
-            <p className="text-gray-600 text-sm mt-4 opacity-80">
-              Let us know you'll be joining us for this special celebration
-            </p>
+        {!invitationAccepted && (
+          <div className="px-4 pb-12 animate-[slide-up_0.8s_ease-out_0.8s_both]">
+            <div className="max-w-2xl mx-auto text-center">
+              <Button
+                onClick={handleAcceptInvitation}
+                className="bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 hover:from-rose-600 hover:via-pink-600 hover:to-purple-600 text-white font-serif text-lg px-12 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95"
+              >
+                <span className="mr-2">💕</span>
+                Accept Invitation
+                <span className="ml-2">✨</span>
+              </Button>
+              <p className="text-gray-600 text-sm mt-4 opacity-80">
+                Let us know you'll be joining us for this special celebration
+              </p>
+            </div>
           </div>
-        </div>
+        )}
+
+        {/* Confirmation Message after acceptance */}
+        {invitationAccepted && (
+          <div className="px-4 pb-12 animate-[fade-in_0.8s_ease-out] text-center">
+            <div className="max-w-2xl mx-auto bg-gradient-to-br from-green-50/90 to-emerald-50/70 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/50">
+              <div className="text-4xl mb-4">✅</div>
+              <h3 className="text-xl font-serif text-gray-800 mb-2">Invitation Accepted!</h3>
+              <p className="text-gray-600">We're excited to celebrate with you on June 15, 2025</p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -167,6 +213,29 @@ const InvitationContent = () => {
                       <span className="text-xl md:text-2xl">🎵</span>
                       <span className="text-sm md:text-lg">Live Band & DJ</span>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Transportation Section with updated content */}
+            <div className="text-center bg-gradient-to-br from-blue-50/95 to-white/90 backdrop-blur-sm rounded-3xl p-8 md:p-10 relative overflow-hidden shadow-lg border border-white/50">
+              <div className="diagonal-slide-bg reception-bg"></div>
+              
+              <div className="relative z-10">
+                <h4 className="text-xl md:text-2xl font-semibold text-gray-800 mb-6">Transportation</h4>
+                <div className="grid md:grid-cols-3 gap-4 text-gray-700">
+                  <div className="flex items-center justify-center space-x-2">
+                    <span className="text-xl">✈️</span>
+                    <span className="text-sm md:text-base">Nearby Airport</span>
+                  </div>
+                  <div className="flex items-center justify-center space-x-2">
+                    <span className="text-xl">🚂</span>
+                    <span className="text-sm md:text-base">Train Station</span>
+                  </div>
+                  <div className="flex items-center justify-center space-x-2">
+                    <span className="text-xl">🚌</span>
+                    <span className="text-sm md:text-base">Bus Stop</span>
                   </div>
                 </div>
               </div>

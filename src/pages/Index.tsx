@@ -48,37 +48,43 @@ const Index = () => {
     <>
       <SwirlCursor />
       <InvitationLayout page={currentPage === 'save-the-date' ? 'save-the-date' : 'full-invitation'}>
-        {/* Navigation Pills - Hidden when scrolled */}
-        <div className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-30 transition-all duration-500 ${
-          showNavigation ? 'translate-y-0 opacity-100' : '-translate-y-16 opacity-0'
+        {/* Compact Navigation Pills */}
+        <div className={`fixed top-2 left-1/2 transform -translate-x-1/2 z-30 transition-all duration-500 ${
+          showNavigation ? 'translate-y-0 opacity-100' : '-translate-y-12 opacity-0'
         }`}>
-          <div className="bg-white/90 backdrop-blur-xl rounded-full p-2 shadow-xl border border-white/50">
-            <div className="flex space-x-2">
+          <div className="bg-white/90 backdrop-blur-xl rounded-full p-1 shadow-lg border border-white/50">
+            <div className="flex space-x-1">
               <button
                 onClick={() => setCurrentPage('save-the-date')}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-500 transform ${
+                className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-500 transform ${
                   currentPage === 'save-the-date'
-                    ? 'bg-gradient-to-r from-rose-500 to-pink-500 text-white shadow-lg scale-105'
+                    ? 'bg-gradient-to-r from-rose-500 to-pink-500 text-white shadow-md scale-105'
                     : 'text-gray-600 hover:bg-gray-100 hover:scale-105'
                 }`}
               >
-                💌 Save The Date
+                <span className="flex items-center space-x-1">
+                  <span>💌</span>
+                  <span>Save The Date</span>
+                </span>
               </button>
               <button
                 onClick={() => setCurrentPage('main-invitation')}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-500 transform ${
+                className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-500 transform ${
                   currentPage === 'main-invitation'
-                    ? 'bg-gradient-to-r from-rose-500 to-pink-500 text-white shadow-lg scale-105'
+                    ? 'bg-gradient-to-r from-rose-500 to-pink-500 text-white shadow-md scale-105'
                     : 'text-gray-600 hover:bg-gray-100 hover:scale-105'
                 }`}
               >
-                💕 Full Invitation
+                <span className="flex items-center space-x-1">
+                  <span>💕</span>
+                  <span>Full Invitation</span>
+                </span>
               </button>
             </div>
           </div>
         </div>
 
-        <div className="min-h-screen pt-20">
+        <div className="min-h-screen pt-16">
           {currentPage === 'save-the-date' ? (
             <SaveTheDate onNavigateToInvitation={handleNavigateToInvitation} />
           ) : (
