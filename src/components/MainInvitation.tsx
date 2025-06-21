@@ -171,7 +171,7 @@ const InvitationContent = () => {
               </div>
             </div>
 
-            {/* Event Details Grid with animated backgrounds */}
+            {/* Event Details Grid with animated backgrounds - removed Transportation */}
             <div className="grid md:grid-cols-2 gap-6 md:gap-8">
               <div className="bg-gradient-to-br from-rose-50/95 to-white/90 backdrop-blur-sm rounded-3xl p-6 md:p-8 text-center shadow-lg border border-white/50 relative overflow-hidden">
                 <div className="diagonal-slide-bg ceremony-bg"></div>
@@ -213,29 +213,6 @@ const InvitationContent = () => {
                       <span className="text-xl md:text-2xl">🎵</span>
                       <span className="text-sm md:text-lg">Live Band & DJ</span>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Transportation Section with updated content */}
-            <div className="text-center bg-gradient-to-br from-blue-50/95 to-white/90 backdrop-blur-sm rounded-3xl p-8 md:p-10 relative overflow-hidden shadow-lg border border-white/50">
-              <div className="diagonal-slide-bg reception-bg"></div>
-              
-              <div className="relative z-10">
-                <h4 className="text-xl md:text-2xl font-semibold text-gray-800 mb-6">Transportation</h4>
-                <div className="grid md:grid-cols-3 gap-4 text-gray-700">
-                  <div className="flex items-center justify-center space-x-2">
-                    <span className="text-xl">✈️</span>
-                    <span className="text-sm md:text-base">Nearby Airport</span>
-                  </div>
-                  <div className="flex items-center justify-center space-x-2">
-                    <span className="text-xl">🚂</span>
-                    <span className="text-sm md:text-base">Train Station</span>
-                  </div>
-                  <div className="flex items-center justify-center space-x-2">
-                    <span className="text-xl">🚌</span>
-                    <span className="text-sm md:text-base">Bus Stop</span>
                   </div>
                 </div>
               </div>

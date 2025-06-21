@@ -48,34 +48,34 @@ const Index = () => {
     <>
       <SwirlCursor />
       <InvitationLayout page={currentPage === 'save-the-date' ? 'save-the-date' : 'full-invitation'}>
-        {/* Compact Navigation Pills */}
+        {/* Compact Navigation Pills - made wider and shorter */}
         <div className={`fixed top-2 left-1/2 transform -translate-x-1/2 z-30 transition-all duration-500 ${
           showNavigation ? 'translate-y-0 opacity-100' : '-translate-y-12 opacity-0'
         }`}>
-          <div className="bg-white/90 backdrop-blur-xl rounded-full p-1 shadow-lg border border-white/50">
+          <div className="bg-white/90 backdrop-blur-xl rounded-full px-2 py-0.5 shadow-lg border border-white/50">
             <div className="flex space-x-1">
               <button
                 onClick={() => setCurrentPage('save-the-date')}
-                className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-500 transform ${
+                className={`px-4 py-1 rounded-full text-xs font-medium transition-all duration-500 transform ${
                   currentPage === 'save-the-date'
                     ? 'bg-gradient-to-r from-rose-500 to-pink-500 text-white shadow-md scale-105'
                     : 'text-gray-600 hover:bg-gray-100 hover:scale-105'
                 }`}
               >
-                <span className="flex items-center space-x-1">
+                <span className="flex items-center space-x-1.5">
                   <span>💌</span>
                   <span>Save The Date</span>
                 </span>
               </button>
               <button
                 onClick={() => setCurrentPage('main-invitation')}
-                className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-500 transform ${
+                className={`px-4 py-1 rounded-full text-xs font-medium transition-all duration-500 transform ${
                   currentPage === 'main-invitation'
                     ? 'bg-gradient-to-r from-rose-500 to-pink-500 text-white shadow-md scale-105'
                     : 'text-gray-600 hover:bg-gray-100 hover:scale-105'
                 }`}
               >
-                <span className="flex items-center space-x-1">
+                <span className="flex items-center space-x-1.5">
                   <span>💕</span>
                   <span>Full Invitation</span>
                 </span>

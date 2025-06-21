@@ -15,26 +15,22 @@ const LocationMap = () => {
     {
       name: "Central Park",
       distance: "Across the street",
-      description: "Beautiful park perfect for a romantic stroll",
-      icon: "🌳"
+      description: "Beautiful park perfect for a romantic stroll"
     },
     {
       name: "Fifth Avenue Shopping",
-      distance: "At your doorstep",
-      description: "World-class shopping and boutiques",
-      icon: "🛍️"
+      distance: "At your doorstep", 
+      description: "World-class shopping and boutiques"
     },
     {
       name: "Metropolitan Museum of Art",
       distance: "10 minutes walk",
-      description: "Iconic art museum with world-renowned collections",
-      icon: "🏛️"
+      description: "Iconic art museum with world-renowned collections"
     },
     {
-      name: "Rockefeller Center",
+      name: "Rockefeller Center", 
       distance: "15 minutes walk",
-      description: "Famous landmark with stunning city views",
-      icon: "🏢"
+      description: "Famous landmark with stunning city views"
     }
   ];
 
@@ -113,15 +109,15 @@ const LocationMap = () => {
             <div className="bg-white/70 backdrop-blur-xl rounded-2xl p-4 sm:p-6 shadow-xl border border-white/40 animate-glass-morph delay-400">
               <h4 className="text-base sm:text-lg font-semibold text-gray-800 mb-4 animate-elegant-reveal delay-1100">Transportation</h4>
               <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-gray-600">
-                <p className="animate-slide-in-up delay-1200 hover:text-gray-800 transition-colors duration-300">• Subway: N, R, W to 5th Ave/59th St</p>
-                <p className="animate-slide-in-up delay-1300 hover:text-gray-800 transition-colors duration-300">• Taxi/Uber: Drop off at main entrance</p>
-                <p className="animate-slide-in-up delay-1400 hover:text-gray-800 transition-colors duration-300">• Parking: Valet service available</p>
+                <p className="animate-slide-in-up delay-1200 hover:text-gray-800 transition-colors duration-300">• Nearby Airport</p>
+                <p className="animate-slide-in-up delay-1300 hover:text-gray-800 transition-colors duration-300">• Train Station</p>
+                <p className="animate-slide-in-up delay-1400 hover:text-gray-800 transition-colors duration-300">• Bus Stop</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Local Attractions Section */}
+        {/* Local Attractions Section - removed icons */}
         <div className="mb-12">
           <h3 className="text-2xl sm:text-3xl font-serif text-gray-800 text-center mb-8 animate-luxury-title">
             Local Attractions
@@ -134,7 +130,6 @@ const LocationMap = () => {
                 style={{ animationDelay: `${index * 200}ms` }}
               >
                 <div className="text-center">
-                  <div className="text-2xl sm:text-3xl mb-3 animate-floating-icon">{attraction.icon}</div>
                   <h4 className="font-semibold text-gray-800 mb-2 text-sm sm:text-base">{attraction.name}</h4>
                   <div className="flex items-center justify-center mb-2">
                     <Star className="w-3 h-3 sm:w-4 sm:h-4 text-amber-500 mr-1" />
