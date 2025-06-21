@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React from 'react';
 import { cn } from '@/lib/utils';
 
 interface SaveTheDateProps {
@@ -7,24 +6,15 @@ interface SaveTheDateProps {
 }
 
 const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
-  const [guestName, setGuestName] = useState("John & Emily");
-
   return (
     <div className="min-h-screen flex items-center justify-center p-4 md:p-6 pt-20 md:pt-24 relative overflow-hidden">
       <div className="max-w-6xl mx-auto w-full">
-        {/* Enhanced Guest Greeting with input functionality */}
+        {/* Enhanced Guest Greeting with default text */}
         <div className="text-center mb-6 md:mb-8">
           <div className="bg-gradient-to-br from-white/95 to-rose-50/80 backdrop-blur-sm rounded-3xl p-6 md:p-8 shadow-lg border border-white/50 max-w-lg mx-auto relative overflow-hidden">
             <div className="relative z-10">
               <h3 className="text-xl md:text-2xl font-serif text-gray-700 mb-4">
-                Dear{' '}
-                <input
-                  type="text"
-                  value={guestName}
-                  onChange={(e) => setGuestName(e.target.value)}
-                  className="bg-transparent border-b border-rose-300 focus:border-rose-500 outline-none font-serif text-xl md:text-2xl text-gray-700 placeholder-gray-400 transition-colors duration-300"
-                  placeholder="Your Name"
-                />
+                Dear Guest, You're Invited
               </h3>
               <p className="text-sm md:text-base text-gray-600 font-light">
                 You are cordially invited to celebrate with us
@@ -104,17 +94,11 @@ const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
             </div>
           </div>
 
-          {/* Right side - Couple Photo with subtle golden sparkles */}
+          {/* Right side - Couple Photo */}
           <div className="flex justify-center lg:justify-end order-1 lg:order-2">
             <div className="relative group">
               <div className="relative w-64 h-80 sm:w-72 sm:h-90 md:w-80 md:h-96">
-                {/* Subtle golden frame */}
                 <div className="absolute -inset-1 bg-gradient-to-br from-yellow-300/30 via-amber-300/20 to-yellow-400/30 rounded-3xl shadow-md"></div>
-                
-                {/* Very subtle sparkles - much smaller and softer */}
-                <div className="absolute w-0.5 h-0.5 bg-yellow-400/40 rounded-full top-6 right-6 animate-gentle-pulse"></div>
-                <div className="absolute w-0.5 h-0.5 bg-amber-400/30 rounded-full bottom-8 left-8 animate-gentle-pulse" style={{animationDelay: '1s'}}></div>
-                <div className="absolute w-0.5 h-0.5 bg-yellow-300/30 rounded-full top-1/3 left-6 animate-gentle-pulse" style={{animationDelay: '2s'}}></div>
                 
                 <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-lg border-2 border-white">
                   <img
@@ -123,10 +107,8 @@ const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
                     className="w-full h-full object-cover relative z-10"
                   />
                   
-                  {/* Very subtle overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/3 via-transparent to-amber-400/3 z-10 rounded-3xl"></div>
                   
-                  {/* Simple floating hearts */}
                   <div className="absolute top-4 right-4 text-xl opacity-70 z-20">💕</div>
                   <div className="absolute bottom-6 left-4 text-lg opacity-60 z-20">❤️</div>
                 </div>

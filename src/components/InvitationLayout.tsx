@@ -16,7 +16,7 @@ const InvitationLayout = ({ children, className, backgroundImage, page }: Invita
     if (page === 'save-the-date') {
       return '/lovable-uploads/8ed6f91f-3a61-4766-a9cd-b3cf98ac8379.png';
     } else if (page === 'full-invitation') {
-      return '/lovable-uploads/2b12e9ba-1ca2-4ead-8066-1c323229e796.png';
+      return '/lovable-uploads/14435b28-e5fa-44b3-99ea-60faf74aeeba.png';
     }
     
     return '';
@@ -33,7 +33,7 @@ const InvitationLayout = ({ children, className, backgroundImage, page }: Invita
       {/* Custom Background Image */}
       {bgImage && (
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="fixed inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${bgImage})` }}
         />
       )}
