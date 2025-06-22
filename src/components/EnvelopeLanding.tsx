@@ -47,6 +47,21 @@ const EnvelopeLanding = ({ onOpenEnvelope }: EnvelopeLandingProps) => {
       </div>
 
       <div className="text-center animate-elegant-entrance relative z-10">
+        {/* Guest Personalization Section */}
+        <div className="mb-8 animate-fade-in-stagger">
+          <div className="bg-gradient-to-br from-white/95 to-rose-50/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-lg border border-white/50 max-w-md mx-auto relative overflow-hidden transform hover:scale-105 transition-all duration-700">
+            <div className="relative z-10">
+              <h3 className="text-xl md:text-2xl font-serif text-gray-700 mb-2 animate-typewriter-elegant">
+                Dear Beloved Guest
+              </h3>
+              <p className="text-sm md:text-base text-gray-600 font-light animate-fade-in delay-300">
+                You are warmly invited to celebrate with us
+              </p>
+            </div>
+            <div className="absolute top-2 right-2 text-2xl opacity-30 animate-floating-heart">💕</div>
+          </div>
+        </div>
+
         {/* Enhanced Envelope Container */}
         <div className="relative mx-auto mb-12 group">
           <div className={cn(
@@ -122,7 +137,7 @@ const EnvelopeLanding = ({ onOpenEnvelope }: EnvelopeLandingProps) => {
             You're Invited
           </h1>
           <div className="space-y-3">
-            <p className="text-xl sm:text-2xl text-gray-700 mb-3 animate-fade-in delay-700 font-medium">
+            <p className="text-xl sm:text-2xl text-gray-700 mb-3 animate-fade-in delay-700 font-medium font-serif">
               Sarah & Michael's 10th Anniversary Celebration
             </p>
             <div className="flex items-center justify-center space-x-2 animate-fade-in delay-900">
