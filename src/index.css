@@ -80,7 +80,7 @@
     font-family: 'Dancing Script', cursive;
   }
 
-  /* Animation Classes */
+  /* Enhanced Animation Classes */
   .animate-fade-in-stagger {
     animation: fadeInStagger 0.8s ease-out forwards;
   }
@@ -153,143 +153,120 @@
     animation: floatParticle 6s ease-in-out infinite;
   }
 
-  /* Background Classes */
-  .sparkle-bg::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-      radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
-      radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
-      radial-gradient(circle at 40% 60%, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
-    background-size: 50px 50px, 80px 80px, 100px 100px;
-    animation: sparkleMove 10s linear infinite;
-    opacity: 0.4;
+  /* New Luxury Animations */
+  .animate-slow-breathe {
+    animation: slowBreathe 4s ease-in-out infinite;
   }
 
-  .diagonal-slide-bg::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
-    animation: diagonalSlide 3s ease-in-out infinite;
+  .animate-cascade-in {
+    animation: cascadeIn 0.8s ease-out forwards;
   }
 
-  .ceremony-bg::before {
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(244, 63, 94, 0.1),
-      transparent
-    );
+  .animate-spring-in {
+    animation: springIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
   }
 
-  .reception-bg::before {
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(245, 158, 11, 0.1),
-      transparent
-    );
+  .animate-rotate-in {
+    animation: rotateIn 0.8s ease-out forwards;
   }
 
-  .dress-code-bg::before {
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(147, 51, 234, 0.1),
-      transparent
-    );
+  .animate-reveal-up {
+    animation: revealUp 1s ease-out forwards;
   }
 
-  .special-message-bg::before {
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(244, 63, 94, 0.1),
-      transparent
-    );
+  /* Shadow utilities */
+  .shadow-3xl {
+    box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  .shadow-luxury {
+    box-shadow: 
+      0 10px 25px -5px rgba(244, 63, 94, 0.1),
+      0 10px 10px -5px rgba(244, 63, 94, 0.04),
+      0 0 0 1px rgba(255, 255, 255, 0.05);
   }
 }
 
-/* Keyframe Animations */
+/* Enhanced Keyframe Animations */
 @keyframes fadeInStagger {
   0% {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px) scale(0.95);
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
 @keyframes slideUpElegant {
   0% {
     opacity: 0;
-    transform: translateY(50px) scale(0.9);
+    transform: translateY(60px) scale(0.9) rotateX(10deg);
   }
   100% {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0) scale(1) rotateX(0deg);
   }
 }
 
 @keyframes scaleIn {
   0% {
     opacity: 0;
-    transform: scale(0.8);
+    transform: scale(0.8) rotate(-5deg);
   }
   100% {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) rotate(0deg);
   }
 }
 
 @keyframes luxuryTitle {
   0% {
     opacity: 0;
-    transform: translateY(30px) scale(0.9);
-    letter-spacing: 0.1em;
+    transform: translateY(40px) scale(0.9);
+    letter-spacing: 0.2em;
+    filter: blur(10px);
+  }
+  50% {
+    opacity: 0.7;
+    filter: blur(5px);
   }
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
     letter-spacing: normal;
+    filter: blur(0px);
   }
 }
 
 @keyframes typewriterElegant {
   0% {
     opacity: 0;
-    transform: translateX(-20px);
+    transform: translateX(-30px) scale(0.9);
   }
   50% {
     opacity: 0.7;
+    transform: translateX(-10px) scale(0.95);
   }
   100% {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) scale(1);
   }
 }
 
 @keyframes floatingHeart {
   0%, 100% {
-    transform: translateY(0) rotate(0deg);
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translateY(-8px) rotate(2deg) scale(1.05);
   }
   50% {
-    transform: translateY(-10px) rotate(5deg);
+    transform: translateY(-15px) rotate(0deg) scale(1.1);
+  }
+  75% {
+    transform: translateY(-8px) rotate(-2deg) scale(1.05);
   }
 }
 
@@ -300,16 +277,20 @@
   }
   50% {
     opacity: 0.8;
-    transform: scale(1.05);
+    transform: scale(1.03);
   }
 }
 
 @keyframes luxuryGlow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(244, 63, 94, 0.3);
+    box-shadow: 
+      0 0 20px rgba(244, 63, 94, 0.3),
+      0 0 40px rgba(244, 63, 94, 0.1);
   }
   50% {
-    box-shadow: 0 0 40px rgba(244, 63, 94, 0.5);
+    box-shadow: 
+      0 0 30px rgba(244, 63, 94, 0.5),
+      0 0 60px rgba(244, 63, 94, 0.2);
   }
 }
 
@@ -317,17 +298,26 @@
   0%, 100% {
     transform: scale(1);
   }
+  25% {
+    transform: scale(1.1);
+  }
   50% {
+    transform: scale(1.15);
+  }
+  75% {
     transform: scale(1.1);
   }
 }
 
 @keyframes gentleFloat {
   0%, 100% {
-    transform: translateY(0);
+    transform: translateY(0) rotate(0deg);
   }
-  50% {
-    transform: translateY(-15px);
+  33% {
+    transform: translateY(-20px) rotate(1deg);
+  }
+  66% {
+    transform: translateY(-10px) rotate(-1deg);
   }
 }
 
@@ -352,41 +342,48 @@
 @keyframes elegantEntrance {
   0% {
     opacity: 0;
-    transform: translateY(40px) scale(0.95);
+    transform: translateY(50px) scale(0.9) rotateY(10deg);
   }
   100% {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0) scale(1) rotateY(0deg);
   }
 }
 
 @keyframes luxuryFloat {
   0%, 100% {
-    transform: translateY(0) rotate(0deg);
+    transform: translateY(0) rotate(0deg) scale(1);
   }
-  33% {
-    transform: translateY(-8px) rotate(1deg);
+  25% {
+    transform: translateY(-12px) rotate(1deg) scale(1.02);
   }
-  66% {
-    transform: translateY(4px) rotate(-1deg);
+  50% {
+    transform: translateY(-20px) rotate(0deg) scale(1.05);
+  }
+  75% {
+    transform: translateY(-8px) rotate(-1deg) scale(1.02);
   }
 }
 
 @keyframes shimmerText {
   0%, 100% {
     color: #6b7280;
+    text-shadow: none;
   }
   50% {
     color: #f59e0b;
+    text-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
   }
 }
 
 @keyframes glassMorph {
   0%, 100% {
     backdrop-filter: blur(10px);
+    border-color: rgba(255, 255, 255, 0.2);
   }
   50% {
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(20px);
+    border-color: rgba(255, 255, 255, 0.4);
   }
 }
 
@@ -394,59 +391,107 @@
   0%, 100% {
     transform: scale(1);
     opacity: 1;
+    box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.7);
   }
   50% {
-    transform: scale(1.1);
-    opacity: 0.8;
+    transform: scale(1.05);
+    opacity: 0.9;
+    box-shadow: 0 0 0 10px rgba(244, 63, 94, 0);
   }
 }
 
 @keyframes floatParticle {
   0%, 100% {
-    transform: translateY(0) translateX(0) rotate(0deg);
+    transform: translateY(0) translateX(0) rotate(0deg) scale(1);
   }
-  33% {
-    transform: translateY(-20px) translateX(10px) rotate(120deg);
-  }
-  66% {
-    transform: translateY(10px) translateX(-10px) rotate(240deg);
-  }
-}
-
-@keyframes sparkleMove {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(50px);
-  }
-}
-
-@keyframes diagonalSlide {
-  0% {
-    left: -100%;
+  25% {
+    transform: translateY(-30px) translateX(15px) rotate(90deg) scale(1.1);
   }
   50% {
-    left: 100%;
+    transform: translateY(-20px) translateX(0) rotate(180deg) scale(0.9);
+  }
+  75% {
+    transform: translateY(-40px) translateX(-15px) rotate(270deg) scale(1.1);
+  }
+}
+
+/* New Luxury Animations */
+@keyframes slowBreathe {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes cascadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) translateX(-20px) rotateZ(-5deg) scale(0.8);
   }
   100% {
-    left: 100%;
+    opacity: 1;
+    transform: translateY(0) translateX(0) rotateZ(0deg) scale(1);
+  }
+}
+
+@keyframes springIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.6) rotate(-10deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.1) rotate(5deg);
+  }
+  80% {
+    transform: scale(0.95) rotate(-2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes rotateIn {
+  0% {
+    opacity: 0;
+    transform: rotate(-180deg) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@keyframes revealUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100%) scale(0.8);
+    clip-path: inset(100% 0 0 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    clip-path: inset(0 0 0 0);
   }
 }
 
 /* Additional utility classes for scroll animations */
 .animate-on-scroll {
   opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease-out;
+  transform: translateY(40px) scale(0.95);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .animate-on-scroll.in-view {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
-/* Custom animations for specific delays */
+/* Enhanced delay classes */
 .delay-100 { animation-delay: 0.1s; }
 .delay-200 { animation-delay: 0.2s; }
 .delay-300 { animation-delay: 0.3s; }
@@ -455,5 +500,31 @@
 .delay-600 { animation-delay: 0.6s; }
 .delay-700 { animation-delay: 0.7s; }
 .delay-800 { animation-delay: 0.8s; }
+.delay-900 { animation-delay: 0.9s; }
 .delay-1000 { animation-delay: 1s; }
+.delay-1100 { animation-delay: 1.1s; }
+.delay-1200 { animation-delay: 1.2s; }
 .delay-1500 { animation-delay: 1.5s; }
+
+/* Enhanced spacing utilities */
+.space-y-luxury > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 2rem;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .animate-slide-up-elegant {
+    animation: slideUpElegantMobile 0.8s ease-out forwards;
+  }
+  
+  @keyframes slideUpElegantMobile {
+    0% {
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+}
