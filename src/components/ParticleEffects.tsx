@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 
 interface Particle {
@@ -9,7 +8,8 @@ interface Particle {
   opacity: number;
   rotation: number;
   rotationSpeed: number;
-  type: 'star' | 'sparkle' | 'petal';
+  swayOffset: number;
+  swaySpeed: number;
 }
 
 interface ParticleEffectsProps {
@@ -18,7 +18,7 @@ interface ParticleEffectsProps {
   className?: string;
 }
 
-const ParticleEffects = ({ theme = 'romantic', density = 30, className = '' }: ParticleEffectsProps) => {
+const ParticleEffects = ({ theme = 'romantic', density = 25, className = '' }: ParticleEffectsProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const animationRef = useRef<number>();
@@ -36,121 +36,71 @@ const ParticleEffects = ({ theme = 'romantic', density = 30, className = '' }: P
     };
 
     const createParticle = (): Particle => {
-      const types: Particle['type'][] = theme === 'romantic' 
-        ? ['petal', 'sparkle'] 
-        : theme === 'elegant' 
-        ? ['star', 'sparkle'] 
-        : ['star', 'sparkle', 'petal'];
-
       return {
         x: Math.random() * canvas.width,
-        y: -10,
-        size: Math.random() * 4 + 2,
-        speed: Math.random() * 2 + 0.5,
-        opacity: Math.random() * 0.8 + 0.2,
+        y: -20,
+        size: Math.random() * 3 + 2, // Smaller petals
+        speed: Math.random() * 0.8 + 0.3, // Much slower falling speed
+        opacity: Math.random() * 0.7 + 0.3,
         rotation: Math.random() * 360,
-        rotationSpeed: (Math.random() - 0.5) * 2,
-        type: types[Math.floor(Math.random() * types.length)]
+        rotationSpeed: (Math.random() - 0.5) * 1.5, // Slower rotation
+        swayOffset: Math.random() * Math.PI * 2,
+        swaySpeed: Math.random() * 0.02 + 0.01 // Gentle swaying
       };
     };
 
-    const drawStar = (ctx: CanvasRenderingContext2D, x: number, y: number, size: number, rotation: number) => {
+    const drawRosePetal = (ctx: CanvasRenderingContext2D, x: number, y: number, size: number, rotation: number, opacity: number) => {
       ctx.save();
       ctx.translate(x, y);
       ctx.rotate((rotation * Math.PI) / 180);
+      ctx.globalAlpha = opacity;
       
+      // Create pink rose petal gradient
       const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, size);
-      gradient.addColorStop(0, 'rgba(255, 215, 0, 0.8)');
-      gradient.addColorStop(0.5, 'rgba(255, 192, 203, 0.6)');
-      gradient.addColorStop(1, 'rgba(255, 255, 255, 0.2)');
+      gradient.addColorStop(0, 'rgba(255, 182, 193, 0.9)'); // Light pink center
+      gradient.addColorStop(0.3, 'rgba(255, 105, 180, 0.8)'); // Hot pink
+      gradient.addColorStop(0.7, 'rgba(219, 112, 147, 0.7)'); // Pale violet red
+      gradient.addColorStop(1, 'rgba(199, 21, 133, 0.5)'); // Medium violet red edge
       
       ctx.fillStyle = gradient;
-      ctx.beginPath();
-      for (let i = 0; i < 5; i++) {
-        const angle = (i * 144 * Math.PI) / 180;
-        const outerRadius = size;
-        const innerRadius = size * 0.4;
-        
-        if (i === 0) ctx.moveTo(outerRadius, 0);
-        else ctx.lineTo(Math.cos(angle) * outerRadius, Math.sin(angle) * outerRadius);
-        
-        const innerAngle = ((i + 0.5) * 144 * Math.PI) / 180;
-        ctx.lineTo(Math.cos(innerAngle) * innerRadius, Math.sin(innerAngle) * innerRadius);
-      }
-      ctx.closePath();
-      ctx.fill();
-      ctx.restore();
-    };
-
-    const drawSparkle = (ctx: CanvasRenderingContext2D, x: number, y: number, size: number, rotation: number) => {
-      ctx.save();
-      ctx.translate(x, y);
-      ctx.rotate((rotation * Math.PI) / 180);
       
-      const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, size);
-      gradient.addColorStop(0, 'rgba(255, 255, 255, 0.9)');
-      gradient.addColorStop(0.5, 'rgba(244, 63, 94, 0.6)');
-      gradient.addColorStop(1, 'rgba(255, 255, 255, 0.1)');
-      
-      ctx.strokeStyle = gradient;
-      ctx.lineWidth = 2;
+      // Draw petal shape (more realistic rose petal)
       ctx.beginPath();
-      ctx.moveTo(-size, 0);
-      ctx.lineTo(size, 0);
       ctx.moveTo(0, -size);
-      ctx.lineTo(0, size);
-      ctx.moveTo(-size * 0.7, -size * 0.7);
-      ctx.lineTo(size * 0.7, size * 0.7);
-      ctx.moveTo(-size * 0.7, size * 0.7);
-      ctx.lineTo(size * 0.7, -size * 0.7);
-      ctx.stroke();
-      ctx.restore();
-    };
-
-    const drawPetal = (ctx: CanvasRenderingContext2D, x: number, y: number, size: number, rotation: number) => {
-      ctx.save();
-      ctx.translate(x, y);
-      ctx.rotate((rotation * Math.PI) / 180);
-      
-      const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, size);
-      gradient.addColorStop(0, 'rgba(255, 192, 203, 0.8)');
-      gradient.addColorStop(0.5, 'rgba(244, 63, 94, 0.6)');
-      gradient.addColorStop(1, 'rgba(255, 255, 255, 0.2)');
-      
-      ctx.fillStyle = gradient;
-      ctx.beginPath();
-      ctx.ellipse(0, 0, size * 0.6, size, 0, 0, Math.PI * 2);
+      ctx.bezierCurveTo(size * 0.8, -size * 0.6, size * 0.8, size * 0.6, 0, size);
+      ctx.bezierCurveTo(-size * 0.8, size * 0.6, -size * 0.8, -size * 0.6, 0, -size);
       ctx.fill();
+      
+      // Add subtle petal veins
+      ctx.strokeStyle = 'rgba(139, 69, 19, 0.2)'; // Brown veins
+      ctx.lineWidth = 0.5;
+      ctx.beginPath();
+      ctx.moveTo(0, -size * 0.8);
+      ctx.lineTo(0, size * 0.8);
+      ctx.moveTo(-size * 0.3, -size * 0.3);
+      ctx.lineTo(0, size * 0.3);
+      ctx.moveTo(size * 0.3, -size * 0.3);
+      ctx.lineTo(0, size * 0.3);
+      ctx.stroke();
+      
       ctx.restore();
-    };
-
-    const drawParticle = (particle: Particle) => {
-      ctx.globalAlpha = particle.opacity;
-      
-      switch (particle.type) {
-        case 'star':
-          drawStar(ctx, particle.x, particle.y, particle.size, particle.rotation);
-          break;
-        case 'sparkle':
-          drawSparkle(ctx, particle.x, particle.y, particle.size, particle.rotation);
-          break;
-        case 'petal':
-          drawPetal(ctx, particle.x, particle.y, particle.size, particle.rotation);
-          break;
-      }
-      
-      ctx.globalAlpha = 1;
     };
 
     const updateParticle = (particle: Particle) => {
       particle.y += particle.speed;
-      particle.x += Math.sin(particle.y * 0.01) * 0.5;
+      particle.swayOffset += particle.swaySpeed;
+      particle.x += Math.sin(particle.swayOffset) * 0.8; // Gentle swaying motion
       particle.rotation += particle.rotationSpeed;
       
-      if (particle.y > canvas.height + 10) {
-        particle.y = -10;
+      // Reset particle when it goes off screen
+      if (particle.y > canvas.height + 20) {
+        particle.y = -20;
         particle.x = Math.random() * canvas.width;
       }
+      
+      // Keep particles within horizontal bounds
+      if (particle.x < -20) particle.x = canvas.width + 20;
+      if (particle.x > canvas.width + 20) particle.x = -20;
     };
 
     const animate = () => {
@@ -163,7 +113,7 @@ const ParticleEffects = ({ theme = 'romantic', density = 30, className = '' }: P
       
       particlesRef.current.forEach(particle => {
         updateParticle(particle);
-        drawParticle(particle);
+        drawRosePetal(ctx, particle.x, particle.y, particle.size, particle.rotation, particle.opacity);
       });
       
       animationRef.current = requestAnimationFrame(animate);
@@ -185,7 +135,7 @@ const ParticleEffects = ({ theme = 'romantic', density = 30, className = '' }: P
         }
       };
     }
-  }, [theme, density]);
+  }, [density]);
 
   return (
     <canvas
