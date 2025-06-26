@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import PhotoGallery from '@/components/PhotoGallery';
@@ -102,7 +101,7 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
 
         {/* Accept Invitation Button */}
         {!invitationAccepted && (
-          <div className="px-4 pb-12 animate-slide-up-elegant delay-800">
+          <div className="px-4 pb-6 animate-slide-up-elegant delay-800">
             <div className="max-w-2xl mx-auto text-center">
               <Button
                 onClick={handleAcceptInvitation}
@@ -124,7 +123,7 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
 
         {/* Confirmation Message */}
         {invitationAccepted && (
-          <div className="px-4 pb-12 animate-fade-in text-center">
+          <div className="px-4 pb-6 animate-fade-in text-center">
             <div className="max-w-2xl mx-auto">
               <LuxuryCard variant="accent">
                 <div className="text-4xl mb-4">✅</div>
