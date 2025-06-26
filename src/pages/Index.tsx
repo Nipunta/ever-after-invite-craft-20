@@ -5,7 +5,6 @@ import SaveTheDate from '@/components/SaveTheDate';
 import MainInvitation from '@/components/MainInvitation';
 import EnvelopeLanding from '@/components/EnvelopeLanding';
 import SwirlCursor from '@/components/SwirlCursor';
-import BackgroundMusic from '@/components/BackgroundMusic';
 
 const Index = () => {
   const [currentPage, setCurrentPage] = useState<'envelope' | 'save-the-date' | 'main-invitation'>('envelope');
@@ -40,7 +39,6 @@ const Index = () => {
     return (
       <>
         <SwirlCursor />
-        <BackgroundMusic audioSrc="https://pagalworldmusic.com/download.php?title=Raabta-128kbps&path=downloads%2Fmedium%2FQx0cAwdaZ2c%2FQx0cAwdaZ2c.mp3" />
         <EnvelopeLanding onOpenEnvelope={handleOpenEnvelope} />
       </>
     );
@@ -49,7 +47,6 @@ const Index = () => {
   return (
     <>
       <SwirlCursor />
-      <BackgroundMusic audioSrc="https://pagalworldmusic.com/download.php?title=Raabta-128kbps&path=downloads%2Fmedium%2FQx0cAwdaZ2c%2FQx0cAwdaZ2c.mp3" />
       <InvitationLayout page={currentPage === 'save-the-date' ? 'save-the-date' : 'full-invitation'}>
         {/* Compact Navigation Pills - made wider and shorter */}
         <div className={`fixed top-2 left-1/2 transform -translate-x-1/2 z-30 transition-all duration-500 ${
