@@ -129,7 +129,7 @@ const LocationMap = () => {
             {localAttractions.map((attraction, index) => (
               <div
                 key={attraction.name}
-                className="relative overflow-hidden rounded-2xl shadow-xl border border-white/40 transform hover:scale-105 transition-all duration-500 h-48 sm:h-52"
+                className="relative overflow-hidden rounded-2xl shadow-xl border border-white/40 transform hover:shadow-2xl transition-all duration-500 h-48 sm:h-52"
               >
                 {/* Background Image */}
                 <div 
