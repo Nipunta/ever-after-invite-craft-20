@@ -90,7 +90,7 @@ const EnvelopeLanding = ({ onOpenEnvelope }: EnvelopeLandingProps) => {
                 <div className="relative w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 bg-gradient-to-br from-rose-500 via-pink-600 to-rose-700 rounded-full shadow-2xl border-4 border-rose-400/50 flex items-center justify-center animate-gentle-pulse transform hover:scale-110 transition-all duration-500">
                   {/* Inner seal design */}
                   <div className="absolute inset-2 border-2 border-white/30 rounded-full"></div>
-                  <span className="text-white text-lg sm:text-xl md:text-2xl font-playfair font-bold tracking-wider drop-shadow-lg">S&M</span>
+                  <span className="text-white text-lg sm:text-xl md:text-2xl font-playfair font-bold tracking-wider drop-shadow-lg">S&A</span>
                   
                   {/* Seal shine effect */}
                   <div className="absolute top-1 left-1 w-3 h-3 bg-white/40 rounded-full blur-sm"></div>
@@ -106,8 +106,8 @@ const EnvelopeLanding = ({ onOpenEnvelope }: EnvelopeLandingProps) => {
             {isOpening && (
               <div className="absolute inset-8 bg-gradient-to-br from-white via-rose-50 to-pink-50 rounded-lg shadow-inner animate-fade-in opacity-90 border border-rose-200/50">
                 <div className="p-6 text-center h-full flex flex-col justify-center">
-                  <div className="text-rose-600 text-lg md:text-xl font-playfair mb-3 animate-luxury-title">Sarah & Michael</div>
-                  <div className="text-sm text-gray-600 animate-fade-in delay-300">10th Anniversary</div>
+                  <div className="text-rose-600 text-lg md:text-xl font-playfair mb-3 animate-luxury-title">Sarah & Alex</div>
+                  <div className="text-sm text-gray-600 animate-fade-in delay-300">Wedding Ceremony</div>
                   <div className="text-xs text-gray-500 mt-2 animate-fade-in delay-500">June 15, 2025</div>
                   <div className="mt-3 animate-floating-heart">💕</div>
                 </div>
@@ -130,7 +130,7 @@ const EnvelopeLanding = ({ onOpenEnvelope }: EnvelopeLandingProps) => {
           </h1>
           <div className="space-y-3">
             <p className="text-xl sm:text-2xl text-gray-700 mb-3 animate-fade-in delay-700 font-medium font-playfair italic">
-              Sarah & Michael's 10th Anniversary Celebration
+              Sarah & Alex's Wedding Ceremony
             </p>
             <div className="flex items-center justify-center space-x-2 animate-fade-in delay-900">
               <div className="w-8 h-0.5 bg-gradient-to-r from-transparent to-rose-400"></div>

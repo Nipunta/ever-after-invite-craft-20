@@ -99,7 +99,7 @@ const Index = () => {
               <div className="flex items-center justify-center space-x-2 mb-3 animate-floating-heart">
                 <span className="text-2xl">💕</span>
                 <p className="text-gray-600 text-sm font-medium">
-                  Created with love for Sarah & Michael's 10th Anniversary
+                  Created with love for Sarah & Alex's Wedding
                 </p>
                 <span className="text-2xl">💕</span>
               </div>

@@ -71,23 +71,23 @@ const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
             <LuxuryCard variant="secondary" delay={400} className="animate-slide-up-elegant">
               <div className="text-center lg:text-left">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-playfair font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-800 via-rose-700 to-gray-800">
-                  Sarah & Michael
+                  Sarah & Alex
                 </h2>
                 <div className="w-24 h-px bg-gradient-to-r from-rose-400 to-pink-400 mx-auto lg:mx-0 mt-3"></div>
               </div>
             </LuxuryCard>
 
-            {/* Anniversary Details Card */}
+            {/* Wedding Details Card */}
             <LuxuryCard variant="primary" delay={600} className="animate-slide-up-elegant">
               <h3 className="text-lg md:text-xl font-playfair font-bold text-gray-800 mb-4 text-center lg:text-left">
                 Celebrating Our
               </h3>
               <div className="text-center lg:text-left space-y-4">
                 <div className="text-4xl md:text-5xl font-dancing-script font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-600 to-pink-600">
-                  10th
+                  Wedding
                 </div>
                 <div className="text-xl md:text-2xl text-gray-800 font-playfair font-bold italic">
-                  Wedding Anniversary
+                  Ceremony & Reception
                 </div>
                 
                 <div className="space-y-3 text-base md:text-lg text-gray-700">
@@ -111,14 +111,14 @@ const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
             <LuxuryCard variant="accent" delay={800} className="animate-slide-up-elegant">
               <div className="text-center lg:text-left">
                 <p className="text-lg md:text-xl text-gray-700 mb-6 font-playfair italic leading-relaxed">
-                  Join us for an evening of celebration, love, and memories
+                  Join us for an evening of celebration, love, and memories as we begin our journey together
                 </p>
                 <button
                   onClick={onNavigateToInvitation}
                   className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 text-white rounded-full shadow-2xl hover:shadow-3xl transition-all duration-500 hover:from-rose-600 hover:via-pink-600 hover:to-purple-600 active:scale-95 text-base md:text-lg transform hover:scale-105 group relative overflow-hidden"
                 >
                   <span className="relative z-10 font-playfair font-semibold flex items-center justify-center space-x-2">
-                    <span>✨ Open Our Love Story ✨</span>
+                    <span>✨ Open Our Wedding Invitation ✨</span>
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                 </button>
@@ -137,7 +137,7 @@ const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
                 <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:scale-105 transition-all duration-700 hover:shadow-3xl">
                   <img
                     src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=600&h=800&fit=crop&crop=faces"
-                    alt="Sarah & Michael - Happy Couple"
+                    alt="Sarah & Alex - Happy Couple"
                     className="w-full h-full object-cover"
                   />
                   

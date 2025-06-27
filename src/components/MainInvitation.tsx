@@ -1,8 +1,11 @@
+
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import PhotoGallery from '@/components/PhotoGallery';
 import LocationMap from '@/components/LocationMap';
 import CongratulationsWall from '@/components/CongratulationsWall';
+import FamiliesSection from '@/components/FamiliesSection';
+import EventTimeline from '@/components/EventTimeline';
 import ParticleEffects from './ParticleEffects';
 import AnimatedBackground from './AnimatedBackground';
 import LuxuryCard from './LuxuryCard';
@@ -77,31 +80,39 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
 
       {/* All sections */}
       <div className="space-y-12 pb-24 relative z-20">
-        {/* Invitation Section */}
+        {/* Invitation Header Section */}
         <div className="animate-fade-in">
-          <InvitationContent />
+          <InvitationHeader />
+        </div>
+
+        {/* Our Blessed Families Section */}
+        <div className="animate-slide-up-elegant delay-200">
+          <FamiliesSection />
+        </div>
+
+        {/* Wedding Event Timeline Section */}
+        <div className="animate-slide-up-elegant delay-400">
+          <EventTimeline />
         </div>
         
         {/* Our Memories Section */}
-        <div className="px-4 animate-slide-up-elegant delay-200">
+        <div className="px-4 animate-slide-up-elegant delay-600">
           <PhotoGallery />
         </div>
         
-        {/* Location Section */}
-        <div className="px-4 animate-slide-up-elegant delay-400">
-          <LuxuryCard variant="secondary" className="max-w-6xl mx-auto">
-            <LocationMap />
-          </LuxuryCard>
+        {/* Location Section - Only Local Attractions */}
+        <div className="px-4 animate-slide-up-elegant delay-800">
+          <LocalAttractionsOnly />
         </div>
         
         {/* Wishes Section */}
-        <div className="px-4 animate-fade-in delay-600">
+        <div className="px-4 animate-fade-in delay-1000">
           <CongratulationsWall />
         </div>
 
         {/* Accept Invitation Button */}
         {!invitationAccepted && (
-          <div className="px-4 pb-6 animate-slide-up-elegant delay-800">
+          <div className="px-4 pb-6 animate-slide-up-elegant delay-1200">
             <div className="max-w-2xl mx-auto text-center">
               <Button
                 onClick={handleAcceptInvitation}
@@ -138,11 +149,8 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
   );
 };
 
-const InvitationContent = () => {
+const InvitationHeader = () => {
   const headerAnimation = useScrollAnimation({ threshold: 0.2 });
-  const ceremonyAnimation = useScrollAnimation({ threshold: 0.3 });
-  const receptionAnimation = useScrollAnimation({ threshold: 0.3 });
-  const dressCodeAnimation = useScrollAnimation({ threshold: 0.3 });
   const messageAnimation = useScrollAnimation({ threshold: 0.3 });
 
   return (
@@ -159,7 +167,7 @@ const InvitationContent = () => {
           >
             <div className="space-y-8">
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-playfair font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-800 via-rose-700 to-gray-800 leading-tight">
-                Together We Celebrate
+                Join Us in Celebration
               </h1>
               <div className="flex items-center justify-center space-x-6">
                 <div className="w-20 md:w-24 h-px bg-gradient-to-r from-transparent via-rose-400 to-transparent"></div>
@@ -167,7 +175,7 @@ const InvitationContent = () => {
                 <div className="w-20 md:w-24 h-px bg-gradient-to-l from-transparent via-rose-400 to-transparent"></div>
               </div>
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-dancing-script italic text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600">
-                10 Years of Love
+                Sarah & Alex's Wedding
               </h2>
             </div>
           </LuxuryCard>
@@ -176,101 +184,30 @@ const InvitationContent = () => {
         {/* Couple Section */}
         <LuxuryCard variant="accent" className="mb-12 text-center animate-slide-up-elegant delay-300">
           <h3 className="text-3xl md:text-4xl lg:text-5xl font-playfair font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600 mb-6">
-            Sarah & Michael Johnson
+            Sarah Thompson & Alex Williams
           </h3>
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/60 shadow-xl">
             <p className="text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed font-playfair italic">
-              As we celebrate a decade of marriage, we invite you to join us for an evening 
-              of love, laughter, and cherished memories as we renew our vows and look forward 
-              to many more years together.
+              As we embark on this beautiful journey together, we invite you to join us for an evening 
+              of love, laughter, and cherished memories as we exchange vows and celebrate the beginning 
+              of our life together as husband and wife.
             </p>
           </div>
         </LuxuryCard>
-
-        {/* Event Details Grid */}
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <div ref={ceremonyAnimation.ref}>
-            <LuxuryCard 
-              variant="primary"
-              className={cn(
-                "text-center transition-all duration-1000 delay-500",
-                ceremonyAnimation.isVisible ? "animate-slide-up-elegant opacity-100" : "opacity-0 translate-y-20"
-              )}
-            >
-              <h4 className="text-2xl md:text-3xl font-playfair font-bold text-gray-800 mb-6">Ceremony</h4>
-              <div className="space-y-4 text-gray-700">
-                <div className="flex items-center justify-center space-x-3 transform hover:scale-105 transition-transform duration-300">
-                  <span className="text-2xl md:text-3xl">📅</span>
-                  <span className="text-base md:text-lg font-playfair font-bold">Saturday, June 15, 2025</span>
-                </div>
-                <div className="flex items-center justify-center space-x-3 transform hover:scale-105 transition-transform duration-300">
-                  <span className="text-2xl md:text-3xl">🕖</span>
-                  <span className="text-base md:text-lg font-playfair font-bold">7:00 PM</span>
-                </div>
-                <div className="flex items-center justify-center space-x-3 transform hover:scale-105 transition-transform duration-300">
-                  <span className="text-2xl md:text-3xl">📍</span>
-                  <span className="text-base md:text-lg text-center font-playfair font-bold">The Plaza Hotel Grand Ballroom</span>
-                </div>
-              </div>
-            </LuxuryCard>
-          </div>
-
-          <div ref={receptionAnimation.ref}>
-            <LuxuryCard 
-              variant="secondary"
-              className={cn(
-                "text-center transition-all duration-1000 delay-700",
-                receptionAnimation.isVisible ? "animate-slide-up-elegant opacity-100" : "opacity-0 translate-y-20"
-              )}
-            >
-              <h4 className="text-2xl md:text-3xl font-playfair font-bold text-gray-800 mb-6">Reception</h4>
-              <div className="space-y-4 text-gray-700">
-                <div className="flex items-center justify-center space-x-3 transform hover:scale-105 transition-transform duration-300">
-                  <span className="text-2xl md:text-3xl">🍽️</span>
-                  <span className="text-base md:text-lg font-playfair font-bold">Dinner & Dancing</span>
-                </div>
-                <div className="flex items-center justify-center space-x-3 transform hover:scale-105 transition-transform duration-300">
-                  <span className="text-2xl md:text-3xl">🕘</span>
-                  <span className="text-base md:text-lg font-playfair font-bold">8:30 PM - 12:00 AM</span>
-                </div>
-                <div className="flex items-center justify-center space-x-3 transform hover:scale-105 transition-transform duration-300">
-                  <span className="text-2xl md:text-3xl">🎵</span>
-                  <span className="text-base md:text-lg font-playfair font-bold">Live Band & DJ</span>
-                </div>
-              </div>
-            </LuxuryCard>
-          </div>
-        </div>
-
-        {/* Dress Code */}
-        <div ref={dressCodeAnimation.ref}>
-          <LuxuryCard 
-            variant="accent"
-            className={cn(
-              "mb-12 text-center transition-all duration-1000 delay-900",
-              dressCodeAnimation.isVisible ? "animate-slide-up-elegant opacity-100" : "opacity-0 translate-y-20"
-            )}
-          >
-            <h4 className="text-2xl md:text-3xl font-playfair font-bold text-gray-800 mb-4">Dress Code</h4>
-            <p className="text-lg md:text-xl text-gray-700 font-playfair italic">
-              Cocktail Attire - Please wear your finest evening wear
-            </p>
-          </LuxuryCard>
-        </div>
 
         {/* Special Message */}
         <div ref={messageAnimation.ref}>
           <LuxuryCard 
             variant="primary"
             className={cn(
-              "text-center transition-all duration-1000 delay-1100",
+              "text-center transition-all duration-1000 delay-500",
               messageAnimation.isVisible ? "animate-slide-up-elegant opacity-100" : "opacity-0 translate-y-20"
             )}
           >
             <p className="text-xl md:text-2xl text-gray-700 italic font-playfair leading-relaxed mb-4">
-              "The best thing to hold onto in life is each other."
+              "Being deeply loved by someone gives you strength, while loving someone deeply gives you courage."
             </p>
-            <p className="text-base md:text-lg text-gray-600 font-playfair font-semibold mb-6">- Audrey Hepburn</p>
+            <p className="text-base md:text-lg text-gray-600 font-playfair font-semibold mb-6">- Lao Tzu</p>
             <div className="flex items-center justify-center space-x-4">
               <span className="text-2xl md:text-3xl animate-floating-heart">💕</span>
               <span className="text-2xl md:text-3xl animate-floating-heart delay-200">✨</span>
@@ -280,6 +217,75 @@ const InvitationContent = () => {
             </div>
           </LuxuryCard>
         </div>
+      </div>
+    </div>
+  );
+};
+
+const LocalAttractionsOnly = () => {
+  const localAttractions = [
+    {
+      name: "Central Park",
+      distance: "Across the street",
+      description: "Beautiful park perfect for a romantic stroll",
+      bgImage: "https://images.unsplash.com/photo-1538469625817-2b27ad995d48?w=400&h=300&fit=crop"
+    },
+    {
+      name: "Fifth Avenue Shopping",
+      distance: "At your doorstep", 
+      description: "World-class shopping and boutiques",
+      bgImage: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=300&fit=crop"
+    },
+    {
+      name: "Metropolitan Museum of Art",
+      distance: "10 minutes walk",
+      description: "Iconic art museum with world-renowned collections",
+      bgImage: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=400&h=300&fit=crop"
+    },
+    {
+      name: "Rockefeller Center", 
+      distance: "15 minutes walk",
+      description: "Famous landmark with stunning city views",
+      bgImage: "https://images.unsplash.com/photo-1605554876080-e75dc2bf7c2e?w=400&h=300&fit=crop"
+    }
+  ];
+
+  return (
+    <div className="max-w-6xl mx-auto">
+      <div className="text-center mb-12">
+        <h3 className="text-2xl sm:text-3xl font-serif text-gray-800 mb-4">
+          Local Attractions
+        </h3>
+        <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">
+          Explore these wonderful places during your visit to New York City
+        </p>
+        <div className="w-24 h-px bg-gradient-to-r from-rose-400 to-pink-400 mx-auto mt-6"></div>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        {localAttractions.map((attraction, index) => (
+          <LuxuryCard key={attraction.name} variant="secondary" delay={index * 100}>
+            <div className="relative overflow-hidden rounded-2xl shadow-xl border border-white/40 h-48 sm:h-52">
+              {/* Background Image */}
+              <div 
+                className="absolute inset-0 bg-cover bg-center"
+                style={{ backgroundImage: `url(${attraction.bgImage})` }}
+              />
+              
+              {/* Dark Overlay for text readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+              
+              {/* Content with darker, bolder fonts */}
+              <div className="relative z-10 p-4 sm:p-6 h-full flex flex-col justify-end text-center">
+                <h4 className="font-bold text-white mb-2 text-base sm:text-lg drop-shadow-lg">{attraction.name}</h4>
+                <div className="flex items-center justify-center mb-2">
+                  <span className="text-xs sm:text-sm text-white font-semibold drop-shadow-md">{attraction.distance}</span>
+                </div>
+                <p className="text-xs sm:text-sm text-white/90 leading-relaxed font-medium drop-shadow-md">{attraction.description}</p>
+              </div>
+            </div>
+          </LuxuryCard>
+        ))}
       </div>
     </div>
   );
