@@ -116,25 +116,25 @@ const EnvelopeLanding = ({ onOpenEnvelope }: EnvelopeLandingProps) => {
           </div>
         </div>
 
-        {/* Guest Greeting - positioned below envelope */}
+        {/* Guest Greeting - Enhanced styling */}
         <div className="mb-8 animate-fade-in-stagger delay-300">
-          <p className="text-lg md:text-xl font-dancing-script text-gray-700 italic animate-typewriter-elegant">
+          <p className="text-2xl md:text-3xl lg:text-4xl font-dancing-script text-gray-800 font-bold italic animate-typewriter-elegant">
             Dear Guest
           </p>
         </div>
 
         {/* Enhanced Title and Description */}
         <div className="mb-10 animate-luxury-float delay-500 px-4">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-playfair text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600 mb-6 animate-luxury-title tracking-wide font-bold">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-playfair text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600 mb-6 animate-luxury-title tracking-wide font-black">
             You're Invited
           </h1>
           <div className="space-y-3">
-            <p className="text-xl sm:text-2xl text-gray-700 mb-3 animate-fade-in delay-700 font-medium font-playfair italic">
+            <p className="text-xl sm:text-2xl md:text-3xl text-gray-800 mb-3 animate-fade-in delay-700 font-bold font-playfair italic">
               Sarah & Alex's Wedding Ceremony
             </p>
             <div className="flex items-center justify-center space-x-2 animate-fade-in delay-900">
               <div className="w-8 h-0.5 bg-gradient-to-r from-transparent to-rose-400"></div>
-              <p className="text-base sm:text-lg text-gray-600 font-light font-playfair">
+              <p className="text-base sm:text-lg md:text-xl text-gray-700 font-semibold font-playfair">
                 June 15, 2025 • The Plaza Hotel
               </p>
               <div className="w-8 h-0.5 bg-gradient-to-l from-transparent to-rose-400"></div>
@@ -147,7 +147,7 @@ const EnvelopeLanding = ({ onOpenEnvelope }: EnvelopeLandingProps) => {
           onClick={handleOpenClick}
           disabled={isOpening}
           className={cn(
-            "relative px-8 py-4 sm:px-10 sm:py-5 bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 text-white rounded-full shadow-2xl transition-all duration-700 transform font-semibold text-base sm:text-lg tracking-wide overflow-hidden group",
+            "relative px-8 py-4 sm:px-10 sm:py-5 bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 text-white rounded-full shadow-2xl transition-all duration-700 transform font-bold text-base sm:text-lg lg:text-xl tracking-wide overflow-hidden group",
             isOpening ? "opacity-60 cursor-not-allowed scale-95" : "hover:scale-110 hover:shadow-3xl hover:rotate-1 active:scale-95 animate-luxury-glow"
           )}
         >
