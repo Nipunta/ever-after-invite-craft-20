@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
@@ -58,7 +57,7 @@ const PhotoGallery = () => {
             <CarouselContent className="-ml-2 md:-ml-4">
               {photos.map((photo, index) => (
                 <CarouselItem key={index} className="pl-2 md:pl-4 basis-full">
-                  <div className="relative group">
+                  <div className="relative group memory-item">
                     {/* Decorative Photo Frame */}
                     <div className="relative mx-auto w-full max-w-2xl">
                       <div className="relative">
@@ -86,7 +85,7 @@ const PhotoGallery = () => {
                             <img
                               src={photo.url}
                               alt={photo.caption}
-                              className="w-full h-64 md:h-80 object-cover"
+                              className="w-full h-64 md:h-80 object-cover transition-transform duration-300 hover:scale-103"
                             />
                             
                             {/* Subtle overlay */}

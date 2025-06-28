@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import PhotoGallery from '@/components/PhotoGallery';
@@ -44,6 +43,37 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // CTA Button with Floating Petals Effect
+  const createFloatingPetals = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const button = event.currentTarget;
+    const rect = button.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    for (let i = 0; i < 12; i++) {
+      const petal = document.createElement('div');
+      petal.className = 'floating-petal';
+      
+      const randomScale = 0.8 + Math.random() * 0.4; // 0.8-1.2 scale
+      const randomAngle = Math.random() * 360;
+      const randomDistance = 50 + Math.random() * 100;
+      
+      petal.style.left = `${centerX}px`;
+      petal.style.top = `${centerY}px`;
+      petal.style.transform = `scale(${randomScale})`;
+      petal.style.setProperty('--angle', `${randomAngle}deg`);
+      petal.style.setProperty('--distance', `${randomDistance}px`);
+      
+      document.body.appendChild(petal);
+      
+      setTimeout(() => {
+        if (document.body.contains(petal)) {
+          document.body.removeChild(petal);
+        }
+      }, 3000);
+    }
+  };
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -110,13 +140,16 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
           <CongratulationsWall />
         </div>
 
-        {/* Accept Invitation Button */}
+        {/* Accept Invitation Button with Floating Petals */}
         {!invitationAccepted && (
           <div className="px-4 pb-6 animate-slide-up-elegant delay-1200">
             <div className="max-w-2xl mx-auto text-center">
               <Button
-                onClick={handleAcceptInvitation}
-                className="bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 hover:from-rose-600 hover:via-pink-600 hover:to-purple-600 text-white font-playfair text-base md:text-lg px-8 md:px-12 py-4 md:py-5 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105 active:scale-95 w-full sm:w-auto group relative overflow-hidden"
+                onClick={(e) => {
+                  createFloatingPetals(e);
+                  handleAcceptInvitation();
+                }}
+                className="cta-button bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 hover:from-rose-600 hover:via-pink-600 hover:to-purple-600 text-white font-playfair text-base md:text-lg px-8 md:px-12 py-4 md:py-5 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105 active:scale-95 w-full sm:w-auto group relative overflow-hidden"
               >
                 <span className="relative z-10 flex items-center justify-center space-x-2">
                   <span>💕</span>
@@ -195,7 +228,7 @@ const InvitationHeader = () => {
           </div>
         </LuxuryCard>
 
-        {/* Special Message */}
+        {/* Special Message with Aurora Text */}
         <div ref={messageAnimation.ref}>
           <LuxuryCard 
             variant="primary"
@@ -204,7 +237,7 @@ const InvitationHeader = () => {
               messageAnimation.isVisible ? "animate-slide-up-elegant opacity-100" : "opacity-0 translate-y-20"
             )}
           >
-            <p className="text-xl md:text-2xl text-gray-700 italic font-playfair leading-relaxed mb-4">
+            <p className="aurora-text text-xl md:text-2xl text-gray-700 italic font-playfair leading-relaxed mb-4">
               "Being deeply loved by someone gives you strength, while loving someone deeply gives you courage."
             </p>
             <p className="text-base md:text-lg text-gray-600 font-playfair font-semibold mb-6">- Lao Tzu</p>
@@ -264,7 +297,7 @@ const LocalAttractionsOnly = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {localAttractions.map((attraction, index) => (
-          <LuxuryCard key={attraction.name} variant="secondary" delay={index * 100}>
+          <LuxuryCard key={attraction.name} variant="secondary" delay={index * 100} className="guest-card">
             <div className="relative overflow-hidden rounded-2xl shadow-xl border border-white/40 h-48 sm:h-52">
               {/* Background Image */}
               <div 

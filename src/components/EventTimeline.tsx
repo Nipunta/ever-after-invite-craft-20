@@ -1,4 +1,3 @@
-
 import React from 'react';
 import LuxuryCard from './LuxuryCard';
 import { MapPin, Clock, Calendar } from 'lucide-react';
@@ -67,7 +66,7 @@ const EventTimeline = () => {
               <div className={`w-full md:w-5/12 ml-12 md:ml-0 ${index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'}`}>
                 <div className={`animate-slide-up-elegant delay-${index * 200} relative overflow-hidden`}>
                   <div 
-                    className="relative p-4 rounded-xl border border-white/40 shadow-lg animate-gradient-move"
+                    className="timeline-card relative p-4 rounded-xl border border-white/40 shadow-lg animate-gradient-move"
                     style={{
                       background: 'linear-gradient(135deg, #fcd1d1, #fff5e1, #ffe2cc, #f9d29d)',
                       backgroundSize: '200% 200%'
@@ -79,18 +78,18 @@ const EventTimeline = () => {
                       </h3>
 
                       <div className="space-y-3">
-                        <div className="flex items-center space-x-2 text-gray-800">
+                        <div className="timeline-text flex items-center space-x-2 text-gray-800">
                           <Calendar className="w-4 h-4 text-rose-500" />
                           <span className="font-playfair font-bold text-sm md:text-base">{event.date}</span>
                         </div>
                         
-                        <div className="flex items-center space-x-2 text-gray-800">
+                        <div className="timeline-text flex items-center space-x-2 text-gray-800">
                           <Clock className="w-4 h-4 text-rose-500" />
                           <span className="font-playfair font-bold text-sm md:text-base">{event.time}</span>
                         </div>
                         
                         <div className="flex items-center justify-between">
-                          <div className="flex items-center space-x-2 text-gray-800 flex-1">
+                          <div className="timeline-text flex items-center space-x-2 text-gray-800 flex-1">
                             <MapPin className="w-4 h-4 text-rose-500" />
                             <span className="font-playfair font-bold text-sm md:text-base">
                               {event.location}

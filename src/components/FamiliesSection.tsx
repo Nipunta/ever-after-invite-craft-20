@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import LuxuryCard from './LuxuryCard';
 import { ChevronDown, ChevronUp } from 'lucide-react';
@@ -36,7 +35,7 @@ const FamiliesSection = () => {
 
       <div className="grid md:grid-cols-2 gap-8">
         {/* Bride's Family */}
-        <LuxuryCard variant="primary" className="animate-slide-up-elegant">
+        <LuxuryCard variant="primary" className="animate-slide-up-elegant guest-card">
           <button
             onClick={() => toggleFamily('bride')}
             className="w-full text-left group"
@@ -64,7 +63,7 @@ const FamiliesSection = () => {
               {brideFamily.map((member, index) => (
                 <div key={member.name} className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-white/40">
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-rose-200 to-pink-300 rounded-full flex items-center justify-center text-lg font-bold text-rose-700">
+                    <div className="circular-image w-12 h-12 bg-gradient-to-br from-rose-200 to-pink-300 rounded-full flex items-center justify-center text-lg font-bold text-rose-700">
                       {member.name.charAt(0)}
                     </div>
                     <div className="flex-1">
@@ -80,7 +79,7 @@ const FamiliesSection = () => {
         </LuxuryCard>
 
         {/* Groom's Family */}
-        <LuxuryCard variant="secondary" className="animate-slide-up-elegant delay-200">
+        <LuxuryCard variant="secondary" className="animate-slide-up-elegant delay-200 guest-card">
           <button
             onClick={() => toggleFamily('groom')}
             className="w-full text-left group"
@@ -108,7 +107,7 @@ const FamiliesSection = () => {
               {groomFamily.map((member, index) => (
                 <div key={member.name} className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-white/40">
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-200 to-indigo-300 rounded-full flex items-center justify-center text-lg font-bold text-blue-700">
+                    <div className="circular-image w-12 h-12 bg-gradient-to-br from-blue-200 to-indigo-300 rounded-full flex items-center justify-center text-lg font-bold text-blue-700">
                       {member.name.charAt(0)}
                     </div>
                     <div className="flex-1">
