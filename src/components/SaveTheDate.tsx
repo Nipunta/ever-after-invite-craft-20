@@ -33,10 +33,10 @@ const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
       <ParticleEffects theme="romantic" density={25} />
       
       <div className="max-w-6xl mx-auto w-full px-4 md:px-6 pt-20 md:pt-24 relative z-20">
-        {/* Guest Greeting - Enhanced styling with Welcome Header */}
+        {/* Dear Guest with Enhanced Typing Animation */}
         <div className="text-center mb-8 animate-fade-in-stagger">
           <div className="mb-6">
-            <p className="welcome-header text-gray-800 font-bold italic font-dancing-script">
+            <p className="dear-guest-typing">
               Dear Guest
             </p>
           </div>
@@ -54,30 +54,30 @@ const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Left side - Text content */}
           <div className="text-center lg:text-left space-y-6 order-2 lg:order-1">
-            {/* Main Title Card with Gradient Underline */}
+            {/* Main Title Card - Clean Design */}
             <LuxuryCard variant="primary" delay={200} className="animate-slide-up-elegant">
               <div className="text-center">
-                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-dancing-script font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-pink-500 to-amber-500 leading-tight gradient-underline">
+                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-dancing-script font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-pink-500 to-amber-500 leading-tight">
                   Save
                 </h1>
-                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-dancing-script font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-pink-500 to-rose-600 leading-tight -mt-4 gradient-underline">
+                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-dancing-script font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-pink-500 to-rose-600 leading-tight -mt-4">
                   The Date
                 </h1>
               </div>
             </LuxuryCard>
 
-            {/* Couple Names Card with Typewriter Effect */}
+            {/* Couple Names Card - Clean Design */}
             <LuxuryCard variant="secondary" delay={400} className="animate-slide-up-elegant">
               <div className="text-center lg:text-left">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-playfair font-black text-transparent bg-clip-text bg-gradient-to-r from-gray-800 via-rose-700 to-gray-800 typewriter-text">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-playfair font-black text-transparent bg-clip-text bg-gradient-to-r from-gray-800 via-rose-700 to-gray-800">
                   Sarah & Alex
                 </h2>
                 <div className="w-24 h-px bg-gradient-to-r from-rose-400 to-pink-400 mx-auto lg:mx-0 mt-3"></div>
               </div>
             </LuxuryCard>
 
-            {/* Wedding Details Card with Rotating Border */}
-            <LuxuryCard variant="primary" delay={600} className="animate-slide-up-elegant rotating-border">
+            {/* Wedding Details Card - Enhanced */}
+            <LuxuryCard variant="primary" delay={600} className="animate-slide-up-elegant">
               <h3 className="text-lg md:text-xl font-playfair font-black text-gray-800 mb-4 text-center lg:text-left">
                 Celebrating Our
               </h3>
@@ -103,8 +103,8 @@ const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
               </div>
             </LuxuryCard>
 
-            {/* Call to Action - Celebration Card */}
-            <LuxuryCard variant="accent" delay={800} className="animate-slide-up-elegant celebration-card">
+            {/* Call to Action - Enhanced Button */}
+            <LuxuryCard variant="accent" delay={800} className="animate-slide-up-elegant">
               <div className="text-center lg:text-left">
                 <p className="text-lg md:text-xl text-gray-700 mb-6 font-playfair italic leading-relaxed">
                   Join us for an evening of celebration, love, and memories as we begin our journey together
@@ -122,7 +122,7 @@ const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
             </LuxuryCard>
           </div>
 
-          {/* Right side - Couple Photo with Circular Image */}
+          {/* Right side - Couple Photo */}
           <div className="flex justify-center lg:justify-end order-1 lg:order-2 animate-fade-in-stagger delay-1000">
             <div className="relative group">
               <div className="relative w-72 h-96 sm:w-80 sm:h-[420px] md:w-96 md:h-[480px]">
@@ -130,7 +130,7 @@ const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
                 <div className="absolute -inset-2 bg-gradient-to-br from-yellow-300/40 via-amber-300/30 to-yellow-400/40 rounded-3xl shadow-2xl blur-sm"></div>
                 <div className="absolute -inset-1 bg-gradient-to-br from-amber-200/50 via-yellow-200/40 to-amber-300/50 rounded-3xl shadow-xl"></div>
                 
-                <div className="circular-image relative w-full h-full rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:scale-105 transition-all duration-700 hover:shadow-3xl">
+                <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:scale-105 transition-all duration-700 hover:shadow-3xl">
                   <img
                     src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=600&h=800&fit=crop&crop=faces"
                     alt="Sarah & Alex - Happy Couple"

@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import LuxuryCard from './LuxuryCard';
 import { MapPin, Clock, Calendar } from 'lucide-react';
 
 const EventTimeline = () => {
+  const [visibleCards, setVisibleCards] = useState<number[]>([]);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
   const events = [
     {
       title: "Sangeet Ceremony",
@@ -34,6 +37,26 @@ const EventTimeline = () => {
     }
   ];
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const index = parseInt(entry.target.getAttribute('data-index') || '0');
+          if (entry.isIntersecting) {
+            setVisibleCards(prev => [...prev.filter(i => i !== index), index]);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    cardRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   const handleLocationClick = (location: string) => {
     const query = encodeURIComponent(location);
     const googleMapsUrl = `https://maps.google.com/maps?q=${query}`;
@@ -64,32 +87,37 @@ const EventTimeline = () => {
               
               {/* Event card */}
               <div className={`w-full md:w-5/12 ml-12 md:ml-0 ${index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'}`}>
-                <div className={`animate-slide-up-elegant delay-${index * 200} relative overflow-hidden`}>
+                <div 
+                  ref={el => cardRefs.current[index] = el}
+                  data-index={index}
+                  className={`timeline-card-animate ${visibleCards.includes(index) ? 'in-view' : ''}`}
+                  style={{ animationDelay: `${index * 200}ms` }}
+                >
                   <div 
-                    className="timeline-card relative p-4 rounded-xl border border-white/40 shadow-lg animate-gradient-move"
+                    className="relative p-6 rounded-xl border border-white/40 shadow-lg guest-card-hover"
                     style={{
                       background: 'linear-gradient(135deg, #fcd1d1, #fff5e1, #ffe2cc, #f9d29d)',
                       backgroundSize: '200% 200%'
                     }}
                   >
                     <div className="relative z-10">
-                      <h3 className={`text-xl md:text-2xl font-playfair font-black bg-gradient-to-r ${event.color} bg-clip-text text-transparent mb-4`}>
+                      <h3 className={`text-xl md:text-2xl font-playfair font-black bg-gradient-to-r ${event.color} bg-clip-text text-transparent mb-4 animate-zoom-in-timeline`}>
                         {event.title}
                       </h3>
 
                       <div className="space-y-3">
-                        <div className="timeline-text flex items-center space-x-2 text-gray-800">
+                        <div className="flex items-center space-x-2 text-gray-800 animate-fade-in-stagger">
                           <Calendar className="w-4 h-4 text-rose-500" />
                           <span className="font-playfair font-bold text-sm md:text-base">{event.date}</span>
                         </div>
                         
-                        <div className="timeline-text flex items-center space-x-2 text-gray-800">
+                        <div className="flex items-center space-x-2 text-gray-800 animate-fade-in-stagger delay-100">
                           <Clock className="w-4 h-4 text-rose-500" />
                           <span className="font-playfair font-bold text-sm md:text-base">{event.time}</span>
                         </div>
                         
-                        <div className="flex items-center justify-between">
-                          <div className="timeline-text flex items-center space-x-2 text-gray-800 flex-1">
+                        <div className="flex items-center justify-between animate-fade-in-stagger delay-200">
+                          <div className="flex items-center space-x-2 text-gray-800 flex-1">
                             <MapPin className="w-4 h-4 text-rose-500" />
                             <span className="font-playfair font-bold text-sm md:text-base">
                               {event.location}
@@ -112,24 +140,6 @@ const EventTimeline = () => {
           ))}
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes gradient-move {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-        
-        .animate-gradient-move {
-          animation: gradient-move 6s ease-in-out infinite;
-        }
-      `}</style>
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import PhotoGallery from '@/components/PhotoGallery';
-import LocationMap from '@/components/LocationMap';
 import CongratulationsWall from '@/components/CongratulationsWall';
 import FamiliesSection from '@/components/FamiliesSection';
 import EventTimeline from '@/components/EventTimeline';
@@ -20,11 +19,45 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
   const [showThankYou, setShowThankYou] = useState(false);
   const [invitationAccepted, setInvitationAccepted] = useState(false);
   const [isAtTop, setIsAtTop] = useState(true);
+  const [guestName, setGuestName] = useState('dear guest');
 
   const handleAcceptInvitation = () => {
     setShowThankYou(true);
     setInvitationAccepted(true);
+    
+    // Create celebration particles
+    createCelebrationParticles();
+    
     setTimeout(() => setShowThankYou(false), 3000);
+  };
+
+  const createCelebrationParticles = () => {
+    const colors = ['#C0C0C0', '#FFD700', '#ff6b6b', '#4ecdc4', '#45b7d1', '#f093fb'];
+    
+    for (let i = 0; i < 30; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'celebration-particle';
+      particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      particle.style.left = '50%';
+      particle.style.top = '50%';
+      particle.style.transform = `translate(-50%, -50%)`;
+      
+      const angle = (Math.PI * 2 * i) / 30;
+      const velocity = 100 + Math.random() * 100;
+      const finalX = Math.cos(angle) * velocity;
+      const finalY = Math.sin(angle) * velocity;
+      
+      particle.style.setProperty('--final-x', `${finalX}px`);
+      particle.style.setProperty('--final-y', `${finalY}px`);
+      
+      document.body.appendChild(particle);
+      
+      setTimeout(() => {
+        if (document.body.contains(particle)) {
+          document.body.removeChild(particle);
+        }
+      }, 3000);
+    }
   };
 
   const handleScrollToggle = () => {
@@ -44,37 +77,6 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // CTA Button with Floating Petals Effect
-  const createFloatingPetals = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const button = event.currentTarget;
-    const rect = button.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-
-    for (let i = 0; i < 12; i++) {
-      const petal = document.createElement('div');
-      petal.className = 'floating-petal';
-      
-      const randomScale = 0.8 + Math.random() * 0.4; // 0.8-1.2 scale
-      const randomAngle = Math.random() * 360;
-      const randomDistance = 50 + Math.random() * 100;
-      
-      petal.style.left = `${centerX}px`;
-      petal.style.top = `${centerY}px`;
-      petal.style.transform = `scale(${randomScale})`;
-      petal.style.setProperty('--angle', `${randomAngle}deg`);
-      petal.style.setProperty('--distance', `${randomDistance}px`);
-      
-      document.body.appendChild(petal);
-      
-      setTimeout(() => {
-        if (document.body.contains(petal)) {
-          document.body.removeChild(petal);
-        }
-      }, 3000);
-    }
-  };
-
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Animated Background */}
@@ -85,11 +87,11 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
 
       {/* Thank You Animation Overlay */}
       {showThankYou && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm animate-fade-in">
-          <LuxuryCard variant="primary" className="text-center animate-scale-in max-w-md mx-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm animate-fade-in modal-backdrop">
+          <LuxuryCard variant="primary" className="text-center modal-content max-w-md mx-4">
             <div className="text-6xl mb-4">💕</div>
             <h3 className="text-2xl md:text-3xl font-playfair font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-600 to-pink-600 mb-2">
-              Thank you, dear guest!
+              Thank you, {guestName}!
             </h3>
             <p className="text-gray-700 font-playfair italic">We can't wait to celebrate with you</p>
           </LuxuryCard>
@@ -110,7 +112,7 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
 
       {/* All sections */}
       <div className="space-y-12 pb-24 relative z-20">
-        {/* Invitation Header Section */}
+        {/* Simplified Invitation Header Section */}
         <div className="animate-fade-in">
           <InvitationHeader />
         </div>
@@ -140,16 +142,13 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
           <CongratulationsWall />
         </div>
 
-        {/* Accept Invitation Button with Floating Petals */}
+        {/* Accept Invitation Button */}
         {!invitationAccepted && (
           <div className="px-4 pb-6 animate-slide-up-elegant delay-1200">
             <div className="max-w-2xl mx-auto text-center">
               <Button
-                onClick={(e) => {
-                  createFloatingPetals(e);
-                  handleAcceptInvitation();
-                }}
-                className="cta-button bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 hover:from-rose-600 hover:via-pink-600 hover:to-purple-600 text-white font-playfair text-base md:text-lg px-8 md:px-12 py-4 md:py-5 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105 active:scale-95 w-full sm:w-auto group relative overflow-hidden"
+                onClick={handleAcceptInvitation}
+                className="bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 hover:from-rose-600 hover:via-pink-600 hover:to-purple-600 text-white font-playfair text-base md:text-lg px-8 md:px-12 py-4 md:py-5 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105 active:scale-95 w-full sm:w-auto group relative overflow-hidden"
               >
                 <span className="relative z-10 flex items-center justify-center space-x-2">
                   <span>💕</span>
@@ -184,12 +183,11 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
 
 const InvitationHeader = () => {
   const headerAnimation = useScrollAnimation({ threshold: 0.2 });
-  const messageAnimation = useScrollAnimation({ threshold: 0.3 });
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 pt-24 relative">
       <div className="max-w-5xl mx-auto w-full">
-        {/* Main Header Card */}
+        {/* Simplified Main Header Card */}
         <div ref={headerAnimation.ref}>
           <LuxuryCard 
             variant="primary" 
@@ -210,43 +208,6 @@ const InvitationHeader = () => {
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-dancing-script italic text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600">
                 Sarah & Alex's Wedding
               </h2>
-            </div>
-          </LuxuryCard>
-        </div>
-
-        {/* Couple Section */}
-        <LuxuryCard variant="accent" className="mb-12 text-center animate-slide-up-elegant delay-300">
-          <h3 className="text-3xl md:text-4xl lg:text-5xl font-playfair font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600 mb-6">
-            Sarah Thompson & Alex Williams
-          </h3>
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/60 shadow-xl">
-            <p className="text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed font-playfair italic">
-              As we embark on this beautiful journey together, we invite you to join us for an evening 
-              of love, laughter, and cherished memories as we exchange vows and celebrate the beginning 
-              of our life together as husband and wife.
-            </p>
-          </div>
-        </LuxuryCard>
-
-        {/* Special Message with Aurora Text */}
-        <div ref={messageAnimation.ref}>
-          <LuxuryCard 
-            variant="primary"
-            className={cn(
-              "text-center transition-all duration-1000 delay-500",
-              messageAnimation.isVisible ? "animate-slide-up-elegant opacity-100" : "opacity-0 translate-y-20"
-            )}
-          >
-            <p className="aurora-text text-xl md:text-2xl text-gray-700 italic font-playfair leading-relaxed mb-4">
-              "Being deeply loved by someone gives you strength, while loving someone deeply gives you courage."
-            </p>
-            <p className="text-base md:text-lg text-gray-600 font-playfair font-semibold mb-6">- Lao Tzu</p>
-            <div className="flex items-center justify-center space-x-4">
-              <span className="text-2xl md:text-3xl animate-floating-heart">💕</span>
-              <span className="text-2xl md:text-3xl animate-floating-heart delay-200">✨</span>
-              <span className="text-2xl md:text-3xl animate-floating-heart delay-400">🌹</span>
-              <span className="text-2xl md:text-3xl animate-floating-heart delay-600">✨</span>
-              <span className="text-2xl md:text-3xl animate-floating-heart delay-800">💕</span>
             </div>
           </LuxuryCard>
         </div>
@@ -286,7 +247,7 @@ const LocalAttractionsOnly = () => {
   return (
     <div className="max-w-6xl mx-auto">
       <div className="text-center mb-12">
-        <h3 className="text-2xl sm:text-3xl font-serif text-gray-800 mb-4">
+        <h3 className="gradient-bold-heading mb-4">
           Local Attractions
         </h3>
         <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">
@@ -297,7 +258,7 @@ const LocalAttractionsOnly = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {localAttractions.map((attraction, index) => (
-          <LuxuryCard key={attraction.name} variant="secondary" delay={index * 100} className="guest-card">
+          <LuxuryCard key={attraction.name} variant="secondary" delay={index * 100} className="guest-card-hover">
             <div className="relative overflow-hidden rounded-2xl shadow-xl border border-white/40 h-48 sm:h-52">
               {/* Background Image */}
               <div 

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import LuxuryCard from './LuxuryCard';
-import { ChevronDown, ChevronUp } from 'lucide-react';
 
 const FamiliesSection = () => {
-  const [expandedFamily, setExpandedFamily] = useState<'bride' | 'groom' | null>(null);
+  const [selectedFamily, setSelectedFamily] = useState<'bride' | 'groom' | null>(null);
+  const [selectedMember, setSelectedMember] = useState<any>(null);
 
   const brideFamily = [
     { name: "Margaret Thompson", relation: "Mother", bio: "A loving mother and successful entrepreneur who has always been Sarah's greatest supporter." },
@@ -17,8 +17,12 @@ const FamiliesSection = () => {
     { name: "Marcus Williams", relation: "Brother", bio: "Alex's older brother and role model, a successful architect and devoted family man." }
   ];
 
-  const toggleFamily = (family: 'bride' | 'groom') => {
-    setExpandedFamily(expandedFamily === family ? null : family);
+  const openMemberModal = (member: any, family: 'bride' | 'groom') => {
+    setSelectedMember({ ...member, family });
+  };
+
+  const closeMemberModal = () => {
+    setSelectedMember(null);
   };
 
   return (
@@ -35,93 +39,95 @@ const FamiliesSection = () => {
 
       <div className="grid md:grid-cols-2 gap-8">
         {/* Bride's Family */}
-        <LuxuryCard variant="primary" className="animate-slide-up-elegant guest-card">
-          <button
-            onClick={() => toggleFamily('bride')}
-            className="w-full text-left group"
-          >
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center space-x-4">
-                <span className="text-4xl">🕊️</span>
-                <div>
-                  <h3 className="text-2xl font-playfair font-bold text-gray-800 group-hover:text-rose-600 transition-colors">
-                    Bride's Family
-                  </h3>
-                  <p className="text-gray-600 font-playfair italic">The Thompson Family</p>
-                </div>
-              </div>
-              {expandedFamily === 'bride' ? (
-                <ChevronUp className="w-6 h-6 text-rose-600 transition-transform group-hover:scale-110" />
-              ) : (
-                <ChevronDown className="w-6 h-6 text-gray-400 transition-transform group-hover:scale-110 group-hover:text-rose-600" />
-              )}
-            </div>
-          </button>
+        <LuxuryCard variant="primary" className="animate-slide-up-elegant guest-card-hover">
+          <div className="mb-6">
+            <h3 className="text-2xl font-playfair font-bold text-gray-800 mb-2">
+              Bride's Family
+            </h3>
+            <p className="text-gray-600 font-playfair italic">The Thompson Family</p>
+          </div>
 
-          {expandedFamily === 'bride' && (
-            <div className="mt-6 space-y-4 animate-fade-in">
-              {brideFamily.map((member, index) => (
-                <div key={member.name} className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-white/40">
-                  <div className="flex items-start space-x-4">
-                    <div className="circular-image w-12 h-12 bg-gradient-to-br from-rose-200 to-pink-300 rounded-full flex items-center justify-center text-lg font-bold text-rose-700">
-                      {member.name.charAt(0)}
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-playfair font-bold text-gray-800">{member.name}</h4>
-                      <p className="text-sm text-rose-600 font-medium mb-2">{member.relation}</p>
-                      <p className="text-sm text-gray-600 leading-relaxed">{member.bio}</p>
-                    </div>
+          <div className="space-y-4">
+            {brideFamily.map((member, index) => (
+              <button
+                key={member.name}
+                onClick={() => openMemberModal(member, 'bride')}
+                className="w-full bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-white/40 hover:bg-white/80 transition-all duration-300 transform hover:scale-105"
+              >
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-rose-200 to-pink-300 rounded-full flex items-center justify-center text-lg font-bold text-rose-700">
+                    {member.name.charAt(0)}
+                  </div>
+                  <div className="flex-1 text-left">
+                    <h4 className="font-playfair font-bold text-gray-800">{member.name}</h4>
+                    <p className="text-sm text-rose-600 font-medium">{member.relation}</p>
                   </div>
                 </div>
-              ))}
-            </div>
-          )}
+              </button>
+            ))}
+          </div>
         </LuxuryCard>
 
         {/* Groom's Family */}
-        <LuxuryCard variant="secondary" className="animate-slide-up-elegant delay-200 guest-card">
-          <button
-            onClick={() => toggleFamily('groom')}
-            className="w-full text-left group"
-          >
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center space-x-4">
-                <span className="text-4xl">🤵</span>
-                <div>
-                  <h3 className="text-2xl font-playfair font-bold text-gray-800 group-hover:text-blue-600 transition-colors">
-                    Groom's Family
-                  </h3>
-                  <p className="text-gray-600 font-playfair italic">The Williams Family</p>
-                </div>
-              </div>
-              {expandedFamily === 'groom' ? (
-                <ChevronUp className="w-6 h-6 text-blue-600 transition-transform group-hover:scale-110" />
-              ) : (
-                <ChevronDown className="w-6 h-6 text-gray-400 transition-transform group-hover:scale-110 group-hover:text-blue-600" />
-              )}
-            </div>
-          </button>
+        <LuxuryCard variant="secondary" className="animate-slide-up-elegant delay-200 guest-card-hover">
+          <div className="mb-6">
+            <h3 className="text-2xl font-playfair font-bold text-gray-800 mb-2">
+              Groom's Family
+            </h3>
+            <p className="text-gray-600 font-playfair italic">The Williams Family</p>
+          </div>
 
-          {expandedFamily === 'groom' && (
-            <div className="mt-6 space-y-4 animate-fade-in">
-              {groomFamily.map((member, index) => (
-                <div key={member.name} className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-white/40">
-                  <div className="flex items-start space-x-4">
-                    <div className="circular-image w-12 h-12 bg-gradient-to-br from-blue-200 to-indigo-300 rounded-full flex items-center justify-center text-lg font-bold text-blue-700">
-                      {member.name.charAt(0)}
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-playfair font-bold text-gray-800">{member.name}</h4>
-                      <p className="text-sm text-blue-600 font-medium mb-2">{member.relation}</p>
-                      <p className="text-sm text-gray-600 leading-relaxed">{member.bio}</p>
-                    </div>
+          <div className="space-y-4">
+            {groomFamily.map((member, index) => (
+              <button
+                key={member.name}
+                onClick={() => openMemberModal(member, 'groom')}
+                className="w-full bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-white/40 hover:bg-white/80 transition-all duration-300 transform hover:scale-105"
+              >
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-200 to-indigo-300 rounded-full flex items-center justify-center text-lg font-bold text-blue-700">
+                    {member.name.charAt(0)}
+                  </div>
+                  <div className="flex-1 text-left">
+                    <h4 className="font-playfair font-bold text-gray-800">{member.name}</h4>
+                    <p className="text-sm text-blue-600 font-medium">{member.relation}</p>
                   </div>
                 </div>
-              ))}
-            </div>
-          )}
+              </button>
+            ))}
+          </div>
         </LuxuryCard>
       </div>
+
+      {/* Member Modal */}
+      {selectedMember && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm modal-backdrop" onClick={closeMemberModal}>
+          <div className="bg-white/95 backdrop-blur-xl rounded-3xl p-8 max-w-md mx-4 shadow-3xl border border-white/60 modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="text-center">
+              <div className={`w-20 h-20 mx-auto mb-4 rounded-full flex items-center justify-center text-2xl font-bold ${
+                selectedMember.family === 'bride' 
+                  ? 'bg-gradient-to-br from-rose-200 to-pink-300 text-rose-700' 
+                  : 'bg-gradient-to-br from-blue-200 to-indigo-300 text-blue-700'
+              }`}>
+                {selectedMember.name.charAt(0)}
+              </div>
+              <h3 className="text-2xl font-playfair font-bold text-gray-800 mb-2">{selectedMember.name}</h3>
+              <p className={`text-lg font-medium mb-4 ${
+                selectedMember.family === 'bride' ? 'text-rose-600' : 'text-blue-600'
+              }`}>
+                {selectedMember.relation}
+              </p>
+              <p className="text-gray-700 leading-relaxed mb-6 font-playfair italic">{selectedMember.bio}</p>
+              <button
+                onClick={closeMemberModal}
+                className="px-6 py-2 bg-gradient-to-r from-rose-500 to-pink-500 text-white rounded-full hover:from-rose-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

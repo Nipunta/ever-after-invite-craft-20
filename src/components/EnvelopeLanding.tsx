@@ -115,9 +115,9 @@ const EnvelopeLanding = ({ onOpenEnvelope }: EnvelopeLandingProps) => {
           </div>
         </div>
 
-        {/* Guest Greeting - Enhanced styling with Primary Welcome Text */}
+        {/* Dear Guest with Typing Animation */}
         <div className="mb-8 animate-fade-in-stagger delay-300">
-          <p className="primary-welcome-text animate-typewriter-elegant">
+          <p className="dear-guest-typing">
             Dear Guest
           </p>
         </div>
@@ -128,7 +128,7 @@ const EnvelopeLanding = ({ onOpenEnvelope }: EnvelopeLandingProps) => {
             You're Invited
           </h1>
           <div className="space-y-3">
-            <p className="secondary-text text-gray-800 mb-3 animate-fade-in delay-700 font-bold font-playfair italic">
+            <p className="text-lg md:text-xl text-gray-800 mb-3 animate-fade-in delay-700 font-bold font-playfair italic">
               Sarah & Alex's Wedding Ceremony
             </p>
             <div className="flex items-center justify-center space-x-2 animate-fade-in delay-900">

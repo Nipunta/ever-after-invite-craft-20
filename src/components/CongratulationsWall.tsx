@@ -86,7 +86,7 @@ const CongratulationsWall = () => {
   return (
     <div className="max-w-6xl mx-auto">
       <div className="text-center mb-8">
-        <h3 className="text-3xl md:text-4xl font-playfair font-bold text-gray-800 mb-4 animate-fade-in-stagger">
+        <h3 className="color-changing-title text-3xl md:text-4xl font-playfair font-bold mb-4 animate-fade-in-stagger">
           Your Wishes & Congratulations
         </h3>
         <p className="text-gray-600 max-w-2xl mx-auto animate-fade-in-stagger delay-200 font-playfair italic">
@@ -135,7 +135,7 @@ const CongratulationsWall = () => {
                   <img
                     src={photoPreview}
                     alt="Preview"
-                    className="circular-image w-16 h-16 object-cover border-2 border-white shadow-md"
+                    className="circular-profile"
                   />
                   <button
                     type="button"
@@ -208,7 +208,7 @@ const CongratulationsWall = () => {
             <div className="max-w-2xl w-full">
               <div 
                 key={messages[currentIndex].id}
-                className="guest-card bg-white/90 backdrop-blur-md rounded-3xl p-8 shadow-xl border border-white/50 relative overflow-hidden animate-fade-in-stagger transform hover:scale-105 transition-all duration-500"
+                className="guest-card-hover bg-white/90 backdrop-blur-md rounded-3xl p-8 shadow-xl border border-white/50 relative overflow-hidden animate-fade-in-stagger transform hover:scale-105 transition-all duration-500"
               >
                 {/* Decorative elements */}
                 <div className="absolute top-4 right-4 text-3xl opacity-20 animate-floating-heart">💕</div>
@@ -221,7 +221,7 @@ const CongratulationsWall = () => {
                       <img 
                         src={messages[currentIndex].avatar} 
                         alt={messages[currentIndex].name}
-                        className="circular-image w-16 h-16 object-cover border-3 border-white shadow-lg transform hover:scale-110 transition-transform duration-300"
+                        className="circular-profile"
                       />
                     )}
                     <h4 className="text-xl font-playfair font-bold text-gray-800">

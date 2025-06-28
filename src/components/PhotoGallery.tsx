@@ -4,29 +4,29 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 const PhotoGallery = () => {
   const photos = [
     {
-      url: "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=400&fit=crop",
+      url: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=600&fit=crop",
       caption: "Our engagement day - where it all began"
     },
     {
-      url: "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=600&h=400&fit=crop",
+      url: "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=800&h=600&fit=crop",
       caption: "Dancing under the stars on our wedding night"
     },
     {
-      url: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&h=400&fit=crop",
+      url: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&h=600&fit=crop",
       caption: "Our first vacation together in Paris"
     },
     {
-      url: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&h=400&fit=crop",
+      url: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&h=600&fit=crop",
       caption: "Building our first home together"
     },
     {
-      url: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&h=400&fit=crop",
+      url: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&h=600&fit=crop",
       caption: "Celebrating our 5th anniversary"
     }
   ];
 
   return (
-    <div className="max-w-6xl mx-auto py-12 md:py-16">
+    <div className="max-w-7xl mx-auto py-12 md:py-16">
       {/* Header */}
       <div className="text-center mb-12 bg-gradient-to-br from-white/95 to-rose-50/70 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-lg border border-white/50 relative overflow-hidden mx-4">
         <div className="relative z-10">
@@ -44,11 +44,11 @@ const PhotoGallery = () => {
         </div>
       </div>
 
-      {/* Photo Carousel Container */}
+      {/* Enhanced Photo Carousel Container */}
       <div className="bg-gradient-to-br from-white/90 to-amber-50/70 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-lg border border-white/50 relative overflow-hidden mx-4">
         <div className="relative z-10">
           <Carousel 
-            className="w-full max-w-4xl mx-auto"
+            className="w-full max-w-5xl mx-auto"
             opts={{
               align: "center",
               loop: true,
@@ -58,9 +58,9 @@ const PhotoGallery = () => {
               {photos.map((photo, index) => (
                 <CarouselItem key={index} className="pl-2 md:pl-4 basis-full">
                   <div className="relative group memory-item">
-                    {/* Decorative Photo Frame */}
-                    <div className="relative mx-auto w-full max-w-2xl">
-                      <div className="relative">
+                    {/* Enhanced Photo Frame */}
+                    <div className="relative mx-auto w-full max-w-3xl">
+                      <div className="photo-frame-glow relative">
                         {/* Simplified golden frame layers */}
                         <div className="absolute -inset-4 bg-gradient-to-br from-yellow-300/40 via-amber-300/30 to-yellow-400/40 rounded-2xl shadow-lg"></div>
                         <div className="absolute -inset-2 bg-gradient-to-br from-amber-200/30 via-yellow-200/20 to-amber-300/30 rounded-2xl shadow-md"></div>
@@ -85,15 +85,15 @@ const PhotoGallery = () => {
                             <img
                               src={photo.url}
                               alt={photo.caption}
-                              className="w-full h-64 md:h-80 object-cover transition-transform duration-300 hover:scale-103"
+                              className="w-full h-80 md:h-96 object-cover transition-transform duration-500 hover:scale-105"
                             />
                             
                             {/* Subtle overlay */}
                             <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent"></div>
                             
                             {/* Simple romantic elements */}
-                            <div className="absolute top-4 right-4 text-2xl opacity-70">💕</div>
-                            <div className="absolute bottom-4 left-4 text-xl opacity-60">🌹</div>
+                            <div className="absolute top-4 right-4 text-2xl opacity-70 animate-floating-heart">💕</div>
+                            <div className="absolute bottom-4 left-4 text-xl opacity-60 animate-floating-heart delay-1000">🌹</div>
                           </div>
                           
                           {/* Caption */}
@@ -110,9 +110,9 @@ const PhotoGallery = () => {
               ))}
             </CarouselContent>
             
-            {/* Navigation Buttons */}
-            <CarouselPrevious className="bg-white/90 backdrop-blur-sm border border-white/60 shadow-lg hover:bg-rose-50 hover:border-rose-200 transition-all duration-300 -left-4 md:-left-12" />
-            <CarouselNext className="bg-white/90 backdrop-blur-sm border border-white/60 shadow-lg hover:bg-rose-50 hover:border-rose-200 transition-all duration-300 -right-4 md:-right-12" />
+            {/* Enhanced Navigation Buttons */}
+            <CarouselPrevious className="bg-white/90 backdrop-blur-sm border border-white/60 shadow-lg hover:bg-rose-50 hover:border-rose-200 transition-all duration-300 -left-4 md:-left-12 hover:scale-110" />
+            <CarouselNext className="bg-white/90 backdrop-blur-sm border border-white/60 shadow-lg hover:bg-rose-50 hover:border-rose-200 transition-all duration-300 -right-4 md:-right-12 hover:scale-110" />
           </Carousel>
         </div>
       </div>
