@@ -46,6 +46,10 @@ const FamiliesSection = () => {
     }
   ];
 
+  // Family group photos
+  const brideFamilyPhoto = "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=150&h=150&fit=crop&crop=faces";
+  const groomFamilyPhoto = "https://images.unsplash.com/photo-1609220136736-443140cffec6?w=150&h=150&fit=crop&crop=faces";
+
   const openFamilyModal = (family: 'bride' | 'groom') => {
     setSelectedFamily(family);
   };
@@ -68,9 +72,18 @@ const FamiliesSection = () => {
 
       <div className="grid md:grid-cols-2 gap-8">
         {/* Bride's Family */}
-        <LuxuryCard variant="primary" className="animate-slide-up-elegant text-center">
-          <h3 className="family-title-only">Bride's Family</h3>
-          <p className="text-gray-600 font-playfair italic mb-6">The Thompson Family</p>
+        <LuxuryCard variant="primary" className="animate-slide-up-elegant text-center family-section-card">
+          <div className="family-title-with-photo">
+            <img 
+              src={brideFamilyPhoto}
+              alt="Thompson Family"
+              className="family-profile-photo"
+            />
+            <div>
+              <h3 className="family-title-only">Bride's Family</h3>
+              <p className="text-gray-600 font-playfair italic text-sm">The Thompson Family</p>
+            </div>
+          </div>
           <button 
             onClick={() => openFamilyModal('bride')}
             className="view-details-button"
@@ -80,9 +93,18 @@ const FamiliesSection = () => {
         </LuxuryCard>
 
         {/* Groom's Family */}
-        <LuxuryCard variant="secondary" className="animate-slide-up-elegant delay-200 text-center">
-          <h3 className="family-title-only">Groom's Family</h3>
-          <p className="text-gray-600 font-playfair italic mb-6">The Williams Family</p>
+        <LuxuryCard variant="secondary" className="animate-slide-up-elegant delay-200 text-center family-section-card">
+          <div className="family-title-with-photo">
+            <img 
+              src={groomFamilyPhoto}
+              alt="Williams Family"
+              className="family-profile-photo"
+            />
+            <div>
+              <h3 className="family-title-only">Groom's Family</h3>
+              <p className="text-gray-600 font-playfair italic text-sm">The Williams Family</p>
+            </div>
+          </div>
           <button 
             onClick={() => openFamilyModal('groom')}
             className="view-details-button"
@@ -92,10 +114,10 @@ const FamiliesSection = () => {
         </LuxuryCard>
       </div>
 
-      {/* Enhanced Family Modal with Better Separation and Close Button */}
+      {/* Enhanced Family Modal with Cohesive Design and Proper Height */}
       {selectedFamily && (
         <div className="fixed inset-0 z-50 flex items-center justify-center family-modal" onClick={closeFamilyModal}>
-          <div className="bg-white/95 backdrop-blur-xl rounded-3xl p-8 max-w-2xl mx-4 shadow-3xl border border-white/60 family-modal-content relative" onClick={(e) => e.stopPropagation()}>
+          <div className="family-modal-content relative" onClick={(e) => e.stopPropagation()}>
             
             {/* Visible Close Button */}
             <button
@@ -106,8 +128,8 @@ const FamiliesSection = () => {
               ✕
             </button>
 
-            <div className="text-center mb-8">
-              <h3 className="text-3xl font-playfair font-bold text-gray-800 mb-2">
+            <div className="text-center mb-6">
+              <h3 className="text-2xl md:text-3xl font-playfair font-bold text-gray-800 mb-2">
                 {selectedFamily === 'bride' ? 'The Thompson Family' : 'The Williams Family'}
               </h3>
               <p className="text-lg text-gray-600 font-playfair italic">
@@ -115,33 +137,33 @@ const FamiliesSection = () => {
               </p>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               {(selectedFamily === 'bride' ? brideFamily : groomFamily).map((member, index) => (
-                <div key={member.name} className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-white/40">
+                <div key={member.name} className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-white/40">
                   <div className="flex items-start space-x-4">
                     <img 
                       src={member.photo}
                       alt={member.name}
-                      className="w-16 h-16 rounded-full object-cover border-3 border-white shadow-lg"
+                      className="w-12 h-12 md:w-16 md:h-16 rounded-full object-cover border-2 border-white shadow-lg flex-shrink-0"
                     />
-                    <div className="flex-1">
-                      <h4 className="text-xl font-playfair font-bold text-gray-800">{member.name}</h4>
-                      <p className={`text-sm font-medium mb-3 ${
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-lg md:text-xl font-playfair font-bold text-gray-800">{member.name}</h4>
+                      <p className={`text-sm font-medium mb-2 ${
                         selectedFamily === 'bride' ? 'text-rose-600' : 'text-blue-600'
                       }`}>
                         {member.relation}
                       </p>
-                      <p className="text-gray-700 leading-relaxed font-playfair">{member.bio}</p>
+                      <p className="text-sm md:text-base text-gray-700 leading-relaxed font-playfair">{member.bio}</p>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="text-center mt-8">
+            <div className="text-center mt-6">
               <button
                 onClick={closeFamilyModal}
-                className="px-8 py-3 bg-gradient-to-r from-rose-500 to-pink-500 text-white rounded-full hover:from-rose-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 font-playfair font-bold"
+                className="px-6 py-2 bg-gradient-to-r from-rose-500 to-pink-500 text-white rounded-full hover:from-rose-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 font-playfair font-bold text-sm"
               >
                 Close
               </button>

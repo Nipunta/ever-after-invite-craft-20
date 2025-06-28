@@ -115,9 +115,9 @@ const EnvelopeLanding = ({ onOpenEnvelope }: EnvelopeLandingProps) => {
           </div>
         </div>
 
-        {/* Enhanced "Dear Guest" with Gradient and Wave Animation */}
+        {/* Enhanced "Dear Guest" with Typewriter Animation */}
         <div className="mb-8 animate-fade-in-stagger delay-300">
-          <p className="home-dear-guest">
+          <p className="home-dear-guest-typewriter">
             Dear Guest
           </p>
         </div>
