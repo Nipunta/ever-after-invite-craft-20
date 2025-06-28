@@ -84,6 +84,20 @@
     font-family: 'Dancing Script', cursive;
   }
 
+  /* Home Page - Enhanced "Dear Guest" with Gradient and Wave Animation */
+  .home-dear-guest {
+    font-size: 3.5rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    background: linear-gradient(45deg, #8B0000, #DC143C, #FF69B4, #9370DB);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: waveEntrance 2.5s ease-out forwards, gradientFlow 4s ease-in-out infinite;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+  }
+
   /* Save the Date - Dark Red and Pink Gradient "Dear Guest" */
   .dark-red-pink-gradient {
     font-size: 2.5rem;
@@ -96,6 +110,43 @@
     background-clip: text;
     animation: floatInText 2s ease-out forwards;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  }
+
+  /* Save the Date - Animated Shadow Effects for Cards */
+  .save-date-card {
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .save-date-card::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(45deg, #FFD700, #FF69B4, #9370DB, #FFD700);
+    background-size: 400% 400%;
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    animation: glowingBorder 3s ease-in-out infinite;
+  }
+
+  .save-date-card:hover::before {
+    opacity: 0.6;
+  }
+
+  .save-date-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .save-date-card:hover::after {
+    opacity: 1;
+    animation: shimmerSweep 1.5s ease-in-out;
   }
 
   /* Clean text without underlines */
@@ -132,13 +183,44 @@
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
   }
 
-  /* Family Modal Animations */
+  /* Enhanced Family Modal with Better Separation */
   .family-modal {
     animation: familyModalFadeIn 0.4s ease-out forwards;
+    backdrop-filter: blur(15px);
+    background: rgba(0, 0, 0, 0.5);
   }
 
   .family-modal-content {
     animation: familyModalScale 0.5s ease-out forwards;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    z-index: 60;
+  }
+
+  .family-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: rgba(239, 68, 68, 0.9);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    z-index: 70;
+  }
+
+  .family-modal-close:hover {
+    background: rgba(239, 68, 68, 1);
+    transform: scale(1.1) rotate(90deg);
   }
 
   /* Timeline Event Cards - Original Background with Flashing Light Effects */
@@ -281,6 +363,54 @@
 }
 
 /* Enhanced Keyframe Animations */
+@keyframes waveEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(-10px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes gradientFlow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  75% {
+    background-position: 100% 0%;
+  }
+}
+
+@keyframes glowingBorder {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-15deg);
+  }
+}
+
 @keyframes floatInText {
   0% {
     opacity: 0;
@@ -299,7 +429,7 @@
   }
   100% {
     opacity: 1;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
   }
 }
 
@@ -523,6 +653,10 @@
 
 /* Responsive utilities */
 @media (max-width: 768px) {
+  .home-dear-guest {
+    font-size: 2.5rem;
+  }
+  
   .dark-red-pink-gradient {
     font-size: 2rem;
   }
@@ -534,12 +668,15 @@
 
 /* Accessibility - Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
+  .home-dear-guest,
   .dark-red-pink-gradient,
   .heading-wave,
   .heading-gradient-scroll,
   .heading-glow-flicker,
   .heading-light-sweep::before,
-  .three-tone-wishes-hover:hover {
+  .three-tone-wishes-hover:hover,
+  .save-date-card::before,
+  .save-date-card::after {
     animation: none;
   }
   

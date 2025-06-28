@@ -92,10 +92,20 @@ const FamiliesSection = () => {
         </LuxuryCard>
       </div>
 
-      {/* Enhanced Family Modal */}
+      {/* Enhanced Family Modal with Better Separation and Close Button */}
       {selectedFamily && (
         <div className="fixed inset-0 z-50 flex items-center justify-center family-modal" onClick={closeFamilyModal}>
-          <div className="bg-white/95 backdrop-blur-xl rounded-3xl p-8 max-w-2xl mx-4 shadow-3xl border border-white/60 family-modal-content" onClick={(e) => e.stopPropagation()}>
+          <div className="bg-white/95 backdrop-blur-xl rounded-3xl p-8 max-w-2xl mx-4 shadow-3xl border border-white/60 family-modal-content relative" onClick={(e) => e.stopPropagation()}>
+            
+            {/* Visible Close Button */}
+            <button
+              onClick={closeFamilyModal}
+              className="family-modal-close"
+              aria-label="Close modal"
+            >
+              ✕
+            </button>
+
             <div className="text-center mb-8">
               <h3 className="text-3xl font-playfair font-bold text-gray-800 mb-2">
                 {selectedFamily === 'bride' ? 'The Thompson Family' : 'The Williams Family'}
