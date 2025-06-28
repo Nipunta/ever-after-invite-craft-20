@@ -33,10 +33,10 @@ const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
       <ParticleEffects theme="romantic" density={25} />
       
       <div className="max-w-6xl mx-auto w-full px-4 md:px-6 pt-20 md:pt-24 relative z-20">
-        {/* Dear Guest with Enhanced Typing Animation */}
+        {/* Dear Guest with Harmonized Color */}
         <div className="text-center mb-8 animate-fade-in-stagger">
           <div className="mb-6">
-            <p className="dear-guest-typing">
+            <p className="harmonized-dear-guest">
               Dear Guest
             </p>
           </div>
@@ -54,20 +54,20 @@ const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Left side - Text content */}
           <div className="text-center lg:text-left space-y-6 order-2 lg:order-1">
-            {/* Main Title Card - Clean Design */}
-            <LuxuryCard variant="primary" delay={200} className="animate-slide-up-elegant">
+            {/* Save the Date Card with Gradient Blur Reveal */}
+            <LuxuryCard variant="primary" delay={200} className="animate-slide-up-elegant gradient-blur-reveal">
               <div className="text-center">
-                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-dancing-script font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-pink-500 to-amber-500 leading-tight">
+                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-dancing-script font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-pink-500 to-amber-500 leading-tight highlight-text">
                   Save
                 </h1>
-                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-dancing-script font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-pink-500 to-rose-600 leading-tight -mt-4">
+                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-dancing-script font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-pink-500 to-rose-600 leading-tight -mt-4 highlight-text">
                   The Date
                 </h1>
               </div>
             </LuxuryCard>
 
-            {/* Couple Names Card - Clean Design */}
-            <LuxuryCard variant="secondary" delay={400} className="animate-slide-up-elegant">
+            {/* Sarah & Alex Card with Split Reveal */}
+            <LuxuryCard variant="secondary" delay={400} className="animate-slide-up-elegant split-reveal">
               <div className="text-center lg:text-left">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-playfair font-black text-transparent bg-clip-text bg-gradient-to-r from-gray-800 via-rose-700 to-gray-800">
                   Sarah & Alex
@@ -76,13 +76,13 @@ const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
               </div>
             </LuxuryCard>
 
-            {/* Wedding Details Card - Enhanced */}
-            <LuxuryCard variant="primary" delay={600} className="animate-slide-up-elegant">
-              <h3 className="text-lg md:text-xl font-playfair font-black text-gray-800 mb-4 text-center lg:text-left">
+            {/* Wedding Details Card with Gradient Blur Reveal */}
+            <LuxuryCard variant="primary" delay={600} className="animate-slide-up-elegant gradient-blur-reveal">
+              <h3 className="text-lg md:text-xl font-playfair font-black text-gray-800 mb-4 text-center lg:text-left highlight-text">
                 Celebrating Our
               </h3>
               <div className="text-center lg:text-left space-y-4">
-                <div className="text-4xl md:text-5xl font-dancing-script font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-600 to-pink-600">
+                <div className="text-4xl md:text-5xl font-dancing-script font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-600 to-pink-600 highlight-text">
                   Wedding Ceremony
                 </div>
                 

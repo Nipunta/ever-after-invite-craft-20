@@ -87,8 +87,8 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
 
       {/* Thank You Animation Overlay */}
       {showThankYou && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm animate-fade-in modal-backdrop">
-          <LuxuryCard variant="primary" className="text-center modal-content max-w-md mx-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm animate-fade-in">
+          <LuxuryCard variant="primary" className="text-center animate-scale-in max-w-md mx-4">
             <div className="text-6xl mb-4">💕</div>
             <h3 className="text-2xl md:text-3xl font-playfair font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-600 to-pink-600 mb-2">
               Thank you, {guestName}!
@@ -247,7 +247,7 @@ const LocalAttractionsOnly = () => {
   return (
     <div className="max-w-6xl mx-auto">
       <div className="text-center mb-12">
-        <h3 className="gradient-bold-heading mb-4">
+        <h3 className="bold-dark-gradient mb-4">
           Local Attractions
         </h3>
         <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">
@@ -258,7 +258,7 @@ const LocalAttractionsOnly = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {localAttractions.map((attraction, index) => (
-          <LuxuryCard key={attraction.name} variant="secondary" delay={index * 100} className="guest-card-hover">
+          <LuxuryCard key={attraction.name} variant="secondary" delay={index * 100} className="three-tone-hover">
             <div className="relative overflow-hidden rounded-2xl shadow-xl border border-white/40 h-48 sm:h-52">
               {/* Background Image */}
               <div 

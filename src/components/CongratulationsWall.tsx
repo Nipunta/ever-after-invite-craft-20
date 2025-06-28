@@ -86,8 +86,10 @@ const CongratulationsWall = () => {
   return (
     <div className="max-w-6xl mx-auto">
       <div className="text-center mb-8">
-        <h3 className="color-changing-title text-3xl md:text-4xl font-playfair font-bold mb-4 animate-fade-in-stagger">
-          Your Wishes & Congratulations
+        <h3 className="text-3xl md:text-4xl font-playfair font-bold mb-4 animate-fade-in-stagger">
+          <span className="bg-gradient-to-r from-rose-500 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient-flow">
+            Your Wishes & Congratulations
+          </span>
         </h3>
         <p className="text-gray-600 max-w-2xl mx-auto animate-fade-in-stagger delay-200 font-playfair italic">
           Share your heartfelt wishes and congratulations for Sarah & Alex's wedding celebration
@@ -135,7 +137,7 @@ const CongratulationsWall = () => {
                   <img
                     src={photoPreview}
                     alt="Preview"
-                    className="circular-profile"
+                    className="profile-photo"
                   />
                   <button
                     type="button"
@@ -208,7 +210,7 @@ const CongratulationsWall = () => {
             <div className="max-w-2xl w-full">
               <div 
                 key={messages[currentIndex].id}
-                className="guest-card-hover bg-white/90 backdrop-blur-md rounded-3xl p-8 shadow-xl border border-white/50 relative overflow-hidden animate-fade-in-stagger transform hover:scale-105 transition-all duration-500"
+                className="three-tone-hover bg-white/90 backdrop-blur-md rounded-3xl p-8 shadow-xl border border-white/50 relative overflow-hidden animate-fade-in-stagger transform hover:scale-105 transition-all duration-500"
               >
                 {/* Decorative elements */}
                 <div className="absolute top-4 right-4 text-3xl opacity-20 animate-floating-heart">💕</div>
@@ -221,7 +223,7 @@ const CongratulationsWall = () => {
                       <img 
                         src={messages[currentIndex].avatar} 
                         alt={messages[currentIndex].name}
-                        className="circular-profile"
+                        className="profile-photo"
                       />
                     )}
                     <h4 className="text-xl font-playfair font-bold text-gray-800">
@@ -241,6 +243,20 @@ const CongratulationsWall = () => {
           </div>
         </div>
       )}
+
+      <style jsx>{`
+        @keyframes gradient-flow {
+          0%, 100% { background-position: 0% 50%; }
+          25% { background-position: 100% 50%; }
+          50% { background-position: 50% 100%; }
+          75% { background-position: 100% 0%; }
+        }
+        
+        .animate-gradient-flow {
+          background-size: 300% 300%;
+          animation: gradient-flow 4s ease-in-out infinite;
+        }
+      `}</style>
     </div>
   );
 };

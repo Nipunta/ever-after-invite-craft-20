@@ -90,18 +90,12 @@ const EventTimeline = () => {
                 <div 
                   ref={el => cardRefs.current[index] = el}
                   data-index={index}
-                  className={`timeline-card-animate ${visibleCards.includes(index) ? 'in-view' : ''}`}
+                  className={`opacity-0 transform translateY-8 transition-all duration-600 ${visibleCards.includes(index) ? 'opacity-100 translate-y-0' : ''}`}
                   style={{ animationDelay: `${index * 200}ms` }}
                 >
-                  <div 
-                    className="relative p-6 rounded-xl border border-white/40 shadow-lg guest-card-hover"
-                    style={{
-                      background: 'linear-gradient(135deg, #fcd1d1, #fff5e1, #ffe2cc, #f9d29d)',
-                      backgroundSize: '200% 200%'
-                    }}
-                  >
+                  <div className="relative p-6 rounded-xl border border-white/40 shadow-lg three-tone-hover shine-sweep">
                     <div className="relative z-10">
-                      <h3 className={`text-xl md:text-2xl font-playfair font-black bg-gradient-to-r ${event.color} bg-clip-text text-transparent mb-4 animate-zoom-in-timeline`}>
+                      <h3 className={`text-xl md:text-2xl font-playfair font-black bg-gradient-to-r ${event.color} bg-clip-text text-transparent mb-4 animate-zoom-in-timeline shine-sweep`}>
                         {event.title}
                       </h3>
 

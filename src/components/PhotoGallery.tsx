@@ -27,19 +27,19 @@ const PhotoGallery = () => {
 
   return (
     <div className="max-w-7xl mx-auto py-12 md:py-16">
-      {/* Header */}
-      <div className="text-center mb-12 bg-gradient-to-br from-white/95 to-rose-50/70 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-lg border border-white/50 relative overflow-hidden mx-4">
+      {/* Enhanced Header with Hover Effects */}
+      <div className="text-center mb-12 bg-gradient-to-br from-white/95 to-rose-50/70 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-lg border border-white/50 relative overflow-hidden mx-4 memory-hover">
         <div className="relative z-10">
-          <h3 className="text-3xl md:text-4xl font-serif text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600 mb-4">
+          <h3 className="text-3xl md:text-4xl font-serif text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600 mb-4 animate-fade-in-stagger">
             Our Memories
           </h3>
-          <p className="text-lg text-gray-600 font-light">
+          <p className="text-lg text-gray-600 font-light animate-fade-in-stagger delay-200">
             A journey through ten beautiful years together
           </p>
-          <div className="flex items-center justify-center space-x-4 mt-6">
-            <span className="text-2xl">💕</span>
+          <div className="flex items-center justify-center space-x-4 mt-6 animate-fade-in-stagger delay-400">
+            <span className="text-2xl animate-floating-heart">💕</span>
             <div className="w-16 h-px bg-gradient-to-r from-transparent via-rose-400 to-transparent"></div>
-            <span className="text-2xl">💕</span>
+            <span className="text-2xl animate-floating-heart delay-500">💕</span>
           </div>
         </div>
       </div>
@@ -58,24 +58,24 @@ const PhotoGallery = () => {
               {photos.map((photo, index) => (
                 <CarouselItem key={index} className="pl-2 md:pl-4 basis-full">
                   <div className="relative group memory-item">
-                    {/* Enhanced Photo Frame */}
+                    {/* Enhanced Photo Frame with Hover Effects */}
                     <div className="relative mx-auto w-full max-w-3xl">
-                      <div className="photo-frame-glow relative">
-                        {/* Simplified golden frame layers */}
+                      <div className="relative memory-hover">
+                        {/* Enhanced golden frame layers */}
                         <div className="absolute -inset-4 bg-gradient-to-br from-yellow-300/40 via-amber-300/30 to-yellow-400/40 rounded-2xl shadow-lg"></div>
                         <div className="absolute -inset-2 bg-gradient-to-br from-amber-200/30 via-yellow-200/20 to-amber-300/30 rounded-2xl shadow-md"></div>
                         
-                        {/* Corner decorative elements - simplified */}
-                        <div className="absolute -top-3 -left-3 w-6 h-6 bg-gradient-to-br from-yellow-400/60 to-amber-500/60 rounded-full shadow-md">
+                        {/* Corner decorative elements */}
+                        <div className="absolute -top-3 -left-3 w-6 h-6 bg-gradient-to-br from-yellow-400/60 to-amber-500/60 rounded-full shadow-md animate-gentle-pulse">
                           <div className="absolute inset-1 border border-white/60 rounded-full"></div>
                         </div>
-                        <div className="absolute -top-3 -right-3 w-6 h-6 bg-gradient-to-br from-amber-400/60 to-yellow-500/60 rounded-full shadow-md">
+                        <div className="absolute -top-3 -right-3 w-6 h-6 bg-gradient-to-br from-amber-400/60 to-yellow-500/60 rounded-full shadow-md animate-gentle-pulse delay-200">
                           <div className="absolute inset-1 border border-white/60 rounded-full"></div>
                         </div>
-                        <div className="absolute -bottom-3 -left-3 w-6 h-6 bg-gradient-to-br from-yellow-400/60 to-amber-500/60 rounded-full shadow-md">
+                        <div className="absolute -bottom-3 -left-3 w-6 h-6 bg-gradient-to-br from-yellow-400/60 to-amber-500/60 rounded-full shadow-md animate-gentle-pulse delay-400">
                           <div className="absolute inset-1 border border-white/60 rounded-full"></div>
                         </div>
-                        <div className="absolute -bottom-3 -right-3 w-6 h-6 bg-gradient-to-br from-amber-400/60 to-yellow-500/60 rounded-full shadow-md">
+                        <div className="absolute -bottom-3 -right-3 w-6 h-6 bg-gradient-to-br from-amber-400/60 to-yellow-500/60 rounded-full shadow-md animate-gentle-pulse delay-600">
                           <div className="absolute inset-1 border border-white/60 rounded-full"></div>
                         </div>
                         
@@ -85,18 +85,19 @@ const PhotoGallery = () => {
                             <img
                               src={photo.url}
                               alt={photo.caption}
-                              className="w-full h-80 md:h-96 object-cover transition-transform duration-500 hover:scale-105"
+                              className="w-full h-80 md:h-96 object-cover transition-all duration-500 hover:scale-105"
                             />
                             
                             {/* Subtle overlay */}
                             <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent"></div>
                             
-                            {/* Simple romantic elements */}
+                            {/* Enhanced romantic elements */}
                             <div className="absolute top-4 right-4 text-2xl opacity-70 animate-floating-heart">💕</div>
                             <div className="absolute bottom-4 left-4 text-xl opacity-60 animate-floating-heart delay-1000">🌹</div>
+                            <div className="absolute top-1/2 left-4 text-lg opacity-50 animate-floating-heart delay-500">✨</div>
                           </div>
                           
-                          {/* Caption */}
+                          {/* Enhanced Caption */}
                           <div className="mt-4 p-4 bg-gradient-to-r from-rose-50/80 via-pink-50/80 to-amber-50/80 rounded-xl border border-white/50">
                             <p className="text-center text-gray-700 font-serif italic text-sm md:text-base leading-relaxed">
                               "{photo.caption}"
@@ -111,8 +112,8 @@ const PhotoGallery = () => {
             </CarouselContent>
             
             {/* Enhanced Navigation Buttons */}
-            <CarouselPrevious className="bg-white/90 backdrop-blur-sm border border-white/60 shadow-lg hover:bg-rose-50 hover:border-rose-200 transition-all duration-300 -left-4 md:-left-12 hover:scale-110" />
-            <CarouselNext className="bg-white/90 backdrop-blur-sm border border-white/60 shadow-lg hover:bg-rose-50 hover:border-rose-200 transition-all duration-300 -right-4 md:-right-12 hover:scale-110" />
+            <CarouselPrevious className="bg-white/90 backdrop-blur-sm border border-white/60 shadow-lg hover:bg-rose-50 hover:border-rose-200 transition-all duration-300 -left-4 md:-left-12 hover:scale-110 memory-hover" />
+            <CarouselNext className="bg-white/90 backdrop-blur-sm border border-white/60 shadow-lg hover:bg-rose-50 hover:border-rose-200 transition-all duration-300 -right-4 md:-right-12 hover:scale-110 memory-hover" />
           </Carousel>
         </div>
       </div>
