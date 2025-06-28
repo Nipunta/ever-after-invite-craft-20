@@ -66,7 +66,7 @@ const EventTimeline = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-playfair font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600 mb-4">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-playfair font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600 mb-4 heading-gradient-scroll">
           Wedding Event Timeline
         </h2>
         <p className="text-lg md:text-xl text-gray-700 font-playfair font-semibold italic">
@@ -93,24 +93,24 @@ const EventTimeline = () => {
                   className={`opacity-0 transform translateY-8 transition-all duration-600 ${visibleCards.includes(index) ? 'opacity-100 translate-y-0' : ''}`}
                   style={{ animationDelay: `${index * 200}ms` }}
                 >
-                  <div className="relative p-6 rounded-xl border border-white/40 shadow-lg three-tone-hover shine-sweep">
+                  <div className="timeline-card-original relative p-6 rounded-xl border border-white/40 shadow-lg">
                     <div className="relative z-10">
-                      <h3 className={`text-xl md:text-2xl font-playfair font-black bg-gradient-to-r ${event.color} bg-clip-text text-transparent mb-4 animate-zoom-in-timeline shine-sweep`}>
+                      <h3 className={`text-xl md:text-2xl font-playfair font-black bg-gradient-to-r ${event.color} bg-clip-text text-transparent mb-4 event-name-fade-up`}>
                         {event.title}
                       </h3>
 
                       <div className="space-y-3">
-                        <div className="flex items-center space-x-2 text-gray-800 animate-fade-in-stagger">
+                        <div className="flex items-center space-x-2 text-gray-800 event-name-slide-in">
                           <Calendar className="w-4 h-4 text-rose-500" />
                           <span className="font-playfair font-bold text-sm md:text-base">{event.date}</span>
                         </div>
                         
-                        <div className="flex items-center space-x-2 text-gray-800 animate-fade-in-stagger delay-100">
+                        <div className="flex items-center space-x-2 text-gray-800 event-name-slide-in delay-100">
                           <Clock className="w-4 h-4 text-rose-500" />
                           <span className="font-playfair font-bold text-sm md:text-base">{event.time}</span>
                         </div>
                         
-                        <div className="flex items-center justify-between animate-fade-in-stagger delay-200">
+                        <div className="flex items-center justify-between event-name-slide-in delay-200">
                           <div className="flex items-center space-x-2 text-gray-800 flex-1">
                             <MapPin className="w-4 h-4 text-rose-500" />
                             <span className="font-playfair font-bold text-sm md:text-base">

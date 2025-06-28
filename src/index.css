@@ -84,175 +84,150 @@
     font-family: 'Dancing Script', cursive;
   }
 
-  /* Home Page - Gradient Flow Text for "Dear Guest" */
-  .gradient-flow-text {
+  /* Save the Date - Dark Red and Pink Gradient "Dear Guest" */
+  .dark-red-pink-gradient {
     font-size: 2.5rem;
     font-family: 'Playfair Display', serif;
     font-weight: 900;
-    background: linear-gradient(45deg, #FFD700, #ff6b6b, #9b59b6, #FFD700);
+    background: linear-gradient(45deg, #8B0000, #DC143C, #FF69B4, #FFB6C1);
     background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: gradientFlow 3s ease-in-out infinite;
+    animation: floatInText 2s ease-out forwards;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
   }
 
-  /* Save the Date - Harmonized "Dear Guest" */
-  .harmonized-dear-guest {
-    font-size: 2.5rem;
-    font-family: 'Playfair Display', serif;
-    font-weight: 900;
-    background: linear-gradient(45deg, rgba(255, 215, 0, 0.8), rgba(192, 192, 192, 0.8));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: harmonizedGlow 2s ease-in-out infinite;
+  /* Clean text without underlines */
+  .clean-text {
+    text-decoration: none;
+    border: none;
   }
 
-  /* Split Reveal Animation for Sarah & Alex */
-  .split-reveal {
-    overflow: hidden;
-    position: relative;
+  .clean-text::after {
+    display: none;
   }
 
-  .split-reveal::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent 0%, white 50%, transparent 100%);
-    transform: translateX(-100%);
-    animation: splitReveal 2s ease-out forwards;
-    animation-delay: 0.5s;
+  /* Family Section Enhancements */
+  .family-title-only {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #374151;
+    margin-bottom: 1rem;
   }
 
-  /* Gradient Blur Reveal Backgrounds */
-  .gradient-blur-reveal {
-    position: relative;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 215, 0, 0.1), rgba(255, 182, 193, 0.1));
-    backdrop-filter: blur(0px);
-    animation: blurReveal 2s ease-out forwards;
+  .view-details-button {
+    background: linear-gradient(45deg, #F59E0B, #EF4444);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
   }
 
-  /* Highlight Text Animation */
-  .highlight-text {
-    position: relative;
-    display: inline-block;
+  .view-details-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
   }
 
-  .highlight-text::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #FFD700, #ff6b6b, #9b59b6);
-    animation: highlightSweep 2s ease-out forwards;
-    animation-delay: 1s;
+  /* Family Modal Animations */
+  .family-modal {
+    animation: familyModalFadeIn 0.4s ease-out forwards;
   }
 
-  /* Interactive Family Buttons */
-  .family-button {
+  .family-modal-content {
+    animation: familyModalScale 0.5s ease-out forwards;
+  }
+
+  /* Timeline Event Cards - Original Background with Flashing Light Effects */
+  .timeline-card-original {
+    background: linear-gradient(135deg, #fcd1d1, #fff5e1, #ffe2cc, #f9d29d);
+    background-size: 200% 200%;
     position: relative;
     overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .family-button::before {
+  .timeline-card-original::before {
     content: '';
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    transition: left 0.5s ease;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    transition: left 0.6s ease;
   }
 
-  .family-button:hover::before {
+  .timeline-card-original:hover::before {
     left: 100%;
   }
 
-  /* Profile Photo Styling */
-  .profile-photo {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #FFD700;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    transition: all 0.3s ease;
+  .timeline-card-original:hover {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    border: 2px solid rgba(255, 215, 0, 0.3);
   }
 
-  .profile-photo:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+  /* Event Name Text Animations */
+  .event-name-fade-up {
+    animation: eventFadeUp 0.8s ease-out forwards;
   }
 
-  /* Shine Sweep Animation for Timeline */
-  .shine-sweep {
+  .event-name-slide-in {
+    animation: eventSlideIn 0.6s ease-out forwards;
+  }
+
+  /* Page Heading Animations */
+  .heading-wave {
+    animation: waveAnimation 3s ease-in-out infinite;
+  }
+
+  .heading-gradient-scroll {
+    background: linear-gradient(45deg, #8B0000, #DC143C, #FF69B4, #FFD700, #32CD32, #1E90FF);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientScroll 4s ease-in-out infinite;
+  }
+
+  .heading-glow-flicker {
+    animation: glowFlicker 2s ease-in-out infinite;
+  }
+
+  .heading-light-sweep {
     position: relative;
     overflow: hidden;
   }
 
-  .shine-sweep::before {
+  .heading-light-sweep::before {
     content: '';
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-    animation: shineSweep 3s ease-in-out infinite;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+    animation: lightSweep 3s ease-in-out infinite;
   }
 
-  /* Memory Section Hover Effects */
-  .memory-hover {
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  .heading-text-expand {
+    animation: textExpand 2s ease-in-out infinite;
   }
 
-  .memory-hover:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-  }
-
-  /* Bold Dark Gradient Heading */
-  .bold-dark-gradient {
-    font-weight: 900;
-    font-size: 2.5rem;
-    background: linear-gradient(45deg, #2c3e50, #34495e, #FFD700);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-  }
-
-  /* Three-tone Gradient Hover */
-  .three-tone-hover {
+  /* Three-tone Gradient Hover for Wishes */
+  .three-tone-wishes-hover {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     background: linear-gradient(135deg, #fef7f0, #fff5e1);
   }
 
-  .three-tone-hover:hover {
-    background: linear-gradient(135deg, #FFD700, #ff6b6b, #ffb347);
+  .three-tone-wishes-hover:hover {
+    background: linear-gradient(135deg, #FFD700, #FF69B4, #FFB347);
     background-size: 200% 200%;
     animation: threeTonesShift 2s ease-in-out infinite;
     transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-  }
-
-  /* Celebration Particles */
-  .celebration-particle {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    pointer-events: none;
-    animation: celebrationFloat 3s ease-out forwards;
   }
 
   /* Enhanced Animation Classes */
@@ -266,10 +241,6 @@
 
   .animate-scale-in {
     animation: scaleIn 0.5s ease-out forwards;
-  }
-
-  .animate-zoom-in-timeline {
-    animation: zoomInTimeline 0.6s ease-out forwards;
   }
 
   .animate-floating-heart {
@@ -310,89 +281,126 @@
 }
 
 /* Enhanced Keyframe Animations */
-@keyframes gradientFlow {
-  0%, 100% { 
-    background-position: 0% 50%; 
-    transform: scale(1);
-  }
-  25% { 
-    background-position: 100% 50%; 
-    transform: scale(1.02);
-  }
-  50% { 
-    background-position: 50% 100%; 
-    transform: scale(1.05);
-  }
-  75% { 
-    background-position: 100% 0%; 
-    transform: scale(1.02);
-  }
-}
-
-@keyframes harmonizedGlow {
-  0%, 100% { 
-    opacity: 0.8; 
-    transform: scale(1);
-  }
-  50% { 
-    opacity: 1; 
-    transform: scale(1.02);
-  }
-}
-
-@keyframes splitReveal {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-@keyframes blurReveal {
-  0% { 
-    backdrop-filter: blur(0px); 
+@keyframes floatInText {
+  0% {
     opacity: 0;
+    transform: translateY(30px) scale(0.9);
   }
-  100% { 
-    backdrop-filter: blur(20px); 
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes familyModalFadeIn {
+  0% {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  100% {
+    opacity: 1;
+    backdrop-filter: blur(10px);
+  }
+}
+
+@keyframes familyModalScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes eventFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes eventSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes waveAnimation {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-5px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(5px);
+  }
+}
+
+@keyframes gradientScroll {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  75% {
+    background-position: 100% 0%;
+  }
+}
+
+@keyframes glowFlicker {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6);
+  }
+}
+
+@keyframes lightSweep {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes textExpand {
+  0%, 100% {
+    transform: scale(1);
     opacity: 1;
   }
-}
-
-@keyframes highlightSweep {
-  0% { width: 0; }
-  100% { width: 100%; }
-}
-
-@keyframes shineSweep {
-  0% { left: -100%; }
-  50% { left: 100%; }
-  100% { left: 100%; }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
 }
 
 @keyframes threeTonesShift {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
-}
-
-@keyframes celebrationFloat {
-  0% {
-    opacity: 1;
-    transform: scale(0.8) translateY(0) rotate(0deg);
-  }
-  25% {
-    opacity: 0.9;
-    transform: scale(1.2) translateY(-30px) rotate(90deg);
-  }
-  50% {
-    opacity: 0.7;
-    transform: scale(1) translateY(-60px) rotate(180deg);
-  }
-  75% {
-    opacity: 0.4;
-    transform: scale(0.8) translateY(-90px) rotate(270deg);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0.5) translateY(-120px) rotate(360deg);
-  }
 }
 
 @keyframes fadeInStagger {
@@ -425,17 +433,6 @@
   100% {
     opacity: 1;
     transform: scale(1) rotate(0deg);
-  }
-}
-
-@keyframes zoomInTimeline {
-  0% {
-    opacity: 0;
-    transform: scale(0.8) translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
   }
 }
 
@@ -526,31 +523,27 @@
 
 /* Responsive utilities */
 @media (max-width: 768px) {
-  .gradient-flow-text,
-  .harmonized-dear-guest {
+  .dark-red-pink-gradient {
     font-size: 2rem;
   }
   
-  .bold-dark-gradient {
-    font-size: 1.8rem;
-  }
-
-  .profile-photo {
-    width: 50px;
-    height: 50px;
+  .family-title-only {
+    font-size: 1.25rem;
   }
 }
 
 /* Accessibility - Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .gradient-flow-text,
-  .harmonized-dear-guest,
-  .shine-sweep::before,
-  .three-tone-hover:hover {
+  .dark-red-pink-gradient,
+  .heading-wave,
+  .heading-gradient-scroll,
+  .heading-glow-flicker,
+  .heading-light-sweep::before,
+  .three-tone-wishes-hover:hover {
     animation: none;
   }
   
-  .memory-hover:hover {
+  .timeline-card-original:hover {
     transform: none;
   }
 }

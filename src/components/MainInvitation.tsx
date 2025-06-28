@@ -36,7 +36,7 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
     
     for (let i = 0; i < 30; i++) {
       const particle = document.createElement('div');
-      particle.className = 'celebration-particle';
+      particle.className = 'fixed w-2 h-2 rounded-full pointer-events-none z-50';
       particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
       particle.style.left = '50%';
       particle.style.top = '50%';
@@ -47,8 +47,14 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
       const finalX = Math.cos(angle) * velocity;
       const finalY = Math.sin(angle) * velocity;
       
-      particle.style.setProperty('--final-x', `${finalX}px`);
-      particle.style.setProperty('--final-y', `${finalY}px`);
+      particle.animate([
+        { transform: 'translate(-50%, -50%) scale(0)', opacity: 1 },
+        { transform: `translate(${finalX}px, ${finalY}px) scale(1)`, opacity: 0.8, offset: 0.5 },
+        { transform: `translate(${finalX * 1.5}px, ${finalY * 1.5}px) scale(0)`, opacity: 0 }
+      ], {
+        duration: 3000,
+        easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+      });
       
       document.body.appendChild(particle);
       
@@ -247,7 +253,7 @@ const LocalAttractionsOnly = () => {
   return (
     <div className="max-w-6xl mx-auto">
       <div className="text-center mb-12">
-        <h3 className="bold-dark-gradient mb-4">
+        <h3 className="text-2xl sm:text-3xl font-playfair font-black text-transparent bg-clip-text bg-gradient-to-r from-gray-800 via-rose-700 to-gray-800 mb-4 heading-light-sweep">
           Local Attractions
         </h3>
         <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">
@@ -258,7 +264,7 @@ const LocalAttractionsOnly = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {localAttractions.map((attraction, index) => (
-          <LuxuryCard key={attraction.name} variant="secondary" delay={index * 100} className="three-tone-hover">
+          <LuxuryCard key={attraction.name} variant="secondary" delay={index * 100} className="hover:scale-105 transition-all duration-300">
             <div className="relative overflow-hidden rounded-2xl shadow-xl border border-white/40 h-48 sm:h-52">
               {/* Background Image */}
               <div 

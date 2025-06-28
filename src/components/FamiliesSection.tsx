@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import LuxuryCard from './LuxuryCard';
 
 const FamiliesSection = () => {
-  const [selectedMember, setSelectedMember] = useState<any>(null);
+  const [selectedFamily, setSelectedFamily] = useState<'bride' | 'groom' | null>(null);
 
   const brideFamily = [
     { 
@@ -46,18 +46,18 @@ const FamiliesSection = () => {
     }
   ];
 
-  const openMemberModal = (member: any, family: 'bride' | 'groom') => {
-    setSelectedMember({ ...member, family });
+  const openFamilyModal = (family: 'bride' | 'groom') => {
+    setSelectedFamily(family);
   };
 
-  const closeMemberModal = () => {
-    setSelectedMember(null);
+  const closeFamilyModal = () => {
+    setSelectedFamily(null);
   };
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-playfair font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600 mb-4">
+        <h2 className="text-3xl md:text-4xl font-playfair font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600 mb-4 heading-wave">
           Our Blessed Families
         </h2>
         <p className="text-lg text-gray-600 font-playfair italic">
@@ -68,108 +68,70 @@ const FamiliesSection = () => {
 
       <div className="grid md:grid-cols-2 gap-8">
         {/* Bride's Family */}
-        <LuxuryCard variant="primary" className="animate-slide-up-elegant three-tone-hover">
-          <div className="flex items-center space-x-4 mb-6">
-            <img 
-              src="https://images.unsplash.com/photo-1494790108755-2616b612b647?w=150&h=150&fit=crop&crop=face"
-              alt="Bride's Family"
-              className="profile-photo"
-            />
-            <div>
-              <button className="family-button text-left">
-                <h3 className="text-2xl font-playfair font-bold text-gray-800 mb-2">
-                  Bride's Family
-                </h3>
-                <p className="text-gray-600 font-playfair italic">The Thompson Family</p>
-              </button>
-            </div>
-          </div>
-
-          <div className="space-y-4">
-            {brideFamily.map((member, index) => (
-              <button
-                key={member.name}
-                onClick={() => openMemberModal(member, 'bride')}
-                className="w-full bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-white/40 hover:bg-white/80 transition-all duration-300 transform hover:scale-105 family-button"
-              >
-                <div className="flex items-start space-x-4">
-                  <img 
-                    src={member.photo}
-                    alt={member.name}
-                    className="profile-photo"
-                  />
-                  <div className="flex-1 text-left">
-                    <h4 className="font-playfair font-bold text-gray-800">{member.name}</h4>
-                    <p className="text-sm text-rose-600 font-medium">{member.relation}</p>
-                  </div>
-                </div>
-              </button>
-            ))}
-          </div>
+        <LuxuryCard variant="primary" className="animate-slide-up-elegant text-center">
+          <h3 className="family-title-only">Bride's Family</h3>
+          <p className="text-gray-600 font-playfair italic mb-6">The Thompson Family</p>
+          <button 
+            onClick={() => openFamilyModal('bride')}
+            className="view-details-button"
+          >
+            View Family Details
+          </button>
         </LuxuryCard>
 
         {/* Groom's Family */}
-        <LuxuryCard variant="secondary" className="animate-slide-up-elegant delay-200 three-tone-hover">
-          <div className="flex items-center space-x-4 mb-6">
-            <img 
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
-              alt="Groom's Family"
-              className="profile-photo"
-            />
-            <div>
-              <button className="family-button text-left">
-                <h3 className="text-2xl font-playfair font-bold text-gray-800 mb-2">
-                  Groom's Family
-                </h3>
-                <p className="text-gray-600 font-playfair italic">The Williams Family</p>
-              </button>
-            </div>
-          </div>
-
-          <div className="space-y-4">
-            {groomFamily.map((member, index) => (
-              <button
-                key={member.name}
-                onClick={() => openMemberModal(member, 'groom')}
-                className="w-full bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-white/40 hover:bg-white/80 transition-all duration-300 transform hover:scale-105 family-button"
-              >
-                <div className="flex items-start space-x-4">
-                  <img 
-                    src={member.photo}
-                    alt={member.name}
-                    className="profile-photo"
-                  />
-                  <div className="flex-1 text-left">
-                    <h4 className="font-playfair font-bold text-gray-800">{member.name}</h4>
-                    <p className="text-sm text-blue-600 font-medium">{member.relation}</p>
-                  </div>
-                </div>
-              </button>
-            ))}
-          </div>
+        <LuxuryCard variant="secondary" className="animate-slide-up-elegant delay-200 text-center">
+          <h3 className="family-title-only">Groom's Family</h3>
+          <p className="text-gray-600 font-playfair italic mb-6">The Williams Family</p>
+          <button 
+            onClick={() => openFamilyModal('groom')}
+            className="view-details-button"
+          >
+            View Family Details
+          </button>
         </LuxuryCard>
       </div>
 
-      {/* Enhanced Member Modal */}
-      {selectedMember && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm animate-fade-in" onClick={closeMemberModal}>
-          <div className="bg-white/95 backdrop-blur-xl rounded-3xl p-8 max-w-md mx-4 shadow-3xl border border-white/60 animate-scale-in" onClick={(e) => e.stopPropagation()}>
-            <div className="text-center">
-              <img 
-                src={selectedMember.photo}
-                alt={selectedMember.name}
-                className="w-24 h-24 mx-auto mb-4 rounded-full object-cover border-4 border-white shadow-lg"
-              />
-              <h3 className="text-2xl font-playfair font-bold text-gray-800 mb-2">{selectedMember.name}</h3>
-              <p className={`text-lg font-medium mb-4 ${
-                selectedMember.family === 'bride' ? 'text-rose-600' : 'text-blue-600'
-              }`}>
-                {selectedMember.relation}
+      {/* Enhanced Family Modal */}
+      {selectedFamily && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center family-modal" onClick={closeFamilyModal}>
+          <div className="bg-white/95 backdrop-blur-xl rounded-3xl p-8 max-w-2xl mx-4 shadow-3xl border border-white/60 family-modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="text-center mb-8">
+              <h3 className="text-3xl font-playfair font-bold text-gray-800 mb-2">
+                {selectedFamily === 'bride' ? 'The Thompson Family' : 'The Williams Family'}
+              </h3>
+              <p className="text-lg text-gray-600 font-playfair italic">
+                {selectedFamily === 'bride' ? "Bride's Family" : "Groom's Family"}
               </p>
-              <p className="text-gray-700 leading-relaxed mb-6 font-playfair italic">{selectedMember.bio}</p>
+            </div>
+
+            <div className="space-y-6">
+              {(selectedFamily === 'bride' ? brideFamily : groomFamily).map((member, index) => (
+                <div key={member.name} className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-white/40">
+                  <div className="flex items-start space-x-4">
+                    <img 
+                      src={member.photo}
+                      alt={member.name}
+                      className="w-16 h-16 rounded-full object-cover border-3 border-white shadow-lg"
+                    />
+                    <div className="flex-1">
+                      <h4 className="text-xl font-playfair font-bold text-gray-800">{member.name}</h4>
+                      <p className={`text-sm font-medium mb-3 ${
+                        selectedFamily === 'bride' ? 'text-rose-600' : 'text-blue-600'
+                      }`}>
+                        {member.relation}
+                      </p>
+                      <p className="text-gray-700 leading-relaxed font-playfair">{member.bio}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="text-center mt-8">
               <button
-                onClick={closeMemberModal}
-                className="px-6 py-2 bg-gradient-to-r from-rose-500 to-pink-500 text-white rounded-full hover:from-rose-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105"
+                onClick={closeFamilyModal}
+                className="px-8 py-3 bg-gradient-to-r from-rose-500 to-pink-500 text-white rounded-full hover:from-rose-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 font-playfair font-bold"
               >
                 Close
               </button>
