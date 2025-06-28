@@ -84,18 +84,32 @@
     font-family: 'Dancing Script', cursive;
   }
 
-  /* Home Page - Elegant Typewriter Animation for "Dear Guest" */
+  /* Home Page - Synchronized Header Animations */
+  .synchronized-header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
   .home-dear-guest-typewriter {
     font-size: 3.5rem;
     font-family: 'Playfair Display', serif;
     font-weight: 900;
-    color: #2D1B69;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-    border-right: 4px solid #2D1B69;
+    background: linear-gradient(45deg, #be185d, #ec4899, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    border-right: 4px solid #be185d;
     white-space: nowrap;
     overflow: hidden;
     animation: typewriter 3s steps(10) forwards, blinkCaret 0.75s step-end infinite;
     width: 0;
+  }
+
+  .home-youre-invited-float {
+    animation: synchronizedFloat 3s ease-in-out infinite;
+    animation-delay: 3s;
   }
 
   /* Save the Date - Dark Red and Pink Gradient "Dear Guest" */
@@ -163,6 +177,41 @@
   .family-section-card {
     position: relative;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .family-card-gradient {
+    background: linear-gradient(135deg, #fef7f0, #fff5e1, #ffe2cc, #f9d29d);
+    background-size: 200% 200%;
+    animation: gradientMove 6s ease-in-out infinite;
+    border-radius: 1.5rem;
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .family-card-hover {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .family-card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  }
+
+  .family-card-hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    transition: left 0.6s ease;
+    z-index: 1;
+  }
+
+  .family-card-hover:hover::before {
+    left: 100%;
   }
 
   .family-title-with-photo {
@@ -351,6 +400,37 @@
     box-shadow: 0 15px 35px rgba(0,0,0,0.1);
   }
 
+  /* Enhanced Accept Invitation Button */
+  .enhanced-accept-button {
+    position: relative;
+    overflow: hidden;
+    font-size: 1.25rem;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    box-shadow: 
+      0 20px 40px rgba(244, 63, 94, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  .enhanced-accept-button:hover {
+    box-shadow: 
+      0 25px 50px rgba(244, 63, 94, 0.4),
+      0 0 0 1px rgba(255, 255, 255, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  }
+
+  /* Memory Gallery Hover Effects */
+  .memory-hover {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .memory-hover:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+  }
+
   /* Enhanced Animation Classes */
   .animate-fade-in-stagger {
     animation: fadeInStagger 0.8s ease-out forwards;
@@ -429,10 +509,25 @@
 
 @keyframes blinkCaret {
   0%, 50% {
-    border-color: #2D1B69;
+    border-color: #be185d;
   }
   51%, 100% {
     border-color: transparent;
+  }
+}
+
+@keyframes synchronizedFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  25% {
+    transform: translateY(-10px) scale(1.02);
+  }
+  50% {
+    transform: translateY(-15px) scale(1.05);
+  }
+  75% {
+    transform: translateY(-8px) scale(1.02);
   }
 }
 
@@ -793,11 +888,17 @@
     margin: 1rem;
     padding: 1.5rem;
   }
+
+  .enhanced-accept-button {
+    font-size: 1rem;
+    padding: 1rem 2rem;
+  }
 }
 
 /* Accessibility - Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .home-dear-guest-typewriter,
+  .home-youre-invited-float,
   .dark-red-pink-gradient,
   .heading-wave,
   .heading-gradient-scroll,
@@ -805,7 +906,9 @@
   .heading-light-sweep::before,
   .three-tone-wishes-hover:hover,
   .save-date-card::before,
-  .save-date-card::after {
+  .save-date-card::after,
+  .family-card-gradient,
+  .family-card-hover::before {
     animation: none;
   }
   

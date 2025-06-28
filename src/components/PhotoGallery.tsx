@@ -44,7 +44,7 @@ const PhotoGallery = () => {
         </div>
       </div>
 
-      {/* Enhanced Photo Carousel Container */}
+      {/* Enhanced Photo Carousel Container - Frameless Design */}
       <div className="bg-gradient-to-br from-white/90 to-amber-50/70 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-lg border border-white/50 relative overflow-hidden mx-4">
         <div className="relative z-10">
           <Carousel 
@@ -58,48 +58,28 @@ const PhotoGallery = () => {
               {photos.map((photo, index) => (
                 <CarouselItem key={index} className="pl-2 md:pl-4 basis-full">
                   <div className="relative group memory-item">
-                    {/* Enhanced Photo Frame with Hover Effects */}
-                    <div className="relative mx-auto w-full max-w-3xl">
+                    {/* Frameless Photo Container - Full Card Space */}
+                    <div className="relative mx-auto w-full max-w-4xl">
                       <div className="relative memory-hover">
-                        {/* Enhanced golden frame layers */}
-                        <div className="absolute -inset-4 bg-gradient-to-br from-yellow-300/40 via-amber-300/30 to-yellow-400/40 rounded-2xl shadow-lg"></div>
-                        <div className="absolute -inset-2 bg-gradient-to-br from-amber-200/30 via-yellow-200/20 to-amber-300/30 rounded-2xl shadow-md"></div>
-                        
-                        {/* Corner decorative elements */}
-                        <div className="absolute -top-3 -left-3 w-6 h-6 bg-gradient-to-br from-yellow-400/60 to-amber-500/60 rounded-full shadow-md animate-gentle-pulse">
-                          <div className="absolute inset-1 border border-white/60 rounded-full"></div>
-                        </div>
-                        <div className="absolute -top-3 -right-3 w-6 h-6 bg-gradient-to-br from-amber-400/60 to-yellow-500/60 rounded-full shadow-md animate-gentle-pulse delay-200">
-                          <div className="absolute inset-1 border border-white/60 rounded-full"></div>
-                        </div>
-                        <div className="absolute -bottom-3 -left-3 w-6 h-6 bg-gradient-to-br from-yellow-400/60 to-amber-500/60 rounded-full shadow-md animate-gentle-pulse delay-400">
-                          <div className="absolute inset-1 border border-white/60 rounded-full"></div>
-                        </div>
-                        <div className="absolute -bottom-3 -right-3 w-6 h-6 bg-gradient-to-br from-amber-400/60 to-yellow-500/60 rounded-full shadow-md animate-gentle-pulse delay-600">
-                          <div className="absolute inset-1 border border-white/60 rounded-full"></div>
-                        </div>
-                        
-                        {/* Photo container with inner frame */}
-                        <div className="relative bg-white rounded-2xl p-3 shadow-lg border-2 border-white">
-                          <div className="relative overflow-hidden rounded-xl">
-                            <img
-                              src={photo.url}
-                              alt={photo.caption}
-                              className="w-full h-80 md:h-96 object-cover transition-all duration-500 hover:scale-105"
-                            />
-                            
-                            {/* Subtle overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent"></div>
-                            
-                            {/* Enhanced romantic elements */}
-                            <div className="absolute top-4 right-4 text-2xl opacity-70 animate-floating-heart">💕</div>
-                            <div className="absolute bottom-4 left-4 text-xl opacity-60 animate-floating-heart delay-1000">🌹</div>
-                            <div className="absolute top-1/2 left-4 text-lg opacity-50 animate-floating-heart delay-500">✨</div>
-                          </div>
+                        {/* Photo container without frames - edge-to-edge display */}
+                        <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                          <img
+                            src={photo.url}
+                            alt={photo.caption}
+                            className="w-full h-80 md:h-96 lg:h-[500px] object-cover transition-all duration-500 hover:scale-105"
+                          />
                           
-                          {/* Enhanced Caption */}
-                          <div className="mt-4 p-4 bg-gradient-to-r from-rose-50/80 via-pink-50/80 to-amber-50/80 rounded-xl border border-white/50">
-                            <p className="text-center text-gray-700 font-serif italic text-sm md:text-base leading-relaxed">
+                          {/* Subtle overlay for text readability */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                          
+                          {/* Enhanced romantic elements */}
+                          <div className="absolute top-6 right-6 text-3xl opacity-70 animate-floating-heart">💕</div>
+                          <div className="absolute bottom-6 left-6 text-2xl opacity-60 animate-floating-heart delay-1000">🌹</div>
+                          <div className="absolute top-1/2 left-6 text-xl opacity-50 animate-floating-heart delay-500">✨</div>
+                          
+                          {/* Caption overlay at bottom */}
+                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6">
+                            <p className="text-white font-serif italic text-lg md:text-xl leading-relaxed text-center">
                               "{photo.caption}"
                             </p>
                           </div>

@@ -116,9 +116,9 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
         )}
       </button>
 
-      {/* All sections */}
-      <div className="space-y-12 pb-24 relative z-20">
-        {/* Simplified Invitation Header Section */}
+      {/* All sections - Starting from page top immediately */}
+      <div className="space-y-12 pb-24 relative z-20 pt-0">
+        {/* Simplified Invitation Header Section - Loads immediately */}
         <div className="animate-fade-in">
           <InvitationHeader />
         </div>
@@ -148,22 +148,25 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
           <CongratulationsWall />
         </div>
 
-        {/* Accept Invitation Button */}
+        {/* Enhanced Accept Invitation Button - Larger and More Prominent */}
         {!invitationAccepted && (
           <div className="px-4 pb-6 animate-slide-up-elegant delay-1200">
-            <div className="max-w-2xl mx-auto text-center">
+            <div className="max-w-4xl mx-auto text-center">
               <Button
                 onClick={handleAcceptInvitation}
-                className="bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 hover:from-rose-600 hover:via-pink-600 hover:to-purple-600 text-white font-playfair text-base md:text-lg px-8 md:px-12 py-4 md:py-5 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105 active:scale-95 w-full sm:w-auto group relative overflow-hidden"
+                className="enhanced-accept-button bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 hover:from-rose-600 hover:via-pink-600 hover:to-purple-600 text-white font-playfair text-xl md:text-2xl px-12 md:px-16 py-6 md:py-8 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105 active:scale-95 w-full sm:w-auto group relative overflow-hidden border-4 border-white/20"
               >
-                <span className="relative z-10 flex items-center justify-center space-x-2">
-                  <span>💕</span>
-                  <span className="font-semibold">Accept Invitation</span>
-                  <span>✨</span>
+                <span className="relative z-10 flex items-center justify-center space-x-3">
+                  <span className="text-2xl">💕</span>
+                  <span className="font-black tracking-wide">Accept Our Invitation</span>
+                  <span className="text-2xl">✨</span>
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                
+                {/* Enhanced glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-rose-400 via-pink-400 to-purple-400 rounded-full blur-xl opacity-60 group-hover:opacity-80 transition-opacity duration-500 -z-10"></div>
               </Button>
-              <p className="text-gray-600 text-sm mt-4 opacity-80 font-playfair italic">
+              <p className="text-gray-600 text-base md:text-lg mt-6 opacity-80 font-playfair italic">
                 Let us know you'll be joining us for this special celebration
               </p>
             </div>
@@ -191,7 +194,7 @@ const InvitationHeader = () => {
   const headerAnimation = useScrollAnimation({ threshold: 0.2 });
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 pt-24 relative">
+    <div className="min-h-screen flex items-center justify-center px-4 pt-16 relative">
       <div className="max-w-5xl mx-auto w-full">
         {/* Simplified Main Header Card */}
         <div ref={headerAnimation.ref}>

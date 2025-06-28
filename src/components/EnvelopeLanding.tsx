@@ -115,20 +115,22 @@ const EnvelopeLanding = ({ onOpenEnvelope }: EnvelopeLandingProps) => {
           </div>
         </div>
 
-        {/* Enhanced "Dear Guest" with Typewriter Animation */}
+        {/* Synchronized Header Animation - "Dear Guest" and "You're Invited" */}
         <div className="mb-8 animate-fade-in-stagger delay-300">
-          <p className="home-dear-guest-typewriter">
-            Dear Guest
-          </p>
+          <div className="synchronized-header-container">
+            <p className="home-dear-guest-typewriter mb-4">
+              Dear Guest
+            </p>
+            <h1 className="home-youre-invited-float text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-playfair text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600 mb-6 animate-luxury-title tracking-wide font-black">
+              You're Invited
+            </h1>
+          </div>
         </div>
 
         {/* Enhanced Title and Description */}
         <div className="mb-10 animate-luxury-float delay-500 px-4">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-playfair text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600 mb-6 animate-luxury-title tracking-wide font-black">
-            You're Invited
-          </h1>
           <div className="space-y-3">
-            <p className="text-lg md:text-xl text-gray-800 mb-3 animate-fade-in delay-700 font-bold font-playfair italic">
+            <p className="text-base sm:text-lg md:text-xl text-gray-800 mb-3 animate-fade-in delay-700 font-bold font-playfair italic">
               Sarah & Alex's Wedding Ceremony
             </p>
             <div className="flex items-center justify-center space-x-2 animate-fade-in delay-900">

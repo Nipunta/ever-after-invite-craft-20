@@ -71,47 +71,51 @@ const FamiliesSection = () => {
       </div>
 
       <div className="grid md:grid-cols-2 gap-8">
-        {/* Bride's Family */}
-        <LuxuryCard variant="primary" className="animate-slide-up-elegant text-center family-section-card">
-          <div className="family-title-with-photo">
-            <img 
-              src={brideFamilyPhoto}
-              alt="Thompson Family"
-              className="family-profile-photo"
-            />
-            <div>
-              <h3 className="family-title-only">Bride's Family</h3>
-              <p className="text-gray-600 font-playfair italic text-sm">The Thompson Family</p>
+        {/* Bride's Family - Enhanced with Gradient Background and Light Flash */}
+        <div className="family-card-gradient family-card-hover animate-slide-up-elegant text-center family-section-card">
+          <LuxuryCard variant="primary" className="h-full">
+            <div className="family-title-with-photo">
+              <img 
+                src={brideFamilyPhoto}
+                alt="Thompson Family"
+                className="family-profile-photo"
+              />
+              <div>
+                <h3 className="family-title-only">Bride's Family</h3>
+                <p className="text-gray-600 font-playfair italic text-sm">The Thompson Family</p>
+              </div>
             </div>
-          </div>
-          <button 
-            onClick={() => openFamilyModal('bride')}
-            className="view-details-button"
-          >
-            View Family Details
-          </button>
-        </LuxuryCard>
+            <button 
+              onClick={() => openFamilyModal('bride')}
+              className="view-details-button"
+            >
+              View Family Details
+            </button>
+          </LuxuryCard>
+        </div>
 
-        {/* Groom's Family */}
-        <LuxuryCard variant="secondary" className="animate-slide-up-elegant delay-200 text-center family-section-card">
-          <div className="family-title-with-photo">
-            <img 
-              src={groomFamilyPhoto}
-              alt="Williams Family"
-              className="family-profile-photo"
-            />
-            <div>
-              <h3 className="family-title-only">Groom's Family</h3>
-              <p className="text-gray-600 font-playfair italic text-sm">The Williams Family</p>
+        {/* Groom's Family - Enhanced with Gradient Background and Light Flash */}
+        <div className="family-card-gradient family-card-hover animate-slide-up-elegant delay-200 text-center family-section-card">
+          <LuxuryCard variant="secondary" className="h-full">
+            <div className="family-title-with-photo">
+              <img 
+                src={groomFamilyPhoto}
+                alt="Williams Family"
+                className="family-profile-photo"
+              />
+              <div>
+                <h3 className="family-title-only">Groom's Family</h3>
+                <p className="text-gray-600 font-playfair italic text-sm">The Williams Family</p>
+              </div>
             </div>
-          </div>
-          <button 
-            onClick={() => openFamilyModal('groom')}
-            className="view-details-button"
-          >
-            View Family Details
-          </button>
-        </LuxuryCard>
+            <button 
+              onClick={() => openFamilyModal('groom')}
+              className="view-details-button"
+            >
+              View Family Details
+            </button>
+          </LuxuryCard>
+        </div>
       </div>
 
       {/* Enhanced Family Modal with Cohesive Design and Proper Height */}
