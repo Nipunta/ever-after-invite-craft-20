@@ -155,30 +155,49 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
           <CongratulationsWall />
         </div>
 
-        {/* Ultra Enhanced Accept Invitation Button - Maximum Prominence */}
+        {/* Card-Style Accept Invitation Button */}
         {!invitationAccepted && (
           <div className="px-4 pb-6 animate-slide-up-elegant delay-1200">
-            <div className="max-w-5xl mx-auto text-center">
-              <Button
-                onClick={handleAcceptInvitation}
-                className="ultra-enhanced-accept-button bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 hover:from-rose-600 hover:via-pink-600 hover:to-purple-600 text-white font-playfair text-2xl md:text-3xl lg:text-4xl px-16 md:px-24 lg:px-32 py-8 md:py-12 lg:py-16 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105 active:scale-95 w-full sm:w-auto group relative overflow-hidden border-4 border-white/30"
-              >
-                <span className="relative z-10 flex items-center justify-center space-x-4">
-                  <span className="text-3xl md:text-4xl">💕</span>
-                  <span className="font-black tracking-wide uppercase">Accept Our Invitation</span>
-                  <span className="text-3xl md:text-4xl">✨</span>
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                
-                {/* Ultra enhanced glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-rose-400 via-pink-400 to-purple-400 rounded-full blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-500 -z-10 scale-110"></div>
-                
-                {/* Additional outer glow */}
-                <div className="absolute inset-0 bg-gradient-to-r from-rose-300 via-pink-300 to-purple-300 rounded-full blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-500 -z-20 scale-125"></div>
-              </Button>
-              <p className="text-gray-600 text-lg md:text-xl mt-8 opacity-80 font-playfair italic max-w-2xl mx-auto leading-relaxed">
-                Let us know you'll be joining us for this special celebration of love and unity
-              </p>
+            <div className="max-w-4xl mx-auto">
+              <LuxuryCard variant="primary" className="text-center card-style-accept-button">
+                <div className="space-y-6">
+                  {/* Header */}
+                  <div className="space-y-4">
+                    <div className="text-6xl animate-floating-heart">💕</div>
+                    <h3 className="text-2xl md:text-3xl font-playfair font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600">
+                      Join Our Celebration
+                    </h3>
+                    <p className="text-gray-600 text-lg md:text-xl font-playfair italic leading-relaxed max-w-2xl mx-auto">
+                      We would be honored to have you celebrate this special day with us. Your presence would make our wedding complete.
+                    </p>
+                  </div>
+
+                  {/* Accept Button */}
+                  <div className="pt-4">
+                    <Button
+                      onClick={handleAcceptInvitation}
+                      className="card-accept-button bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 hover:from-rose-600 hover:via-pink-600 hover:to-purple-600 text-white font-playfair text-xl md:text-2xl px-12 md:px-16 py-6 md:py-8 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105 active:scale-95 w-full sm:w-auto group relative overflow-hidden border-4 border-white/30"
+                    >
+                      <span className="relative z-10 flex items-center justify-center space-x-3">
+                        <span className="text-2xl md:text-3xl">✨</span>
+                        <span className="font-black tracking-wide uppercase">Accept Our Invitation</span>
+                        <span className="text-2xl md:text-3xl">✨</span>
+                      </span>
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                      
+                      {/* Enhanced glow effect */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-rose-400 via-pink-400 to-purple-400 rounded-full blur-xl opacity-60 group-hover:opacity-80 transition-opacity duration-500 -z-10"></div>
+                    </Button>
+                  </div>
+
+                  {/* Footer message */}
+                  <div className="pt-2">
+                    <p className="text-gray-500 text-sm md:text-base font-playfair italic">
+                      Click to confirm your attendance • June 15, 2025
+                    </p>
+                  </div>
+                </div>
+              </LuxuryCard>
             </div>
           </div>
         )}

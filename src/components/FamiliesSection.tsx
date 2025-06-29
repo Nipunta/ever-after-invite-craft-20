@@ -118,10 +118,10 @@ const FamiliesSection = () => {
         </div>
       </div>
 
-      {/* Enhanced Family Modal with Cohesive Design and Proper Height */}
+      {/* Enhanced Family Modal with Live Animation Background */}
       {selectedFamily && (
         <div className="fixed inset-0 z-50 flex items-center justify-center family-modal" onClick={closeFamilyModal}>
-          <div className="family-modal-content relative" onClick={(e) => e.stopPropagation()}>
+          <div className="family-modal-content-animated relative" onClick={(e) => e.stopPropagation()}>
             
             {/* Visible Close Button */}
             <button
@@ -145,7 +145,7 @@ const FamiliesSection = () => {
               {(selectedFamily === 'bride' ? brideFamily : groomFamily).map((member, index) => (
                 <div 
                   key={member.name} 
-                  className="family-member-subcard bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-white/40 animate-family-member-entry"
+                  className="family-member-subcard-animated animate-family-member-entry"
                   style={{ animationDelay: `${index * 150}ms` }}
                 >
                   <div className="flex items-start space-x-4">
