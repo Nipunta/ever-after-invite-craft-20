@@ -72,6 +72,11 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Playfair Display', serif;
+    scroll-behavior: smooth;
+  }
+  
+  html {
+    scroll-behavior: smooth;
   }
 }
 
@@ -311,6 +316,37 @@
     box-shadow: 0 6px 20px rgba(0,0,0,0.3);
   }
 
+  /* Enhanced Family Member Subcards */
+  .family-member-subcard {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(254, 247, 240, 0.9));
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .family-member-subcard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    transition: left 0.6s ease;
+    z-index: 1;
+  }
+
+  .family-member-subcard:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 240, 245, 0.9));
+  }
+
+  .family-member-subcard:hover::before {
+    left: 100%;
+  }
+
   /* Timeline Event Cards - Original Background with Flashing Light Effects */
   .timeline-card-original {
     background: linear-gradient(135deg, #fcd1d1, #fff5e1, #ffe2cc, #f9d29d);
@@ -400,25 +436,30 @@
     box-shadow: 0 15px 35px rgba(0,0,0,0.1);
   }
 
-  /* Enhanced Accept Invitation Button */
-  .enhanced-accept-button {
+  /* Ultra Enhanced Accept Invitation Button */
+  .ultra-enhanced-accept-button {
     position: relative;
     overflow: hidden;
-    font-size: 1.25rem;
+    font-size: 2rem;
     font-weight: 900;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    box-shadow: 
-      0 20px 40px rgba(244, 63, 94, 0.3),
-      0 0 0 1px rgba(255, 255, 255, 0.2),
-      inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  }
-
-  .enhanced-accept-button:hover {
+    min-height: 5rem;
     box-shadow: 
       0 25px 50px rgba(244, 63, 94, 0.4),
-      0 0 0 1px rgba(255, 255, 255, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+      0 0 0 2px rgba(255, 255, 255, 0.3),
+      inset 0 2px 0 rgba(255, 255, 255, 0.4),
+      0 0 60px rgba(244, 63, 94, 0.3);
+    border: 4px solid rgba(255, 255, 255, 0.4);
+  }
+
+  .ultra-enhanced-accept-button:hover {
+    box-shadow: 
+      0 35px 70px rgba(244, 63, 94, 0.5),
+      0 0 0 3px rgba(255, 255, 255, 0.4),
+      inset 0 3px 0 rgba(255, 255, 255, 0.5),
+      0 0 80px rgba(244, 63, 94, 0.4);
+    border: 4px solid rgba(255, 255, 255, 0.5);
   }
 
   /* Memory Gallery Hover Effects */
@@ -482,6 +523,12 @@
 
   .animate-elegant-entrance {
     animation: elegantEntrance 1.5s ease-out forwards;
+  }
+
+  .animate-family-member-entry {
+    animation: familyMemberEntry 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
   }
 
   /* Shadow utilities */
@@ -579,6 +626,17 @@
   100% {
     opacity: 1;
     transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes familyMemberEntry {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -889,9 +947,10 @@
     padding: 1.5rem;
   }
 
-  .enhanced-accept-button {
-    font-size: 1rem;
-    padding: 1rem 2rem;
+  .ultra-enhanced-accept-button {
+    font-size: 1.25rem;
+    padding: 1.5rem 2rem;
+    min-height: 4rem;
   }
 }
 
@@ -908,16 +967,22 @@
   .save-date-card::before,
   .save-date-card::after,
   .family-card-gradient,
-  .family-card-hover::before {
+  .family-card-hover::before,
+  .family-member-subcard::before {
     animation: none;
   }
   
-  .timeline-card-original:hover {
+  .timeline-card-original:hover,
+  .family-member-subcard:hover {
     transform: none;
   }
 
   .home-dear-guest-typewriter {
     width: auto;
     border-right: none;
+  }
+  
+  body, html {
+    scroll-behavior: auto;
   }
 }

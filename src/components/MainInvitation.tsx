@@ -83,6 +83,13 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Ensure page starts from top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, []);
+
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Animated Background */}
@@ -148,26 +155,29 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
           <CongratulationsWall />
         </div>
 
-        {/* Enhanced Accept Invitation Button - Larger and More Prominent */}
+        {/* Ultra Enhanced Accept Invitation Button - Maximum Prominence */}
         {!invitationAccepted && (
           <div className="px-4 pb-6 animate-slide-up-elegant delay-1200">
-            <div className="max-w-4xl mx-auto text-center">
+            <div className="max-w-5xl mx-auto text-center">
               <Button
                 onClick={handleAcceptInvitation}
-                className="enhanced-accept-button bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 hover:from-rose-600 hover:via-pink-600 hover:to-purple-600 text-white font-playfair text-xl md:text-2xl px-12 md:px-16 py-6 md:py-8 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105 active:scale-95 w-full sm:w-auto group relative overflow-hidden border-4 border-white/20"
+                className="ultra-enhanced-accept-button bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 hover:from-rose-600 hover:via-pink-600 hover:to-purple-600 text-white font-playfair text-2xl md:text-3xl lg:text-4xl px-16 md:px-24 lg:px-32 py-8 md:py-12 lg:py-16 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105 active:scale-95 w-full sm:w-auto group relative overflow-hidden border-4 border-white/30"
               >
-                <span className="relative z-10 flex items-center justify-center space-x-3">
-                  <span className="text-2xl">💕</span>
-                  <span className="font-black tracking-wide">Accept Our Invitation</span>
-                  <span className="text-2xl">✨</span>
+                <span className="relative z-10 flex items-center justify-center space-x-4">
+                  <span className="text-3xl md:text-4xl">💕</span>
+                  <span className="font-black tracking-wide uppercase">Accept Our Invitation</span>
+                  <span className="text-3xl md:text-4xl">✨</span>
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                 
-                {/* Enhanced glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-rose-400 via-pink-400 to-purple-400 rounded-full blur-xl opacity-60 group-hover:opacity-80 transition-opacity duration-500 -z-10"></div>
+                {/* Ultra enhanced glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-rose-400 via-pink-400 to-purple-400 rounded-full blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-500 -z-10 scale-110"></div>
+                
+                {/* Additional outer glow */}
+                <div className="absolute inset-0 bg-gradient-to-r from-rose-300 via-pink-300 to-purple-300 rounded-full blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-500 -z-20 scale-125"></div>
               </Button>
-              <p className="text-gray-600 text-base md:text-lg mt-6 opacity-80 font-playfair italic">
-                Let us know you'll be joining us for this special celebration
+              <p className="text-gray-600 text-lg md:text-xl mt-8 opacity-80 font-playfair italic max-w-2xl mx-auto leading-relaxed">
+                Let us know you'll be joining us for this special celebration of love and unity
               </p>
             </div>
           </div>

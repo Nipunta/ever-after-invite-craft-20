@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import InvitationLayout from '@/components/InvitationLayout';
 import SaveTheDate from '@/components/SaveTheDate';
@@ -12,14 +11,25 @@ const Index = () => {
 
   const handleOpenEnvelope = () => {
     setCurrentPage('save-the-date');
+    // Smooth scroll to top when opening envelope
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
   };
 
   const handleNavigateToInvitation = () => {
     setCurrentPage('main-invitation');
+    // Immediately scroll to top and ensure smooth transition
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }, 50);
   };
 
   const handleBackToSaveTheDate = () => {
     setCurrentPage('save-the-date');
+    // Smooth scroll to top when going back
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Handle scroll to hide/show navigation
@@ -33,6 +43,16 @@ const Index = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, [currentPage]);
+
+  // Ensure page starts from top when switching to main invitation
+  useEffect(() => {
+    if (currentPage === 'main-invitation') {
+      // Force scroll to top immediately
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }
   }, [currentPage]);
 
   if (currentPage === 'envelope') {
@@ -55,7 +75,10 @@ const Index = () => {
           <div className="bg-white/90 backdrop-blur-xl rounded-full px-2 py-0.5 shadow-lg border border-white/50">
             <div className="flex space-x-1">
               <button
-                onClick={() => setCurrentPage('save-the-date')}
+                onClick={() => {
+                  setCurrentPage('save-the-date');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
                 className={`px-4 py-1 rounded-full text-xs font-medium transition-all duration-500 transform ${
                   currentPage === 'save-the-date'
                     ? 'bg-gradient-to-r from-rose-500 to-pink-500 text-white shadow-md scale-105'
@@ -68,7 +91,10 @@ const Index = () => {
                 </span>
               </button>
               <button
-                onClick={() => setCurrentPage('main-invitation')}
+                onClick={() => {
+                  setCurrentPage('main-invitation');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
                 className={`px-4 py-1 rounded-full text-xs font-medium transition-all duration-500 transform ${
                   currentPage === 'main-invitation'
                     ? 'bg-gradient-to-r from-rose-500 to-pink-500 text-white shadow-md scale-105'

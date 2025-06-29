@@ -143,7 +143,11 @@ const FamiliesSection = () => {
 
             <div className="space-y-4">
               {(selectedFamily === 'bride' ? brideFamily : groomFamily).map((member, index) => (
-                <div key={member.name} className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-white/40">
+                <div 
+                  key={member.name} 
+                  className="family-member-subcard bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-white/40 animate-family-member-entry"
+                  style={{ animationDelay: `${index * 150}ms` }}
+                >
                   <div className="flex items-start space-x-4">
                     <img 
                       src={member.photo}
