@@ -36,7 +36,7 @@ const SaveTheDate = ({ onNavigateToInvitation }: SaveTheDateProps) => {
         {/* Dear Guest with Dark Red and Pink Gradient */}
         <div className="text-center mb-8 animate-fade-in-stagger">
           <div className="mb-6">
-            <p className="dark-red-pink-gradient">
+            <p className="dark-red-pink-gradient animate-gentle-float">
               Dear Guest
             </p>
           </div>

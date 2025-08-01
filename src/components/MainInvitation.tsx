@@ -167,9 +167,6 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
                     <h3 className="text-2xl md:text-3xl font-playfair font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600">
                       Join Our Celebration
                     </h3>
-                    <p className="text-gray-600 text-lg md:text-xl font-playfair italic leading-relaxed max-w-2xl mx-auto">
-                      We would be honored to have you celebrate this special day with us. Your presence would make our wedding complete.
-                    </p>
                   </div>
 
                   {/* Accept Button */}
@@ -202,6 +199,72 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
           </div>
         )}
 
+        {/* Contact Information Section */}
+        <div className="px-4 pb-12 animate-fade-in delay-1400">
+          <div className="max-w-4xl mx-auto">
+            <LuxuryCard variant="secondary" className="text-center">
+              <div className="space-y-8">
+                {/* Header */}
+                <div className="space-y-4">
+                  <div className="text-4xl animate-floating-heart">📞</div>
+                  <h3 className="text-2xl md:text-3xl font-playfair font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-800 via-rose-700 to-gray-800">
+                    Contact Information
+                  </h3>
+                  <p className="text-gray-600 text-lg font-playfair italic">
+                    For any questions or assistance, please reach out to our coordinators
+                  </p>
+                  <div className="w-24 h-px bg-gradient-to-r from-rose-400 to-pink-400 mx-auto"></div>
+                </div>
+
+                {/* Contact Cards */}
+                <div className="grid md:grid-cols-2 gap-6">
+                  {/* Wedding Coordinator */}
+                  <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/50 hover:shadow-xl transition-all duration-300">
+                    <div className="space-y-3">
+                      <h4 className="text-xl font-playfair font-bold text-gray-800">Wedding Coordinator</h4>
+                      <div className="space-y-2 text-gray-700">
+                        <p className="font-semibold">Emily Johnson</p>
+                        <p className="flex items-center justify-center space-x-2">
+                          <span>📱</span>
+                          <span>(555) 123-4567</span>
+                        </p>
+                        <p className="flex items-center justify-center space-x-2">
+                          <span>✉️</span>
+                          <span>emily@sarahandalex.com</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Family Contact */}
+                  <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/50 hover:shadow-xl transition-all duration-300">
+                    <div className="space-y-3">
+                      <h4 className="text-xl font-playfair font-bold text-gray-800">Family Contact</h4>
+                      <div className="space-y-2 text-gray-700">
+                        <p className="font-semibold">Margaret Thompson</p>
+                        <p className="flex items-center justify-center space-x-2">
+                          <span>📱</span>
+                          <span>(555) 987-6543</span>
+                        </p>
+                        <p className="flex items-center justify-center space-x-2">
+                          <span>✉️</span>
+                          <span>margaret@sarahandalex.com</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Additional Info */}
+                <div className="pt-4">
+                  <p className="text-gray-500 text-sm font-playfair italic">
+                    Available Monday - Friday, 9 AM - 6 PM EST
+                  </p>
+                </div>
+              </div>
+            </LuxuryCard>
+          </div>
+        </div>
         {/* Confirmation Message */}
         {invitationAccepted && (
           <div className="px-4 pb-6 animate-fade-in text-center">
@@ -310,10 +373,6 @@ const LocalAttractionsOnly = () => {
               {/* Content with darker, bolder fonts */}
               <div className="relative z-10 p-4 sm:p-6 h-full flex flex-col justify-end text-center">
                 <h4 className="font-bold text-white mb-2 text-base sm:text-lg drop-shadow-lg">{attraction.name}</h4>
-                <div className="flex items-center justify-center mb-2">
-                  <span className="text-xs sm:text-sm text-white font-semibold drop-shadow-md">{attraction.distance}</span>
-                </div>
-                <p className="text-xs sm:text-sm text-white/90 leading-relaxed font-medium drop-shadow-md">{attraction.description}</p>
               </div>
             </div>
           </LuxuryCard>

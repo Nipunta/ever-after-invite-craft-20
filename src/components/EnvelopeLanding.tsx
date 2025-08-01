@@ -131,12 +131,16 @@ const EnvelopeLanding = ({ onOpenEnvelope }: EnvelopeLandingProps) => {
         <div className="mb-10 animate-luxury-float delay-500 px-4">
           <div className="space-y-3">
             <p className="text-base sm:text-lg md:text-xl text-gray-800 mb-3 animate-fade-in delay-700 font-bold font-playfair italic">
-              Sarah & Alex's Wedding Ceremony
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-yellow-600 to-amber-700">
+                Sarah & Alex's Wedding Ceremony
+              </span>
             </p>
             <div className="flex items-center justify-center space-x-2 animate-fade-in delay-900">
               <div className="w-8 h-0.5 bg-gradient-to-r from-transparent to-rose-400"></div>
-              <p className="text-base sm:text-lg md:text-xl text-gray-700 font-semibold font-playfair">
-                June 15, 2025 • The Plaza Hotel
+              <p className="text-base sm:text-lg md:text-xl font-semibold font-playfair">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-yellow-600 to-amber-700">
+                  June 15, 2025 • The Plaza Hotel
+                </span>
               </p>
               <div className="w-8 h-0.5 bg-gradient-to-l from-transparent to-rose-400"></div>
             </div>
