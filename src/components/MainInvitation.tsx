@@ -207,7 +207,7 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
                 {/* Header */}
                 <div className="space-y-4">
                   <div className="text-4xl animate-floating-heart">📞</div>
-                  <h3 className="text-2xl md:text-3xl font-playfair font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-800 via-rose-700 to-gray-800">
+                  <h3 className="text-2xl md:text-3xl font-playfair font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-pink-500 to-amber-400">
                     Contact Information
                   </h3>
                   <p className="text-gray-600 text-lg font-playfair italic">
@@ -217,39 +217,73 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
                 </div>
 
                 {/* Contact Cards */}
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
                   {/* Wedding Coordinator */}
-                  <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/50 hover:shadow-xl transition-all duration-300">
-                    <div className="space-y-3">
-                      <h4 className="text-xl font-playfair font-bold text-gray-800">Wedding Coordinator</h4>
-                      <div className="space-y-2 text-gray-700">
-                        <p className="font-semibold">Emily Johnson</p>
-                        <p className="flex items-center justify-center space-x-2">
-                          <span>📱</span>
-                          <span>(555) 123-4567</span>
-                        </p>
-                        <p className="flex items-center justify-center space-x-2">
-                          <span>✉️</span>
-                          <span>emily@sarahandalex.com</span>
-                        </p>
+                  <div className="contact-card-enhanced bg-white/80 backdrop-blur-sm rounded-2xl p-4 sm:p-6 shadow-lg border border-white/50 hover:shadow-xl transition-all duration-500 relative overflow-hidden">
+                    {/* Animated gradient border */}
+                    <div className="absolute inset-0 rounded-2xl p-[1px] bg-gradient-to-r from-rose-400 via-pink-400 to-amber-400 opacity-0 hover:opacity-60 transition-opacity duration-500">
+                      <div className="absolute inset-[1px] rounded-2xl bg-white/80 backdrop-blur-sm" />
+                    </div>
+                    
+                    <div className="relative z-10 space-y-4">
+                      <h4 className="text-lg sm:text-xl font-playfair font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-pink-500 to-amber-400">
+                        Wedding Coordinator
+                      </h4>
+                      <div className="space-y-3 text-gray-700">
+                        <p className="font-semibold text-gray-800 text-base sm:text-lg">Emily Johnson</p>
+                        <div className="flex flex-col items-center space-y-2">
+                          <a 
+                            href="tel:+15551234567" 
+                            className="flex items-center justify-center space-x-2 text-gray-600 hover:text-rose-600 transition-colors duration-300 text-sm sm:text-base"
+                          >
+                            <span>📱</span>
+                            <span>(555) 123-4567</span>
+                          </a>
+                          
+                          {/* Tap to Call Button */}
+                          <a 
+                            href="tel:+15551234567"
+                            className="tap-to-call-button bg-gradient-to-r from-rose-400 to-pink-500 hover:from-rose-500 hover:to-pink-600 text-white px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center space-x-2 shadow-md hover:shadow-lg"
+                          >
+                            <span className="text-sm">📞</span>
+                            <span>Tap to Call</span>
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
 
                   {/* Family Contact */}
-                  <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/50 hover:shadow-xl transition-all duration-300">
-                    <div className="space-y-3">
-                      <h4 className="text-xl font-playfair font-bold text-gray-800">Family Contact</h4>
-                      <div className="space-y-2 text-gray-700">
-                        <p className="font-semibold">Margaret Thompson</p>
-                        <p className="flex items-center justify-center space-x-2">
-                          <span>📱</span>
-                          <span>(555) 987-6543</span>
-                        </p>
-                        <p className="flex items-center justify-center space-x-2">
-                          <span>✉️</span>
-                          <span>margaret@sarahandalex.com</span>
-                        </p>
+                  <div className="contact-card-enhanced bg-white/80 backdrop-blur-sm rounded-2xl p-4 sm:p-6 shadow-lg border border-white/50 hover:shadow-xl transition-all duration-500 relative overflow-hidden">
+                    {/* Animated gradient border */}
+                    <div className="absolute inset-0 rounded-2xl p-[1px] bg-gradient-to-r from-rose-400 via-pink-400 to-amber-400 opacity-0 hover:opacity-60 transition-opacity duration-500">
+                      <div className="absolute inset-[1px] rounded-2xl bg-white/80 backdrop-blur-sm" />
+                    </div>
+                    
+                    <div className="relative z-10 space-y-4">
+                      <h4 className="text-lg sm:text-xl font-playfair font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-pink-500 to-amber-400">
+                        Family Contact
+                      </h4>
+                      <div className="space-y-3 text-gray-700">
+                        <p className="font-semibold text-gray-800 text-base sm:text-lg">Margaret Thompson</p>
+                        <div className="flex flex-col items-center space-y-2">
+                          <a 
+                            href="tel:+15559876543" 
+                            className="flex items-center justify-center space-x-2 text-gray-600 hover:text-rose-600 transition-colors duration-300 text-sm sm:text-base"
+                          >
+                            <span>📱</span>
+                            <span>(555) 987-6543</span>
+                          </a>
+                          
+                          {/* Tap to Call Button */}
+                          <a 
+                            href="tel:+15559876543"
+                            className="tap-to-call-button bg-gradient-to-r from-rose-400 to-pink-500 hover:from-rose-500 hover:to-pink-600 text-white px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center space-x-2 shadow-md hover:shadow-lg"
+                          >
+                            <span className="text-sm">📞</span>
+                            <span>Tap to Call</span>
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -257,7 +291,7 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
 
                 {/* Additional Info */}
                 <div className="pt-4">
-                  <p className="text-gray-500 text-sm font-playfair italic">
+                  <p className="text-gray-500 text-xs sm:text-sm font-playfair italic px-4">
                     Available Monday - Friday, 9 AM - 6 PM EST
                   </p>
                 </div>
