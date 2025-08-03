@@ -94,6 +94,10 @@ const EventTimeline = () => {
                   style={{ animationDelay: `${index * 200}ms` }}
                 >
                   <div className="timeline-card-original relative p-6 rounded-xl border border-white/40 shadow-lg">
+                    {/* Rotating border animation */}
+                    <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-rose-400 via-pink-400 via-amber-400 to-rose-400 bg-[length:300%_300%] animate-spin opacity-30 blur-sm"></div>
+                    <div className="absolute inset-[2px] rounded-xl bg-gradient-to-br from-white/95 to-rose-50/80 backdrop-blur-sm"></div>
+                    
                     <div className="relative z-10">
                       <h3 className={`text-xl md:text-2xl font-playfair font-black bg-gradient-to-r ${event.color} bg-clip-text text-transparent mb-4 event-name-fade-up`}>
                         {event.title}

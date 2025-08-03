@@ -19,16 +19,16 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
   const [showThankYou, setShowThankYou] = useState(false);
   const [invitationAccepted, setInvitationAccepted] = useState(false);
   const [isAtTop, setIsAtTop] = useState(true);
-  const [guestName, setGuestName] = useState('dear guest');
+  const [guestName, setGuestName] = useState('Dear Guest');
 
   const handleAcceptInvitation = () => {
-    setShowThankYou(true);
     setInvitationAccepted(true);
+    setShowThankYou(true);
     
     // Create celebration particles
     createCelebrationParticles();
     
-    setTimeout(() => setShowThankYou(false), 3000);
+    setTimeout(() => setShowThankYou(false), 4000);
   };
 
   const createCelebrationParticles = () => {
