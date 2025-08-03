@@ -299,18 +299,6 @@ const MainInvitation = ({ onBackToSaveTheDate }: MainInvitationProps) => {
             </LuxuryCard>
           </div>
         </div>
-        {/* Confirmation Message */}
-        {invitationAccepted && (
-          <div className="px-4 pb-6 animate-fade-in text-center">
-            <div className="max-w-2xl mx-auto">
-              <LuxuryCard variant="accent">
-                <div className="text-4xl mb-4">✅</div>
-                <h3 className="text-xl font-playfair font-bold text-gray-800 mb-2">Invitation Accepted!</h3>
-                <p className="text-gray-600 font-playfair italic">We're excited to celebrate with you on June 15, 2025</p>
-              </LuxuryCard>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );
